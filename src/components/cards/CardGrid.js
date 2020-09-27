@@ -51,8 +51,8 @@ export function Item({ id }) {
       <MotionDiv
         initial={{ opacity: 0 }}
         animate={{ opacity: .6 }}
-        exit={{ opacity: 0, transition: { duration: 0.15 } }}
-        transition={{ duration: 0.2, delay: 0.15 }}
+        exit={{ opacity: 0, transition: { duration: 0.1 } }}
+        transition={{ duration: 0.2, delay: 0.1 }}
         style={{ pointerEvents: "auto" }}
         className="overlay"
       >
@@ -71,7 +71,7 @@ export function Item({ id }) {
             layoutId={`title-container-${id}`}
           >
             <span className="category">{elem.category}</span>
-            <h2>{elem.title}</h2>
+            <h2 style={{ fontSize: '1.5rem' }}>{elem.title}</h2>
           </MotionDiv>
           <MotionDiv className="content-container" animate>
             <p>

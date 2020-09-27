@@ -6,7 +6,7 @@ export const items = [
     title: "Our Vision",
     pointOfInterest: 80,
     backgroundColor: "#814A0E",
-    body: 'To transform society through investments in education, social welfare, and civil society.',
+    body: 'To transform society through evidence-driven investments in education, social welfare, and civil society.',
     thumbnail: 'https://res.cloudinary.com/tolulope-od/image/upload/c_fit,h_530,q_auto:best,w_397/v1599943083/nathan-dumlao-VJHb4QPBgV4-unsplash_zuahht.jpg',
     banner: 'https://res-console.cloudinary.com/tolulope-od/thumbnails/transform/v1/image/upload//v1599944373/bmF0aGFuLWR1bWxhby1WSkhiNFFQQmdWNC11bnNwbGFzaF94cm10bXo=/drilldown',
   },

@@ -7,7 +7,7 @@ import { SectionHeading, Subheading as SubheadingBase } from "components/misc/He
 import {SectionDescription} from "components/misc/Typography";
 import { ReactComponent as TwitterIcon} from "images/twitter-icon.svg";
 import { ReactComponent as LinkedinIcon} from "images/linkedin-icon.svg";
-import { ReactComponent as GithubIcon } from "images/github-icon.svg";
+import { ReactComponent as FacebookIcon } from "images/facebook-icon.svg";
 
 const HeadingContainer = tw.div``
 const Heading = tw(SectionHeading)``
@@ -41,33 +41,33 @@ const CardLinks = styled.div`
 `
 
 export default ({
-  heading = "Meet These Fine Folks.",
+  heading = "Meet Our Team.",
   subheading = "Our Team",
-  description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  description = "4-people team with positions and brief descriptions",
   cards = [
     {
-      imageSrc: "https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&fit=facearea&facepad=2.95&w=512&h=512&q=80",
-      position: "Founder",
-      name: "Adam Cuppy",
+      imageSrc: "https://res.cloudinary.com/tolulope-od/image/upload/v1601211702/web-9_whr5dl.jpg",
+      position: "Title",
+      name: "Ifedolapo Jubee",
       links: [
         {
-          url: "https://twitter.com",
+          url: "https://twitter.com/Ogunjubee1",
           icon: TwitterIcon,
         },
         {
-          url: "https://linkedin.com",
+          url: "https://www.linkedin.com/in/ifedolapo-ogunjubee",
           icon: LinkedinIcon,
         },
         {
-          url: "https://github.com",
-          icon: GithubIcon,
+          url: "https://facebook.com",
+          icon: FacebookIcon,
         },
       ],
     },
     {
-      imageSrc: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&fit=facearea&facepad=2.95&w=512&h=512&q=80",
-      position: "Sr. Designer",
-      name: "Charlotte Hale",
+      imageSrc: "https://res.cloudinary.com/tolulope-od/image/upload/v1601211697/WhatsApp_Image_2020-09-26_at_12.20.00_cfoxib.jpg",
+      position: "Title 2",
+      name: "Adeyemi",
       links: [
         {
           url: "https://twitter.com",
@@ -78,8 +78,8 @@ export default ({
           icon: LinkedinIcon,
         },
         {
-          url: "https://github.com",
-          icon: GithubIcon,
+          url: "https://facebook.com",
+          icon: FacebookIcon,
         },
       ],
     },
@@ -97,18 +97,18 @@ export default ({
           icon: LinkedinIcon,
         },
         {
-          url: "https://github.com",
-          icon: GithubIcon,
+          url: "https://facebook.com",
+          icon: FacebookIcon,
         },
       ],
     },
     {
       imageSrc: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&fit=facearea&facepad=2.95&w=512&h=512&q=80",
-      position: "Lead Developer",
-      name: "Himali Turn",
+      position: "Title Developer",
+      name: "Socrates Mbalu",
       links: [
         {
-          url: "https://twitter.com",
+          url: "https://twitter.com/socratesmbamalu",
           icon: TwitterIcon,
         },
         {
@@ -116,46 +116,8 @@ export default ({
           icon: LinkedinIcon,
         },
         {
-          url: "https://github.com",
-          icon: GithubIcon,
-        },
-      ],
-    },
-    {
-      imageSrc: "https://images.unsplash.com/photo-1546820389-44d77e1f3b31?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&fit=facearea&facepad=3.45&w=512&h=512&q=80",
-      position: "Sr. Developer",
-      name: "Troye Sivan",
-      links: [
-        {
-          url: "https://twitter.com",
-          icon: TwitterIcon,
-        },
-        {
-          url: "https://linkedin.com",
-          icon: LinkedinIcon,
-        },
-        {
-          url: "https://github.com",
-          icon: GithubIcon,
-        },
-      ],
-    },
-    {
-      imageSrc: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&fit=facearea&facepad=3.45&w=512&h=512&q=80",
-      position: "Quality Assurance",
-      name: "Holo Wo",
-      links: [
-        {
-          url: "https://twitter.com",
-          icon: TwitterIcon,
-        },
-        {
-          url: "https://linkedin.com",
-          icon: LinkedinIcon,
-        },
-        {
-          url: "https://github.com",
-          icon: GithubIcon,
+          url: "https://facebook.com",
+          icon: FacebookIcon,
         },
       ],
     },
@@ -169,24 +131,24 @@ export default ({
           {heading && <Heading>{heading}</Heading> }
           {description && <Description>{description}</Description> }
         </HeadingContainer>
-        {/*<Cards>*/}
-        {/*  {cards.map((card, index) => (*/}
-        {/*    <Card key={index}>*/}
-        {/*      <CardImage imageSrc={card.imageSrc} />*/}
-        {/*      <CardContent>*/}
-        {/*        <span className="position">{card.position}</span>*/}
-        {/*        <span className="name">{card.name}</span>*/}
-        {/*        <CardLinks>*/}
-        {/*          {card.links.map((link, linkIndex) => (*/}
-        {/*            <a key={linkIndex} className="link" href={link.url}>*/}
-        {/*              <link.icon className="icon" />*/}
-        {/*            </a>*/}
-        {/*          ))}*/}
-        {/*        </CardLinks>*/}
-        {/*      </CardContent>*/}
-        {/*    </Card>*/}
-        {/*  ))}*/}
-        {/*</Cards>*/}
+        <Cards>
+          {cards.map((card, index) => (
+            <Card key={index}>
+              <CardImage imageSrc={card.imageSrc} />
+              <CardContent>
+                <span className="position">{card.position}</span>
+                <span className="name">{card.name}</span>
+                <CardLinks>
+                  {card.links.map((link, linkIndex) => (
+                    <a key={linkIndex} className="link" href={link.url}>
+                      <link.icon className="icon" />
+                    </a>
+                  ))}
+                </CardLinks>
+              </CardContent>
+            </Card>
+          ))}
+        </Cards>
       </ContentWithPaddingXl>
     </Container>
   );

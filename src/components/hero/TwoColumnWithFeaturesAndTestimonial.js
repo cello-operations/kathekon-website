@@ -1,9 +1,10 @@
 import React from "react";
 import styled from "styled-components";
+import { motion, AnimatePresence } from "framer-motion";
 import tw from "twin.macro";
 import { Link } from "react-router-dom";
 import { css } from "styled-components/macro"; //eslint-disable-line
-import HeaderBase, { NavLinks, NavLink, PrimaryLink } from "components/headers/light.js";
+import Header, { NavLinks, NavLink, PrimaryLink } from "components/headers/light.js";
 import { SectionHeading } from "components/misc/Headings.js";
 import { SectionDescription } from "components/misc/Typography.js";
 import { PrimaryButton as PrimaryButtonBase } from "components/misc/Buttons.js";
@@ -11,18 +12,14 @@ import { Container, ContentWithVerticalPadding } from "components/misc/Layouts.j
 import { ReactComponent as CheckboxIcon } from "feather-icons/dist/icons/check-circle.svg";
 import { ReactComponent as QuotesLeftIconBase } from "images/quotes-l.svg"
 import { ReactComponent as SvgDecoratorBlob1 } from "images/dot-pattern.svg";
+import SlideShow from "../../helpers/Carousel";
 
-const Header = tw(HeaderBase)`max-w-none`;
 const Row = tw.div`flex flex-col lg:flex-row justify-between items-center lg:pt-16 max-w-screen-2xl mx-auto sm:px-8`;
 const Column = tw.div``;
 const TextColumn = tw(Column)`mr-auto lg:mr-0 max-w-lg lg:max-w-xl xl:max-w-2xl`;
 const Heading = tw(SectionHeading)`text-left text-primary-900 leading-snug xl:text-6xl`;
 const Description = tw(SectionDescription)`mt-4 lg:text-base text-gray-900 max-w-lg font-sans`;
 const PrimaryButton = tw(PrimaryButtonBase)`mt-8 inline-block w-56 tracking-wide text-center py-5`;
-const FeatureList = tw.ul`mt-12 leading-loose`;
-const Feature = tw.li`flex items-center`;
-const FeatureIcon = tw(CheckboxIcon)`w-5 h-5 text-primary-500`;
-const FeatureText = tw.p`ml-2 font-medium text-gray-700`;
 const ImageColumn = tw(Column)`ml-auto lg:mr-0 relative mt-16 lg:mt-0 lg:ml-32`;
 const ImageContainer = tw.div`relative z-40 transform xl:-translate-x-24 xl:-translate-y-16`;
 const Image = tw.img`max-w-full w-96 rounded-t sm:rounded relative z-20`;
@@ -36,30 +33,25 @@ const Quote = tw.blockquote`font-sans font-bold`
 const CustomerName = tw.p`mt-4 font-sans`
 const CustomerCompany = tw.p`mt-1 text-sm text-gray-500`
 
-// https://res.cloudinary.com/tolulope-od/image/upload/v1598367140/trevor-cole-CWcAsKuhwy0-unsplash_vdmd17.jpg
-
 export default ({
   heading = "Kathēkon",
-  description = "We seek to transform society through investment in Education, Social Welfare and Civil Society. To date",
+  description = "Fundamental societal transformations through evidence-driven investments in education, social welfare, and civil society",
   imageSrc = "https://res.cloudinary.com/tolulope-od/image/upload/e_improve,w_350,h_600,c_thumb,g_auto/v1598367140/trevor-cole-CWcAsKuhwy0-unsplash_vdmd17.jpg",
   imageDecoratorBlob = true,
-  primaryButtonUrl = "https://google.com",
+  primaryButtonUrl = "/about",
   primaryButtonText = "Get Started",
-  buttonRounded = true,
-  features = ["Available in 7 Locations", "Premium Internet Backbone", "99.99% Uptime SLA"],
   testimonial = {
     quote: "The impediment to action advances action.",
-    customerName: "Author Name",
+    customerName: "Marcus Aurelius",
     customerCompany: "",
   }
 }) => {
+  const buttonRounded = false;
   const buttonRoundedCss = buttonRounded && tw`rounded-full`;
   const navLinks = [
     <NavLinks key={1}>
-      <Link to={'/about'}>
-        <NavLink>About</NavLink>
-      </Link>
-      <NavLink href="/#">Our Work</NavLink>
+      <NavLink href="/about">About</NavLink>
+      <NavLink href="/our-work">Our Work</NavLink>
       <NavLink href="/#">Partnerships</NavLink>
       <NavLink href="/#">Blog</NavLink>
       <NavLink href="/#">Scholarships</NavLink>
@@ -96,7 +88,8 @@ export default ({
             </TextColumn>
             <ImageColumn>
               <ImageContainer>
-                <Image src={imageSrc} />
+                <SlideShow />
+                {/*<Image src={imageSrc} />*/}
                 {imageDecoratorBlob && <ImageDecoratorBlob />}
                 <Testimonial>
                   <QuotesLeftIcon/>
