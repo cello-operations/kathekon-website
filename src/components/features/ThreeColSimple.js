@@ -17,6 +17,10 @@ const Description = tw(SectionDescription)`text-center mx-auto font-sans`;
 const ThreeColumnContainer = styled.div`
   ${tw`mt-10 flex flex-col items-center lg:items-stretch lg:flex-row flex-wrap lg:justify-center max-w-screen-lg mx-auto`}
 `;
+
+const FourColumnContainer = styled.div`
+  ${tw`mt-10 flex flex-col items-center lg:items-stretch lg:flex-row flex-wrap lg:justify-center mx-auto`}
+`;
 const Column = styled.div`
   ${tw`lg:w-1/3 max-w-xs`}
 `;
@@ -91,7 +95,7 @@ export default ({
         {subheading && <Subheading>{subheading}</Subheading>}
         {heading && <Heading>{heading}</Heading>}
         {description && <Description>{description}</Description>}
-        <ThreeColumnContainer>
+        <FourColumnContainer>
           {cards.map((card, i) => (
             <Column key={i}>
               <Card href={card.url}>
@@ -109,7 +113,7 @@ export default ({
               </Card>
             </Column>
           ))}
-        </ThreeColumnContainer>
+        </FourColumnContainer>
       </ContentWithPaddingXl>
       <DecoratorBlob />
     </Container>

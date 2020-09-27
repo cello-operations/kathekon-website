@@ -48,7 +48,7 @@ export default ({
     <Container>
       <TwoColumn>
         <ImageColumn>
-          <Image imageSrc={EmailIllustrationSrc} />
+          <Image imageSrc={'https://res.cloudinary.com/tolulope-od/image/upload/v1601226554/g10_xiduaq.svg'} />
         </ImageColumn>
         <TextColumn textOnLeft={textOnLeft}>
           <TextContent>
