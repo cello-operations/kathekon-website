@@ -1,6 +1,8 @@
 import * as React from "react";
 import AnimationRevealPage from "helpers/AnimationRevealPage.js";
 import tw from "twin.macro";
+import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 import Header from "components/headers/light.js";
 import Footer from "components/footers/FiveColumnWithInputForm.js";
 import OurWorkFeatures from "components/features/VerticalWithAlternateImageAndText.js";
@@ -46,13 +48,16 @@ export default () => {
   const buttonRounded = true;
   const buttonRoundedCss = buttonRounded && tw`rounded-full`;
 
+  const StyledLink = React.forwardRef((props, ref) => (
+    <NavLink {...props} ref={ref}>{props.children}</NavLink>
+  ))
   const navLinks = [
     <NavLinks key={1}>
-      <NavLink href="/about">About</NavLink>
-      <NavLink href="/our-work">Our Work</NavLink>
-      <NavLink href="/#">Partnerships</NavLink>
-      <NavLink href="/#">Blog</NavLink>
-      <NavLink href="/#">Scholarships</NavLink>
+      <Link to="/about" component={(props) => <StyledLink {...props}>About</StyledLink>} />
+      <Link to="/our-work" component={(props) => <StyledLink {...props}>Our Work</StyledLink>} />
+      <Link to="/" component={(props) => <StyledLink {...props}>Partnerships</StyledLink>} />
+      <Link to="/" component={(props) => <StyledLink {...props}>Blog</StyledLink>} />
+      <Link to="/" component={(props) => <StyledLink {...props}>Scholarships</StyledLink>} />
     </NavLinks>,
     <NavLinks key={2}>
       <NavLink href="/#" tw="lg:ml-12!">
@@ -64,22 +69,33 @@ export default () => {
     </NavLinks>,
   ];
   return (
-    <AnimationRevealPage>
-      <Header links={navLinks} />
-      <OurWorkFeatures />
-      <TwoColWithSteps
-        subheading={"Our Future (2020 -2021)"}
-        heading={(
-          <React.Fragment>
-            <span>Minimum </span>
-             Viable Project
-          </React.Fragment>
-        )}
-        imageCredits={(<span style={{ color: '#333', fontSize: '10px', fontWeight: 100 }}>Photo by <a style={{ color: '#34a4dd' }} href="https://unsplash.com/@kofoshotit?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Omotayo Kofoworola</a> on <a style={{ color: '#34a4dd' }} href="https://unsplash.com/s/photos/nigeria?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>)}
-        steps={steps}
-        imageSrc={'https://res.cloudinary.com/tolulope-od/image/upload/v1601225152/omotayo-kofoworola-7eHPxnhY_uA-unsplash_rgkel8.jpg'}
-      />
-      <Footer />
-    </AnimationRevealPage>
+    <>
+      <Helmet>
+        <title>Kathēkon - Our Work</title>
+        <meta name="description" content="Kathekon:  We will partner with local NGOs to build centers
+          that provide access to internet-enabled computers
+          or tablets to students.
+          The students will have access to online
+          learning platforms like Ulesson and Khan Academy" />
+        <meta name="keywords" content="our work ulesson khan academy kathēkon scholarships transforming nigeria kathekon education civil society social welfare investment africa" />
+      </Helmet>
+      <AnimationRevealPage>
+        <Header links={navLinks} />
+        <OurWorkFeatures />
+        <TwoColWithSteps
+          subheading={"Our Future (2020 -2021)"}
+          heading={(
+            <React.Fragment>
+              <span>Minimum </span>
+               Viable Project
+            </React.Fragment>
+          )}
+          imageCredits={(<span style={{ color: '#333', fontSize: '10px', fontWeight: 100 }}>Photo by <a style={{ color: '#34a4dd' }} href="https://unsplash.com/@kofoshotit?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Omotayo Kofoworola</a> on <a style={{ color: '#34a4dd' }} href="https://unsplash.com/s/photos/nigeria?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>)}
+          steps={steps}
+          imageSrc={'https://res.cloudinary.com/tolulope-od/image/upload/v1601225152/omotayo-kofoworola-7eHPxnhY_uA-unsplash_rgkel8.jpg'}
+        />
+        <Footer />
+      </AnimationRevealPage>
+    </>
   );
 };

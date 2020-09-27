@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import tw from "twin.macro";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 import { css } from "styled-components/macro"; //eslint-disable-line
 
 import useAnimatedNavToggler from "../../helpers/useAnimatedNavToggler.js";
@@ -40,6 +41,10 @@ export const LogoLink = styled(NavLink)`
     ${tw`w-40 mr-0`}
   }
 `;
+
+const StyledLink = React.forwardRef((props, ref) => (
+  <LogoLink {...props} ref={ref}>{props.children}</LogoLink>
+))
 
 export const MobileNavLinksContainer = tw.nav`flex flex-1 items-center justify-between`;
 export const NavToggle = tw.button`
@@ -94,9 +99,11 @@ export default ({ roundedHeaderButton = false, logoLink, links, className, colla
   const collapseBreakpointCss = collapseBreakPointCssMap[collapseBreakpointClass];
 
   const defaultLogoLink = (
-    <LogoLink href="/">
-      <img src={logo} alt="logo" />
-    </LogoLink>
+    <Link to={"/"} component={(props) => (
+      <StyledLink {...props} href="/">
+        <img style={{ marginTop: '0.75rem' }} src={logo} alt="Kathekon Logo" />
+      </StyledLink>
+    )} />
   );
 
   logoLink = logoLink || defaultLogoLink;
