@@ -56,33 +56,16 @@ export default () => {
             <ColumnHeading>Main</ColumnHeading>
             <LinkList>
               <LinkListItem>
+                <Link href="/about-us">About Us</Link>
+              </LinkListItem>
+              <LinkListItem>
+                <Link href="/out-work">Our Work</Link>
+              </LinkListItem>
+              <LinkListItem>
+                <Link href="#">Partnerships</Link>
+              </LinkListItem>
+              <LinkListItem>
                 <Link href="#">Blog</Link>
-              </LinkListItem>
-              <LinkListItem>
-                <Link href="#">FAQs</Link>
-              </LinkListItem>
-              <LinkListItem>
-                <Link href="#">Support</Link>
-              </LinkListItem>
-              <LinkListItem>
-                <Link href="#">About Us</Link>
-              </LinkListItem>
-            </LinkList>
-          </Column>
-          <Column>
-            <ColumnHeading>Product</ColumnHeading>
-            <LinkList>
-              <LinkListItem>
-                <Link href="#">Log In</Link>
-              </LinkListItem>
-              <LinkListItem>
-                <Link href="#">Personal</Link>
-              </LinkListItem>
-              <LinkListItem>
-                <Link href="#">Business</Link>
-              </LinkListItem>
-              <LinkListItem>
-                <Link href="#">Team</Link>
               </LinkListItem>
             </LinkList>
           </Column>
@@ -90,7 +73,7 @@ export default () => {
             <ColumnHeading>Press</ColumnHeading>
             <LinkList>
               <LinkListItem>
-                <Link href="#">Logos</Link>
+                <Link href="/contact-us">Contact Us</Link>
               </LinkListItem>
               <LinkListItem>
                 <Link href="#">Events</Link>
@@ -122,7 +105,7 @@ export default () => {
           </Column>
           <SubscribeNewsletterColumn>
             <SubscribeNewsletterContainer>
-              <ColumnHeading>Subscribe to our Newsletter</ColumnHeading>
+              <ColumnHeading>Subscribe to our Newsletter (Coming Soon)</ColumnHeading>
               <SubscribeText>
                 We deliver high quality blog posts written by professionals weekly. And we promise no spam.
               </SubscribeText>

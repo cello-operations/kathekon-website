@@ -3,6 +3,7 @@ import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
 import { SectionHeading, Subheading as SubheadingBase } from "components/misc/Headings.js";
+import { motion } from "framer-motion";
 import { PrimaryButton as PrimaryButtonBase } from "components/misc/Buttons.js";
 import TeamIllustrationSrc from "images/team-illustration-2.svg";
 import {ReactComponent as SvgDotPattern } from "images/dot-pattern.svg"
@@ -43,6 +44,7 @@ const FeatureList = tw.ul`mt-12 leading-loose`;
 const Feature = tw.li`flex items-center`;
 const FeatureIcon = tw(CheckboxIcon)`w-4 h-4 text-primary-500`;
 const FeatureText = tw.p`ml-2 font-medium text-gray-700 font-sans`;
+const MotionDiv = motion.div;
 
 export default ({
   subheading = "Our Expertise",
@@ -53,7 +55,7 @@ export default ({
   ),
   description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
   primaryButtonText = "Learn More",
-  primaryButtonUrl = "https://timerse.com",
+  primaryButtonUrl = "/our-work",
   imageSrc = TeamIllustrationSrc,
   buttonRounded = true,
   imageRounded = true,
@@ -64,6 +66,7 @@ export default ({
   imageDecoratorBlobCss = null,
   textOnLeft = true,
   hasList = false, features = ["", "", ""],
+  imageCredits = null,
 }) => {
   // The textOnLeft boolean prop can be used to display either the text on left or right side of the image.
 
@@ -73,26 +76,41 @@ export default ({
         <ImageColumn>
           <Image css={imageCss} src={imageSrc} imageBorder={imageBorder} imageShadow={imageShadow} imageRounded={imageRounded}/>
           {imageDecoratorBlob && <DecoratorBlob css={imageDecoratorBlobCss} />}
+          {imageCredits && (
+            <>
+              {imageCredits}
+            </>
+          )}
         </ImageColumn>
         <TextColumn textOnLeft={textOnLeft}>
           <TextContent>
             <Subheading>{subheading}</Subheading>
-            <Heading>{heading}</Heading>
-            {
-              hasList
-                ? (
-                  <FeatureList>
-                    {features.map((feature, index) => (
-                      <Feature key={index}>
-                        <FeatureIcon />
-                        <FeatureText>{feature}</FeatureText>
-                      </Feature>
-                    ))}
-                  </FeatureList>
-                ) : (
-                  <Description>{description}</Description>
-                )
-            }
+            <MotionDiv whileHover={{
+              scale: 1.15,
+              transition: { duration: 1 },
+            }} whileTap={{ scale: 0.9 }}>
+              <Heading>{heading}</Heading>
+            </MotionDiv>
+            <MotionDiv whileHover={{
+              scale: 1.15,
+              transition: { duration: 1 },
+            }} whileTap={{ scale: 0.9 }}>
+              {
+                hasList
+                  ? (
+                    <FeatureList>
+                      {features.map((feature, index) => (
+                        <Feature key={index}>
+                          <FeatureIcon />
+                          <FeatureText>{feature}</FeatureText>
+                        </Feature>
+                      ))}
+                    </FeatureList>
+                  ) : (
+                    <Description>{description}</Description>
+                  )
+              }
+            </MotionDiv>
             <PrimaryButton buttonRounded={buttonRounded} as="a" href={primaryButtonUrl}>
               {primaryButtonText}
             </PrimaryButton>
