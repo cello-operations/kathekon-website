@@ -15,19 +15,24 @@ import ShieldIconImage from "images/shield-icon.svg";
 import CustomerLoveIconImage from "images/simple-icon.svg";
 import ReliableIconImage from "images/reliable-icon.svg";
 import { NavLink, NavLinks, PrimaryLink } from 'components/headers/light';
+import { Helmet } from "react-helmet";
+import {Link} from 'react-router-dom';
 
 const Subheading = tw.span`uppercase tracking-wider text-sm`;
 export default () => {
   const buttonRounded = true;
   const buttonRoundedCss = buttonRounded && tw`rounded-full`;
 
+  const StyledLink = React.forwardRef((props, ref) => (
+    <NavLink {...props} ref={ref}>{props.children}</NavLink>
+  ))
   const navLinks = [
     <NavLinks key={1}>
-      <NavLink href="/about">About</NavLink>
-      <NavLink href="/our-work">Our Work</NavLink>
-      <NavLink href="/#">Partnerships</NavLink>
-      <NavLink href="/#">Blog</NavLink>
-      <NavLink href="/#">Scholarships</NavLink>
+      <Link to="/about" component={(props) => <StyledLink {...props}>About</StyledLink>} />
+      <Link to="/our-work" component={(props) => <StyledLink {...props}>Our Work</StyledLink>} />
+      <Link to="/" component={(props) => <StyledLink {...props}>Partnerships</StyledLink>} />
+      <Link to="/" component={(props) => <StyledLink {...props}>Blog</StyledLink>} />
+      <Link to="/" component={(props) => <StyledLink {...props}>Scholarships</StyledLink>} />
     </NavLinks>,
     <NavLinks key={2}>
       <NavLink href="/#" tw="lg:ml-12!">
@@ -39,7 +44,13 @@ export default () => {
     </NavLinks>,
   ];
   return (
-    <AnimationRevealPage>
+    <>
+      <Helmet>
+        <title>Kathēkon - About Kathekon</title>
+        <meta name="description" content="About Kathekon: Transforming society through evidence-driven investments in education, social welfare, and civil society" />
+        <meta name="keywords" content="about kathēkon scholarships transforming nigeria kathekon education civil society social welfare investment africa" />
+      </Helmet>
+      <AnimationRevealPage>
       <Header links={navLinks} />
       <MainFeature1
         subheading={<Subheading>About Kathēkon</Subheading>}
@@ -103,5 +114,6 @@ export default () => {
       />
       <Footer />
     </AnimationRevealPage>
+    </>
   );
 };

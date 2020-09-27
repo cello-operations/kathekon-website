@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import tw from "twin.macro";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowCircleRight } from '@fortawesome/free-solid-svg-icons'
 import { motion } from "framer-motion";
 import { ReactComponent as SvgDotPatternIcon } from "../../images/dot-pattern.svg";
 import { SectionHeading as HeadingTitle } from "../misc/Headings.js";
@@ -35,7 +37,7 @@ const TextColumn = styled(Column)(props => [
 ]);
 const Steps = tw.ul`mt-6`;
 const Step = tw.li`mt-8 flex flex-col md:flex-row items-center md:items-start`;
-const StepNumber = tw.div`font-semibold text-4xl leading-none text-gray-400`;
+const StepNumber = tw.div`font-semibold leading-none text-gray-400`;
 const StepText = tw.div`mt-3 md:mt-0 md:ml-6`;
 const StepHeading = tw.h6`leading-none text-xl font-semibold`;
 const StepDescription = tw.p`mt-3 max-w-xs leading-loose text-sm text-gray-600 font-medium`;
@@ -99,7 +101,7 @@ export default () => {
     },
     {
       imageSrc:
-        "https://res.cloudinary.com/tolulope-od/image/upload/v1601224050/babatunde-olajide-jcQdBcW7Tmw-unsplash_xcble5.jpg",
+        "https://res.cloudinary.com/tolulope-od/image/upload/v1601238029/william-warby-WahfNoqbYnM-unsplash_a5y26m.jpg",
       subtitle: "General Framework",
       title: "Goal Measurements",
       description: (
@@ -107,7 +109,7 @@ export default () => {
           <TextContent>
             <Steps>
               <Step>
-                <StepNumber>01</StepNumber>
+                <StepNumber><FontAwesomeIcon size={"2x"} icon={faArrowCircleRight} /></StepNumber>
                 <StepText>
                   <StepHeading>Make public school education in the South-West region of Nigeria competitive with private schools in Nigeria</StepHeading>
                   <StepDescription><b>Measurement:</b> performance on major exams: WASSCE, NECO, SAT, etc.
@@ -115,7 +117,7 @@ export default () => {
                 </StepText>
               </Step>
               <Step>
-                <StepNumber>02</StepNumber>
+                <StepNumber><FontAwesomeIcon size={"2x"} icon={faArrowCircleRight} /></StepNumber>
                 <StepText>
                   <StepHeading>Develop public school education in the South-West region of Nigeria to meet international standards</StepHeading>
                   <StepDescription><b>Measurement:</b> performance on SAT, IQ tests, and international competitions.
@@ -126,8 +128,8 @@ export default () => {
           </TextContent>
         </TextColumn>
       ),
-      url: "https://timerse.com",
-      imageCredit: (<span style={{ color: '#333', fontSize: '10px', fontWeight: 100 }}>Photo by <a href="https://unsplash.com/@olajidetunde?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Babatunde Olajide</a> on <a href="https://unsplash.com/s/photos/nigeria?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>),
+      url: "/",
+      imageCredit: (<span style={{ color: '#333333', fontSize: '10px', fontWeight: 100 }}>Photo by <a style={{ color: '#34a4dd' }} href="https://unsplash.com/@wwarby?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">William Warby</a> on <a style={{ color: '#34a4dd' }} href="https://unsplash.com/s/photos/measurement?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>),
     },
   ];
 

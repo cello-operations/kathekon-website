@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { motion, AnimatePresence } from "framer-motion";
 import tw from "twin.macro";
 import { Link } from "react-router-dom";
 import { css } from "styled-components/macro"; //eslint-disable-line
@@ -48,13 +47,16 @@ export default ({
 }) => {
   const buttonRounded = false;
   const buttonRoundedCss = buttonRounded && tw`rounded-full`;
+  const StyledLink = React.forwardRef((props, ref) => (
+    <NavLink {...props} ref={ref}>{props.children}</NavLink>
+  ))
   const navLinks = [
     <NavLinks key={1}>
-      <NavLink href="/about">About</NavLink>
-      <NavLink href="/our-work">Our Work</NavLink>
-      <NavLink href="/#">Partnerships</NavLink>
-      <NavLink href="/#">Blog</NavLink>
-      <NavLink href="/#">Scholarships</NavLink>
+      <Link to="/about" component={(props) => <StyledLink {...props}>About</StyledLink>} />
+      <Link to="/our-work" component={(props) => <StyledLink {...props}>Our Work</StyledLink>} />
+      <Link to="/" component={(props) => <StyledLink {...props}>Partnerships</StyledLink>} />
+      <Link to="/" component={(props) => <StyledLink {...props}>Blog</StyledLink>} />
+      <Link to="/" component={(props) => <StyledLink {...props}>Scholarships</StyledLink>} />
     </NavLinks>,
     <NavLinks key={2}>
       <NavLink href="/#" tw="lg:ml-12!">

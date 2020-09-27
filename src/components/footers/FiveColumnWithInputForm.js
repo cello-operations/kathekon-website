@@ -1,6 +1,7 @@
 import React from "react";
 import tw from "twin.macro";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 import { css } from "styled-components/macro"; //eslint-disable-line
 import { PrimaryButton as PrimaryButtonBase } from "components/misc/Buttons.js";
 
@@ -9,6 +10,7 @@ import LogoImage from "images/logo.svg";
 import { ReactComponent as FacebookIcon } from "images/facebook-icon.svg";
 import { ReactComponent as TwitterIcon } from "images/twitter-icon.svg";
 import { ReactComponent as YoutubeIcon } from "images/youtube-icon.svg";
+import {NavLinks} from '../headers/light';
 
 const Container = tw.div`relative bg-gray-200 text-gray-700 -mb-8 -mx-8 px-8 py-20 lg:py-24`;
 const Content = tw.div`max-w-screen-xl mx-auto relative z-10`;
@@ -20,7 +22,7 @@ const ColumnHeading = tw.h5`uppercase font-bold`;
 
 const LinkList = tw.ul`mt-6 text-sm font-medium`;
 const LinkListItem = tw.li`mt-3`;
-const Link = tw.a`border-b-2 border-transparent hocus:border-gray-700 pb-1 transition duration-300`;
+const NavLink = tw.a`border-b-2 border-transparent hocus:border-gray-700 pb-1 transition duration-300`;
 
 const SubscribeNewsletterColumn = tw(Column)`text-center lg:text-left w-full! lg:w-auto! mt-20 lg:mt-12`;
 const SubscribeNewsletterContainer = tw.div`max-w-sm mx-auto lg:mx-0 `;
@@ -48,6 +50,9 @@ const SocialLink = styled.a`
 `;
 
 export default () => {
+  const StyledLink = React.forwardRef((props, ref) => (
+    <NavLink {...props} ref={ref}>{props.children}</NavLink>
+  ))
   return (
     <Container>
       <Content>
@@ -56,16 +61,16 @@ export default () => {
             <ColumnHeading>Main</ColumnHeading>
             <LinkList>
               <LinkListItem>
-                <Link href="/about-us">About Us</Link>
+                <Link to="/about" component={(props) => <StyledLink {...props}>About</StyledLink>} />
               </LinkListItem>
               <LinkListItem>
-                <Link href="/out-work">Our Work</Link>
+                <Link to="/our-work" component={(props) => <StyledLink {...props}>Our Work</StyledLink>} />
               </LinkListItem>
               <LinkListItem>
-                <Link href="#">Partnerships</Link>
+                <Link to="/" component={(props) => <StyledLink {...props}>Partnerships</StyledLink>} />
               </LinkListItem>
               <LinkListItem>
-                <Link href="#">Blog</Link>
+                <Link to="/" component={(props) => <StyledLink {...props}>Blog</StyledLink>} />
               </LinkListItem>
             </LinkList>
           </Column>
@@ -73,16 +78,16 @@ export default () => {
             <ColumnHeading>Press</ColumnHeading>
             <LinkList>
               <LinkListItem>
-                <Link href="/contact-us">Contact Us</Link>
+                <Link to="/contact-us" component={(props) => <StyledLink {...props}>Contact Us</StyledLink>} />
               </LinkListItem>
               <LinkListItem>
-                <Link href="#">Events</Link>
+                <NavLink href="#">Events</NavLink>
               </LinkListItem>
               <LinkListItem>
-                <Link href="#">Stories</Link>
+                <NavLink href="#">Stories</NavLink>
               </LinkListItem>
               <LinkListItem>
-                <Link href="#">Office</Link>
+                <NavLink href="#">Office</NavLink>
               </LinkListItem>
             </LinkList>
           </Column>
@@ -90,16 +95,16 @@ export default () => {
             <ColumnHeading>Legal</ColumnHeading>
             <LinkList>
               <LinkListItem>
-                <Link href="#">GDPR</Link>
+                <NavLink href="#">GDPR</NavLink>
               </LinkListItem>
               <LinkListItem>
-                <Link href="#">Privacy Policy</Link>
+                <NavLink href="#">Privacy Policy</NavLink>
               </LinkListItem>
               <LinkListItem>
-                <Link href="#">Terms of Service</Link>
+                <NavLink href="#">Terms of Service</NavLink>
               </LinkListItem>
               <LinkListItem>
-                <Link href="#">Disclaimer</Link>
+                <NavLink href="#">Disclaimer</NavLink>
               </LinkListItem>
             </LinkList>
           </Column>

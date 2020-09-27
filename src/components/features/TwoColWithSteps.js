@@ -5,6 +5,8 @@ import { motion } from "framer-motion";
 import { SectionHeading, Subheading as SubheadingBase } from "components/misc/Headings.js";
 import TeamIllustrationSrc from "images/team-illustration-2.svg";
 import { ReactComponent as SvgDotPattern } from "images/dot-pattern.svg";
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faArrowCircleRight} from '@fortawesome/free-solid-svg-icons';
 
 const Container = tw.div`relative`;
 const MotionDiv = motion.div;
@@ -34,11 +36,11 @@ const Heading = tw(
 )`mt-4 font-black text-left text-3xl sm:text-4xl lg:text-5xl text-center md:text-left leading-tight`;
 
 const Steps = tw.ul`mt-12`;
-const Step = tw.li`mt-8 flex flex-col md:flex-row items-center md:items-start`;
-const StepNumber = tw.div`font-semibold text-4xl leading-none text-gray-400`;
+const Step = tw.li`mt-6 flex flex-col md:flex-row items-center md:items-start`;
+const StepNumber = tw.div`font-semibold leading-none text-gray-500`;
 const StepText = tw.div`mt-3 md:mt-0 md:ml-6`;
 const StepHeading = tw.h6`leading-none text-xl font-semibold`;
-const StepDescription = tw.p`mt-3 max-w-xs leading-loose text-sm text-gray-600 font-medium`;
+const StepDescription = tw.p`max-w-xs text-sm font-medium`;
 
 export default ({
   subheading = "Our Expertise",
@@ -100,13 +102,8 @@ export default ({
             <Steps>
               {steps.map((step, index) => (
                 <Step key={`${index}-${step.number}`}>
-                  <StepNumber>{ step.number ?? (index+1).toString().padStart(2,'0')}</StepNumber>
+                  <StepNumber><FontAwesomeIcon size={"1x"} icon={faArrowCircleRight} /></StepNumber>
                   <StepText>
-                    {
-                      step.heading && (
-                        <StepHeading>{step.heading}</StepHeading>
-                      )
-                    }
                     <StepDescription>{step.description}</StepDescription>
                   </StepText>
                   {/*{*/}
