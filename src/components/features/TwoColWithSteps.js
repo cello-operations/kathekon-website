@@ -39,7 +39,6 @@ const Steps = tw.ul`mt-12`;
 const Step = tw.li`mt-6 flex flex-col md:flex-row items-center md:items-start`;
 const StepNumber = tw.div`font-semibold leading-none text-gray-500`;
 const StepText = tw.div`mt-3 md:mt-0 md:ml-6`;
-const StepHeading = tw.h6`leading-none text-xl font-semibold`;
 const StepDescription = tw.p`max-w-xs text-sm font-medium`;
 
 export default ({

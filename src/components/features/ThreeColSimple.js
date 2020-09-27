@@ -14,9 +14,6 @@ import { ReactComponent as SvgDecoratorBlob3 } from "images/svg-decorator-blob-3
 const Heading = tw(SectionHeading)``;
 const Subheading = tw(SubheadingBase)`text-center mb-3`;
 const Description = tw(SectionDescription)`text-center mx-auto font-sans`;
-const ThreeColumnContainer = styled.div`
-  ${tw`mt-10 flex flex-col items-center lg:items-stretch lg:flex-row flex-wrap lg:justify-center max-w-screen-lg mx-auto`}
-`;
 
 const FourColumnContainer = styled.div`
   ${tw`mt-10 flex flex-col items-center lg:items-stretch lg:flex-row flex-wrap lg:justify-center mx-auto`}

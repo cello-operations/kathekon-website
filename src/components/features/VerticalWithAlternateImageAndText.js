@@ -88,8 +88,8 @@ export default () => {
           or tablets to students.
           The students will have access to online
           learning platforms like
-          <a style={{ color: '#34a4dd' }} href="https://ulesson.com/" target="_blank">Ulesson</a>
-          and <a target="_blank" href="https://www.khanacademy.org" style={{ color: '#34a4dd' }}>Khan Academy</a>.
+          <a style={{ color: '#34a4dd' }} href="https://ulesson.com/" target="_blank" rel="noopener noreferrer">Ulesson</a>
+          and <a target="_blank" rel="noopener noreferrer" href="https://www.khanacademy.org" style={{ color: '#34a4dd' }}>Khan Academy</a>.
           A few instructors would also be physically available to
           the students at the centers. High-performing students are
           provided with mentorship and internship opportunities.
