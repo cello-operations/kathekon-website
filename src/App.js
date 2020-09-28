@@ -29,6 +29,7 @@ import ServiceLandingPage from "demos/ServiceLandingPage.js";
 import AboutUsPage from "pages/AboutUs.js";
 import ContactUsPage from "pages/ContactUs.js";
 import OurWork from "pages/OurWork.js";
+import NotFound from "pages/404.js";
 
 export default function App() {
   // return <AnimationRevealPage disabled></AnimationRevealPage>;
@@ -46,6 +47,9 @@ export default function App() {
         </Route>
         <Route path={"/contact-us"}>
           <ContactUsPage />
+        </Route>
+        <Route>
+          <NotFound />
         </Route>
       </Switch>
     </Router>
