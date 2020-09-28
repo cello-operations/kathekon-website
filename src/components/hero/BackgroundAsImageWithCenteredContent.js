@@ -1,12 +1,13 @@
 import React from "react";
 import tw from "twin.macro";
 import styled from "styled-components";
+import { Link } from 'react-router-dom';
 import { css } from "styled-components/macro"; //eslint-disable-line
 
 import Header, { NavLink, NavLinks, PrimaryLink as PrimaryLinkBase, LogoLink, NavToggle, DesktopNavLinks } from "../headers/light.js";
 
 const StyledHeader = styled(Header)`
-  ${tw`pt-8 max-w-none w-full`}
+  ${tw`pt-8 max-w-none w-9/12`}
   ${DesktopNavLinks} ${NavLink}, ${LogoLink} {
     ${tw`text-gray-100 hover:border-gray-300 hover:text-gray-300`}
   }
@@ -15,10 +16,10 @@ const StyledHeader = styled(Header)`
   }
 `;
 
-const PrimaryLink = tw(PrimaryLinkBase)`rounded-full`
+const PrimaryLink = PrimaryLinkBase
 const Container = styled.div`
   ${tw`relative -mx-8 -mt-8 bg-center bg-cover h-screen min-h-144`}
-  background-image: url("https://images.unsplash.com/photo-1536300007881-7e482242baa5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1920&q=80");
+  background-image: url("https://res.cloudinary.com/tolulope-od/image/upload/v1601250870/aaron-burden-NXt5PrOb_7U-unsplash_uix1mv.jpg");
 `;
 
 const OpacityOverlay = tw.div`z-10 absolute inset-0 bg-black opacity-75`;
@@ -33,43 +34,48 @@ const Heading = styled.h1`
   }
 `;
 
-const PrimaryAction = tw.button`rounded-full px-8 py-3 mt-10 text-sm sm:text-base sm:mt-16 sm:px-8 sm:py-4 bg-gray-100 font-bold shadow transition duration-300 bg-primary-500 text-gray-100 hocus:bg-primary-700 hocus:text-gray-200 focus:outline-none focus:shadow-outline`;
+const PrimaryAction = tw.button`px-8 py-3 mt-10 text-sm sm:text-base sm:mt-16 sm:px-8 sm:py-4 bg-gray-100 font-bold shadow transition duration-300 bg-primary-500 text-gray-100 hocus:bg-primary-700 hocus:text-gray-200 focus:outline-none focus:shadow-outline`;
 
 export default () => {
+  const buttonRounded = false;
+  const buttonRoundedCss = buttonRounded && tw`rounded-full`;
+  const StyledLink = React.forwardRef((props, ref) => (
+    <NavLink {...props} ref={ref}>{props.children}</NavLink>
+  ))
   const navLinks = [
     <NavLinks key={1}>
-      <NavLink href="#">
-        About
-      </NavLink>
-      <NavLink href="#">
-        Blog
-      </NavLink>
-      <NavLink href="#">
-        Locations
-      </NavLink>
-      <NavLink href="#">
-        Pricing
-      </NavLink>
+      <Link to="/about" component={(props) => <StyledLink {...props}>About</StyledLink>} />
+      <Link to="/our-work" component={(props) => <StyledLink {...props}>Our Work</StyledLink>} />
+      <Link to="/" component={(props) => <StyledLink {...props}>Partnerships</StyledLink>} />
+      <Link to="/" component={(props) => <StyledLink {...props}>Blog</StyledLink>} />
+      <Link to="/" component={(props) => <StyledLink {...props}>Scholarships</StyledLink>} />
     </NavLinks>,
     <NavLinks key={2}>
-      <PrimaryLink href="/#">
-        Hire Us
+      <NavLink href="/#" tw="lg:ml-12!">
+        Login
+      </NavLink>
+      <PrimaryLink css={buttonRoundedCss} href="/#">
+        Sign Up
       </PrimaryLink>
-    </NavLinks>
+    </NavLinks>,
   ];
 
   return (
     <Container>
       <OpacityOverlay />
       <HeroContainer>
-        <StyledHeader links={navLinks} />
+        <StyledHeader logoUrl={"https://res.cloudinary.com/tolulope-od/image/upload/v1597492351/Kathekon-redesign-13_cxjtts.png"} links={navLinks} />
         <Content>
           <Heading>
-              Book Music & Comedy Events
+              Oops!
               <br />
-              anywhere in New York
+              Looks like you are lost
           </Heading>
-          <PrimaryAction>Search Events Near Me</PrimaryAction>
+          <PrimaryAction>
+            <Link to={"/"}>
+              Back Home
+            </Link>
+          </PrimaryAction>
         </Content>
       </HeroContainer>
     </Container>
