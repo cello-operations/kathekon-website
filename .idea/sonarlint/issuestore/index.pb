@@ -1,4 +1,3 @@
-
 A
 src/data/index.js,0/0/00d0d3e269e07ea8d7df4a094bea3a1c17c08da8
 H
@@ -116,3 +115,27 @@ O
 src/components/headers/light.js,e/d/ed561c45d90c084884a9111462e3182a26834fa8
 P
  src/components/cards/CardGrid.js,e/9/e9e2a22268bad3440ce8d21a860fd63891c102cb
+n
+>src/components/blogs/ThreeColSimpleWithImageAndDashedBorder.js,f/3/f39c8f8600983ea315ac25188b77ce4a12043ed5
+N
+src/demos/AgencyLandingPage.js,3/e/3e1d61e7ac72cf53e778a14ed16d50c16ddbc3b6
+b
+2src/components/cards/PortfolioTwoCardsWithImage.js,0/3/03701eaa85aab64f9977e3e2c01812e43db7480a
+K
+src/helpers/truncateText.js,c/4/c495c2b243412968d2018ec5edf5155a380e941e
+x
+Hsrc/components/testimonials/TwoColumnWithImageAndProfilePictureReview.js,f/c/fc642d491db6dd9f0ab207cc72c400f8b35938fc
+F
+src/pages/BlogIndex.js,8/8/88fbba4c1c6aa3cbf90ac89011c946f06ce893d3
+S
+#src/demos/SaaSProductLandingPage.js,3/e/3ecf14e6e20ad228bce541ec9627c7284c96f5d7
+Y
+)src/components/hero/TwoColumnWithInput.js,9/b/9b0ad2acd2e6c7ea24bb7a93ff30dc49cd4494c4
+P
+ src/components/cta/GetStarted.js,a/a/aac446b1275c4ba60e1b5faeb0e8bac311a3a6e9
+U
+%src/components/cta/GetStartedLight.js,e/5/e581f08827b23c161c3fe375ecd3dcbf88a74bfe
+K
+src/styles/globalStyles.css,d/9/d96216b0566f87c7c1fba5367aa3231fed373547
+K
+src/assets/fonts/styles.css,3/d/3d983e17693eaf8864ab5be062c9cfc720aef545
