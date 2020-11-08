@@ -65,25 +65,6 @@ export default ({
       ],
     },
     {
-      imageSrc: "https://res.cloudinary.com/tolulope-od/image/upload/v1601211697/WhatsApp_Image_2020-09-26_at_12.20.00_cfoxib.jpg",
-      position: "Title 2",
-      name: "Adeyemi",
-      links: [
-        {
-          url: "https://twitter.com",
-          icon: TwitterIcon,
-        },
-        {
-          url: "https://linkedin.com",
-          icon: LinkedinIcon,
-        },
-        {
-          url: "https://facebook.com",
-          icon: FacebookIcon,
-        },
-      ],
-    },
-    {
       imageSrc: "https://images.unsplash.com/photo-1517070208541-6ddc4d3efbcb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&fit=facearea&facepad=2.95&w=512&h=512&q=80",
       position: "Jr. Designer",
       name: "Silvester Wize",
