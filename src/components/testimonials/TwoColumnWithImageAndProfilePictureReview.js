@@ -11,6 +11,7 @@ import { ReactComponent as ChevronLeftIcon } from "feather-icons/dist/icons/chev
 import { ReactComponent as ChevronRightIcon } from "feather-icons/dist/icons/chevron-right.svg";
 import { ReactComponent as SvgDecoratorBlob1 } from "../../images/svg-decorator-blob-4.svg";
 import { ReactComponent as SvgDecoratorBlob2 } from "../../images/svg-decorator-blob-5.svg";
+import { isEmpty } from "helpers/truncateText";
 
 import "slick-carousel/slick/slick.css";
 
@@ -29,6 +30,7 @@ const Image = styled.div(props => [
   `background-image: url("${props.imageSrc}");`,
   tw`rounded bg-cover bg-center h-80 sm:h-96 lg:h-144`
 ]);
+const Title = tw.div`text-secondary-700`;
 
 const ControlContainer = tw.div`absolute bottom-0 right-0 bg-gray-100 px-6 py-4 rounded-tl-3xl border`;
 const ControlButton = styled(PrimaryButton)`
@@ -52,7 +54,7 @@ const Quote = tw.blockquote`text-center lg:text-left text-sm sm:text-lg lg:text-
 const CustomerInfo = tw.div`mt-6 flex flex-col sm:flex-row items-center justify-center lg:justify-start`;
 const CustomerProfilePicture = tw.img`rounded-full w-20 h-20`;
 const CustomerTextInfo = tw.div`text-center lg:text-left sm:ml-6 mt-2 sm:mt-0`;
-const CustomerName = tw.h5`font-semibold text-xl lg:text-2xl xl:text-3xl text-primary-500`;
+const CustomerName = tw.h5`font-semibold text-xl lg:text-xl xl:text-2xl text-primary-500`;
 const CustomerTitle = tw.p`font-medium text-secondary-100`;
 
 const QuotesLeft = tw(QuotesLeftIcon)`w-6 h-6 opacity-75 text-primary-500 inline-block mr-1 -mt-3`;
@@ -66,11 +68,15 @@ const DecoratorBlob2 = tw(
 )`absolute w-32 bottom-0 right-0 -z-10 text-pink-500 opacity-15 transform translate-x-2/3 translate-y-8`;
 
 export default ({
-  subheading = "",
-  heading = "Testimonials",
-  description = "Here are what some of our amazing customers are saying about our hotels & tours. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  subheading = "Core Values",
   testimonials = null,
-  textOnLeft = false
+  textOnLeft = false,
+  headerMap = {
+    0: {
+      heading: "Our Vision",
+      description: "To transform society through evidence-driven investments in education, social welfare, and civil society.",
+    },
+  }
 }) => {
   /*
    * You can modify the testimonials shown by modifying the array below or passing in the testimonials prop above
@@ -78,6 +84,7 @@ export default ({
    */
   const defaultTestimonials = [
     {
+      id: 0,
       imageSrc:
         "https://images.unsplash.com/photo-1512100356356-de1b84283e18?ixlib=rb-1.2.1&auto=format&fit=crop&w=1024&q=80",
       profileImageSrc:
@@ -85,9 +92,13 @@ export default ({
       quote:
         "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.",
       customerName: "Charlotte Hale",
-      customerTitle: "CEO, Delos Inc."
+      customerTitle: "CEO, Delos Inc.",
+      heading: "Our Vision",
+      subheading: "",
+      description: "",
     },
     {
+      id: 1,
       imageSrc:
         "https://images.unsplash.com/photo-1523952578875-e6bb18b26645?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1024&q=80",
       profileImageSrc:
@@ -95,7 +106,10 @@ export default ({
       quote:
         "Sinor Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.",
       customerName: "Adam Cuppy",
-      customerTitle: "Founder, EventsNYC"
+      customerTitle: "Founder, EventsNYC",
+      heading: "Our Mission",
+      subheading: "",
+      description: "",
     }
   ];
 
@@ -104,15 +118,20 @@ export default ({
   // useState is used instead of useRef below because we want to re-render when sliderRef becomes available (not null)
   const [imageSliderRef, setImageSliderRef] = useState(null);
   const [textSliderRef, setTextSliderRef] = useState(null);
-
+  const [activeIndex, setActiveIndex] = React.useState(0);
   return (
     <Container>
       <Content>
-        <HeadingInfo tw="text-center lg:hidden" subheading={subheading} heading={heading} description={description} />
+        <HeadingInfo
+          tw="text-center lg:hidden"
+          subheading={subheading}
+          heading={headerMap[activeIndex].heading}
+          description={headerMap[activeIndex].description}
+        />
         <TestimonialsContainer>
           <Testimonials>
             <Testimonial>
-              <TestimonialImageSlider arrows={false} ref={setImageSliderRef} asNavFor={textSliderRef} fade={true}>
+              <TestimonialImageSlider afterChange={(index) => setActiveIndex(index)} arrows={false} ref={setImageSliderRef} asNavFor={textSliderRef} fade={true}>
                 {testimonials.map((testimonial, index) => (
                   <ImageAndControlContainer key={index}>
                     <Image imageSrc={testimonial.imageSrc} />
@@ -128,8 +147,8 @@ export default ({
                 ))}
               </TestimonialImageSlider>
               <TextContainer textOnLeft={textOnLeft}>
-                <HeadingInfo tw="hidden lg:block" subheading={subheading} heading={heading} description={description} />
-                <TestimonialTextSlider arrows={false} ref={setTextSliderRef} asNavFor={imageSliderRef} fade={true}>
+                <HeadingInfo tw="hidden lg:block" subheading={subheading} heading={headerMap[activeIndex].heading} description={headerMap[activeIndex].description} />
+                <TestimonialTextSlider afterChange={(index) => setActiveIndex(index)} arrows={false} ref={setTextSliderRef} asNavFor={imageSliderRef} fade={true}>
                   {testimonials.map((testimonial, index) => (
                     <TestimonialText key={index}>
                       <QuoteContainer>
@@ -140,9 +159,9 @@ export default ({
                         </Quote>
                       </QuoteContainer>
                       <CustomerInfo>
-                        <CustomerProfilePicture src={testimonial.profileImageSrc} alt={testimonial.customerName} />
+                        {/*<CustomerProfilePicture src={testimonial.profileImageSrc} alt={testimonial.customerName} />*/}
                         <CustomerTextInfo>
-                          <CustomerName>{testimonial.customerName}</CustomerName>
+                          <CustomerName>- {testimonial.customerName}</CustomerName>
                           <CustomerTitle>{testimonial.customerTitle}</CustomerTitle>
                         </CustomerTextInfo>
                       </CustomerInfo>
@@ -163,7 +182,15 @@ export default ({
 const HeadingInfo = ({ subheading, heading, description, ...props }) => (
   <div {...props}>
     {subheading ? <Subheading>{subheading}</Subheading> : null}
-    <HeadingTitle>{heading}</HeadingTitle>
+    <HeadingTitle>
+      {
+        !isEmpty(heading) && (
+          <Title>
+            {heading.split(' ')[0]} <span tw="text-primary-500">{heading.split(' ')[1]}</span>
+          </Title>
+        )
+      }
+    </HeadingTitle>
     <Description>{description}</Description>
   </div>
 );

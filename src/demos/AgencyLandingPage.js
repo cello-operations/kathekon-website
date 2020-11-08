@@ -49,8 +49,8 @@ export default () => (
           quote:
             "Sinor Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.",
           customerName: "Adam Cuppy",
-          customerTitle: "Founder, Nestle"
-        }
+          customerTitle: "Founder, Nestle",
+        },
       ]}
       textOnLeft={true}
     />

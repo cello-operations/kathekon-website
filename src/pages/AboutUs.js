@@ -27,9 +27,8 @@ export default () => {
     <NavLinks key={1}>
       <Link to="/about" component={(props) => <StyledLink {...props}>About</StyledLink>} />
       <Link to="/our-work" component={(props) => <StyledLink {...props}>Our Work</StyledLink>} />
-      <Link to="/" component={(props) => <StyledLink {...props}>Partnerships</StyledLink>} />
-      <Link to="/" component={(props) => <StyledLink {...props}>Blog</StyledLink>} />
-      <Link to="/" component={(props) => <StyledLink {...props}>Scholarships</StyledLink>} />
+      <Link to="/blog" component={(props) => <StyledLink {...props}>Blog</StyledLink>} />
+      <Link to="/" component={(props) => <StyledLink {...props}>Grants</StyledLink>} />
     </NavLinks>,
     <NavLinks key={2}>
       <NavLink href="/#" tw="lg:ml-12!">
