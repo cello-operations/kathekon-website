@@ -1,1 +1,0 @@
-{"ast":null,"code":"var __jsx = React.createElement;\nimport * as React from 'react';\nimport AboutUs from '../components/about/About.jsx';\n\nvar AboutUsPage = function AboutUsPage() {\n  return __jsx(AboutUs, null);\n};\n\nexport default AboutUsPage;","map":null,"metadata":{},"sourceType":"module"}
