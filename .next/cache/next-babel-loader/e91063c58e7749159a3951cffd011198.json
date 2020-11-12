@@ -1,0 +1,1 @@
+{"ast":null,"code":"import nextConnect from 'next-connect';\nimport multipartFormParser from './multipart-form-parser';\nconst middleware = nextConnect();\nmiddleware.use(multipartFormParser);\nexport default middleware;","map":null,"metadata":{},"sourceType":"module"}
