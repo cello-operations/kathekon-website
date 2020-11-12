@@ -1,0 +1,1 @@
+{"ast":null,"code":"var __jsx = React.createElement;\nimport * as React from 'react';\nimport Grants from '../components/grants/Grants.jsx';\n\nvar GrantsPage = function GrantsPage(props) {\n  return __jsx(Grants, props);\n};\n\nexport var __N_SSG = true;\nexport default GrantsPage;","map":null,"metadata":{},"sourceType":"module"}
