@@ -37,9 +37,9 @@ const GetStarted = ({
   subheading = "Interested in Treact ?",
   heading = "Join the closed beta now.",
   primaryLinkText = "Get Started",
-  primaryLinkUrl = "http://timerse.com",
+  primaryLinkUrl = "/our-work",
   secondaryLinkText = "Contact Us",
-  secondaryLinkUrl = "http://google.com",
+  secondaryLinkUrl = "/contact-us",
   pushDownFooter = true
 }) => {
   return (
@@ -51,8 +51,8 @@ const GetStarted = ({
             {subheading && <Subheading>{subheading}</Subheading>}
             <Heading>{heading}</Heading>
             <CustomersLogoStrip>
-              <p>Our TRUSTED Partners</p>
-              <img src={'/images/customers-logo-strip.png'} alt="Our Customers" />
+              {/* <p>Our TRUSTED Partners</p>
+              <img src={'/images/customers-logo-strip.png'} alt="Our Customers" /> */}
             </CustomersLogoStrip>
           </TextContainer>
           <LinksContainer>

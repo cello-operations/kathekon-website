@@ -91,9 +91,9 @@ const BackgroundAsImageWithCenteredContent = ({
       <OpacityOverlay />
       <HeroContainer>
         <div style={{
-          display: requestedPathName === '/' ? '': 'none'
+          display: requestedPathName === 'Home' ? '': 'none'
         }}>
-          <StyledHeader logoUrl={"https://res.cloudinary.com/tolulope-od/image/upload/v1597492351/Kathekon-redesign-13_cxjtts.png"} transparent={true} />
+          <StyledHeader logoUrl={"https://res.cloudinary.com/tolulope-od/image/upload/v1605094682/Kathekon-redesign-13_xjg32j.png"} transparent={true} />
         </div>
         <Content>
           <Heading>
@@ -101,13 +101,13 @@ const BackgroundAsImageWithCenteredContent = ({
               {/*<br />*/}
               {/*Looks like you are lost*/}
           </Heading>
-          <PrimaryAction onClick={() => {
+          {/* <PrimaryAction onClick={() => {
             return {}
           }}>
             <Link href={"/"}>
               Back Home
             </Link>
-          </PrimaryAction>
+          </PrimaryAction> */}
         </Content>
       </HeroContainer>
     </Container>

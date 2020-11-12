@@ -2,10 +2,12 @@ import React from "react";
 import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro";
+import { ReactComponent as TwitterSVGIcon } from "feather-icons/dist/icons/twitter.svg";
+import { ReactComponent as LinkedinSVGIcon } from "feather-icons/dist/icons/linkedin.svg";
+import { ReactComponent as FacebookSVGIcon } from "feather-icons/dist/icons/facebook.svg";
 import { Container, ContentWithPaddingXl } from "../misc/Layouts.jsx";
 import { SectionHeading, Subheading as SubheadingBase } from "../misc/Headings.jsx";
 import {SectionDescription} from "../misc/Typography.jsx";
-import { TwitterSVGIcon, LinkedinSVGIcon, FacebookSVGIcon } from "../svg";
 
 const HeadingContainer = tw.div``
 const Heading = tw(SectionHeading)``
@@ -16,7 +18,8 @@ const Cards = tw.div`flex flex-wrap flex-row justify-center sm:max-w-2xl lg:max-
 const Card = tw.div`mt-24 w-full sm:w-1/2 lg:w-1/3 flex flex-col items-center`
 const CardImage = styled.div`
   ${props => css`background-image: url("${props.imageSrc}");`}
-  ${tw`w-64 h-64 bg-contain bg-center rounded`}
+  ${tw`w-48 h-48 bg-contain bg-center rounded`}
+  border-radius: 50%;
 `
 const CardContent = styled.div`
   ${tw`flex flex-col items-center mt-6`}
@@ -41,7 +44,7 @@ const CardLinks = styled.div`
 const TeamCardGrid = ({
   heading = "Meet Our Team.",
   subheading = "Our Team",
-  description = "4-people team with positions and brief descriptions",
+  description = "",
   cards = [
     {
       imageSrc: "https://res.cloudinary.com/tolulope-od/image/upload/v1601211702/web-9_whr5dl.jpg",
@@ -63,9 +66,9 @@ const TeamCardGrid = ({
       ],
     },
     {
-      imageSrc: "https://res.cloudinary.com/tolulope-od/image/upload/v1601211697/WhatsApp_Image_2020-09-26_at_12.20.00_cfoxib.jpg",
+      imageSrc: "https://res.cloudinary.com/tolulope-od/image/upload/v1605095626/WhatsApp_Image_2020-09-29_at_16.53.52_s719q5.jpg",
       position: "Title 2",
-      name: "Adeyemi",
+      name: "Morisola Alaba",
       links: [
         {
           url: "https://twitter.com",
@@ -82,9 +85,9 @@ const TeamCardGrid = ({
       ],
     },
     {
-      imageSrc: "https://images.unsplash.com/photo-1517070208541-6ddc4d3efbcb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&fit=facearea&facepad=2.95&w=512&h=512&q=80",
-      position: "Jr. Designer",
-      name: "Silvester Wize",
+      imageSrc: "https://res.cloudinary.com/tolulope-od/image/upload/v1605096180/WhatsApp_Image_2020-11-03_at_11.06.20_jbgfye.jpg",
+      position: "Media Manager",
+      name: "Adebimpe Adeyemi",
       links: [
         {
           url: "https://twitter.com",
@@ -101,7 +104,7 @@ const TeamCardGrid = ({
       ],
     },
     {
-      imageSrc: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&fit=facearea&facepad=2.95&w=512&h=512&q=80",
+      imageSrc: "https://res.cloudinary.com/tolulope-od/image/upload/v1605095625/WhatsApp_Image_2020-09-30_at_11.06.35_luwk2f.jpg",
       position: "Title Developer",
       name: "Socrates Mbalu",
       links: [

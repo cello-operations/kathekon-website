@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import { Formik } from "formik";
+import * as Yup from "yup";
+import { toast } from 'react-toastify';
 import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
@@ -13,12 +16,21 @@ import {
 } from '../blog/BlogPosts.jsx'
 import Modal from '../modal/Modal.jsx';
 import OpenModalButton from '../modal/OpenModalButton.jsx';
+import {
+  FormInput, TextArea, Select,
+  Option, Upload
+} from '../forms/Inputs.jsx';
+import AlternatingLoader from '../loaders/AlternatingLoader.jsx';
+import AuthContext from '../../context/AuthContext';
+import APIHelper from "../../helpers/APIHelpers.js";
+import fileToBase64 from '../../utils/fileConverter';
 
 const HeaderRow = tw.div`flex justify-between items-center flex-col xl:flex-row`;
 const Header = tw(SectionHeading)``;
 const TabsControl = tw.div`flex flex-wrap bg-gray-200 px-2 py-2 rounded leading-none mt-12 xl:mt-0`;
 // const PaddedBackground = tw.div`max-w-screen-xl mx-auto px-6 py-6 lg:px-8 lg:py-8`;
 const ContentWithPaddingXl= tw.div`max-w-screen-xl mx-auto py-10 lg:py-12`;
+const Form = tw.form`mx-auto`;
 
 const TabControl = styled.div`
   ${tw`cursor-pointer px-6 py-3 mt-2 sm:mt-0 sm:mr-2 last:mr-0 text-gray-600 font-medium rounded-sm transition duration-300 text-sm sm:text-base w-1/2 sm:w-auto text-center`}
@@ -26,6 +38,56 @@ const TabControl = styled.div`
     ${tw`bg-gray-300 text-gray-700`}
   }
   ${props => props.active && tw`bg-primary-500! text-gray-100!`}
+  }
+`;
+
+const ModalHeading = styled.div`
+  height: 20px;
+  padding: 3rem;
+  text-align: center;
+
+  h4 {
+    font-size: 28px;
+    font-weight: bold;
+  }
+`;
+
+const ModalContentWrapper = styled.div`
+  padding: 3rem;
+  width: 100%;
+  form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+     > div {
+       padding: 1rem;
+     }
+  }
+
+  @media (max-width: 768px) {
+    form {
+      grid-template-columns: 1fr;
+    }
+  }
+`;
+
+const Label = styled.label`
+  background-color: indigo;
+  color: white;
+  padding: 0.5rem;
+  font-family: sans-serif;
+  border-radius: 0.3rem;
+  cursor: pointer;
+  margin-top: 1rem;
+`;
+
+const SubmitButton = styled.button`
+  ${tw`mt-5 tracking-wide font-semibold bg-primary-500 text-gray-100 w-full py-4 rounded-lg hover:bg-primary-900 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none`}
+  .icon {
+    ${tw`w-6 h-6 -ml-2`}
+  }
+  .text {
+    ${tw`ml-3`}
   }
 `;
 
@@ -151,8 +213,10 @@ const CardsWithTabSwitch = ({
     setModalOpen(open);
   }
 
+  const { state } = React.useContext(AuthContext);
+
   return (
-    <Container>
+    <Container style={{ fontFamily: 'Raleway' }}>
       <ContentWithPaddingXl>
         <HeaderRow style={{ fontFamily: 'Raleway' }}>
           <Header>{heading}</Header>
@@ -165,9 +229,187 @@ const CardsWithTabSwitch = ({
           </TabsControl>
         </HeaderRow>
         <div style={{ marginTop: '2rem' }}>
-          <OpenModalButton handleButtonClick={() => handleOpenModal(true)}>Create New Grant</OpenModalButton>
+        {
+          state.isAuthenticated && state.user.userType === "ADMIN" || state.user.userType === "SUPER_ADMIN"
+            ? (
+            <OpenModalButton handleButtonClick={() => handleOpenModal(true)}>Create New Grant</OpenModalButton>
+            ) : (
+              <div />
+            )
+        }
         </div>
-          <Modal isOpen={modalOpen} handleClose={() => handleOpenModal(false)} />
+          <Modal isOpen={modalOpen} handleClose={() => handleOpenModal(false)}>
+            <ModalHeading>
+              <h4>Create Grant</h4>
+              <p>Fill all required fields to create a new grant</p>
+            </ModalHeading>
+            <ModalContentWrapper>
+            <Formik
+                initialValues={{ grantName: "", description: "", status: "", expiryDate: "", applicationStartDate: "", grantType: "", upload: null }}
+                onSubmit={async (values, err) => {
+                  try {
+                    // convert file to base64
+                    const b64File = await fileToBase64(values.upload);
+                    
+                    const response = await APIHelper.post('/grants', {
+                      ...values,
+                      status: values.status.toUpperCase(),
+                      grantType: values.grantType.toLowerCase(),
+                      upload: b64File
+                    });
+
+                    toast.success(response.data.message);
+                    setModalOpen(false);
+                  } catch (error) {
+                    console.dir(error);
+                    if (error.response && error.response.data.message === 'Validation error') {
+                      return err.setErrors(error.response.data.error)
+                    } else if (error.response && error.response.data.message !== 'Validation error') {
+                      return toast.error(error.response.data.message);
+                    } else {
+                      return toast.error('Something went wrong! Please try again');
+                    }
+                  }  
+                }}
+                validationSchema={Yup.object().shape({
+                  grantName: Yup.string().required("Grant name is required"),
+                  description: Yup.string().required("Grant description is required"),
+                  status: Yup.string().required("Please select a status"),
+                  expiryDate: Yup.date().required("Please input an expiry date"),
+                  applicationStartDate: Yup.date().required("Please input a start date for application"),
+                  grantType: Yup.string().required("Please select a grant type"),
+                  upload: Yup.mixed().required("Please add a supporting document format"),
+                })}
+              >
+                {(props) => {
+                  const { values, touched, errors, isSubmitting, handleChange, handleBlur, handleSubmit, setFieldValue } = props;
+
+                  return (
+                    <Form onSubmit={handleSubmit}>
+                      <div>
+                        <FormInput
+                          type="text"
+                          id="grantName"
+                          name={"grantName"}
+                          placeholder="Grant Name"
+                          handleChange={handleChange}
+                          handleBlur={handleBlur}
+                          errors={errors}
+                          touched={touched}
+                          values={values}
+                          label={"Grant Name"}
+                        />
+                        <TextArea
+                          type="text"
+                          id="description"
+                          name={"description"}
+                          placeholder="Description"
+                          handleChange={handleChange}
+                          handleBlur={handleBlur}
+                          errors={errors}
+                          touched={touched}
+                          values={values}
+                          label={"Description"}
+                        />
+                        <Select
+                          id="status"
+                          name={"status"}
+                          placeholder="Status"
+                          handleChange={handleChange}
+                          handleBlur={handleBlur}
+                          errors={errors}
+                          touched={touched}
+                          values={values}
+                          label={"Status"}
+                        >
+                          {
+                            ['--Please select a value', 'Active', 'Closed', 'Evaluating', 'Expired', 'Archived'].map((value, index) => (
+                              <Option key={value} value={index === 0 ? '' : value}>
+                                {value}
+                              </Option>
+                            ))
+                          }
+                        </Select>
+                        <Upload
+                          name={"upload"}
+                          placeholder="upload"
+                          handleChange={(event) => {
+                            setFieldValue("upload", event.currentTarget.files[0]);
+                          }}
+                          handleBlur={handleBlur}
+                          errors={errors}
+                          touched={touched}
+                          values={values}
+                          label={"Requirements"}
+                        />
+                      </div>
+                      <div>
+                      <FormInput
+                          type="date"
+                          id="applicationStartDate"
+                          name={"applicationStartDate"}
+                          placeholder="Application Start Date"
+                          handleChange={handleChange}
+                          handleBlur={handleBlur}
+                          errors={errors}
+                          touched={touched}
+                          values={values}
+                          label={"Application Start"}
+                        />
+                        <FormInput
+                          type="date"
+                          id="expiryDate"
+                          name={"expiryDate"}
+                          placeholder="Expiry Date"
+                          handleChange={handleChange}
+                          handleBlur={handleBlur}
+                          errors={errors}
+                          touched={touched}
+                          values={values}
+                          label={"Expiry"}
+                        />
+                        <br />
+                        <br />
+                        <Select
+                          type="text"
+                          id="grantType"
+                          name={"grantType"}
+                          placeholder="Grant Type"
+                          handleChange={handleChange}
+                          handleBlur={handleBlur}
+                          errors={errors}
+                          touched={touched}
+                          values={values}
+                          label={"Grant Type"}
+                        >
+                         {
+                            ['--Please select a value', 'Grant', 'Scholarship'].map((value, index) => (
+                              <Option key={value} value={index === 0 ? '' : value}>
+                                {value}
+                              </Option>
+                            ))
+                         } 
+                        </Select>
+                        <SubmitButton disabled={isSubmitting} type="submit">
+                        {
+                          isSubmitting ? (
+                            <React.Fragment>
+                              <AlternatingLoader className="icon" />
+                              <span className="text">Loading</span>
+                            </React.Fragment>
+                          ) : (
+                            <React.Fragment>
+                              <span className="text">Create</span>
+                            </React.Fragment>
+                          )
+                        }
+                      </SubmitButton>
+                      </div>
+                    </Form>
+                    )}}
+                </Formik>
+            </ModalContentWrapper>
+          </Modal>
         {tabsKeys.map((tabKey, index) => (
           <TabContent
             key={index}
@@ -187,23 +429,24 @@ const CardsWithTabSwitch = ({
             initial={activeTab === tabKey ? "current" : "hidden"}
             animate={activeTab === tabKey ? "current" : "hidden"}
           >
-            {tabs[tabKey].map((post, index) => (
-              <Posts key={index}>
-              {getRandomCards().slice(0).map((post, index) => (
-                <PostContainer key={index} featured={post.featured}>
-                  <Post className="group" as="a" href={post.url}>
-                    <Image imageSrc={post.imageSrc} />
+            <Posts key={index}>
+            
+              
+              {tabs[tabKey].map((post, index) => (
+                <PostContainer key={index} featured={true}>
+                  <Post className="group" as="a" href={post.image}>
+                    <Image imageSrc={post.image} />
                     <Info>
-                      <Category>{post.category}</Category>
-                      <CreationDate>{post.date}</CreationDate>
-                      <Title>{post.title}</Title>
-                      {post.featured && post.description && <Description>{post.description}</Description>}
+                      <Category>{post.grantType}</Category>
+                      <CreationDate>{post.createdOn}</CreationDate>
+                      <Title>{post.grantName}</Title>
+                      {post.description && <Description>{post.description}</Description>}
                     </Info>
                   </Post>
                 </PostContainer>
               ))}
+            
             </Posts>
-            ))}
           </TabContent>
         ))}
       </ContentWithPaddingXl>
@@ -233,85 +476,6 @@ const getRandomCards = () => {
       url: "https://timerse.com",
       featured: true
     },
-    // {
-    //   imageSrc:
-    //     "https://images.unsplash.com/photo-1582254465498-6bc70419b607?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80",
-    //   title: "Samsa Beef",
-    //   content: "Fried Mexican Beef",
-    //   price: "$3.99",
-    //   rating: "4.5",
-    //   reviews: "34",
-    //   url: "#",
-    //   imageSrc:
-    //     "https://images.unsplash.com/photo-1499678329028-101435549a4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1024&q=80",
-    //   category: "Travel Tips",
-    //   date: "April 21, 2020",
-    //   title: "Safely Travel in Foreign Countries",
-    //   description:
-    //     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.  Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    //   url: "https://timerse.com",
-    //   featured: true
-    // },
-    // {
-    //   imageSrc:
-    //     "https://images.unsplash.com/photo-1565310022184-f23a884f29da?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80",
-    //   title: "Carnet Nachos",
-    //   content: "Chilli Crispy Nachos",
-    //   price: "$3.99",
-    //   rating: "3.9",
-    //   reviews: "26",
-    //   url: "#"
-    // },
-    // {
-    //   imageSrc:
-    //     "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80",
-    //   title: "Guacamole Mex",
-    //   content: "Mexican Chilli",
-    //   price: "$3.99",
-    //   rating: "4.2",
-    //   reviews: "95",
-    //   url: "#"
-    // },
-    // {
-    //   imageSrc:
-    //     "https://images.unsplash.com/photo-1550461716-dbf266b2a8a7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80",
-    //   title: "Chillie Cake",
-    //   content: "Deepfried Chicken",
-    //   price: "$2.99",
-    //   rating: "5.0",
-    //   reviews: "61",
-    //   url: "#"
-    // },
-    // {
-    //   imageSrc:
-    //     "https://images.unsplash.com/photo-1476224203421-9ac39bcb3327??ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80",
-    //   title: "Nelli",
-    //   content: "Hamburger & Fries",
-    //   price: "$7.99",
-    //   rating: "4.9",
-    //   reviews: "89",
-    //   url: "#"
-    // },
-    // {
-    //   imageSrc:
-    //     "https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80",
-    //   title: "Jalapeno Poppers",
-    //   content: "Crispy Soyabeans",
-    //   price: "$8.99",
-    //   rating: "4.6",
-    //   reviews: "12",
-    //   url: "#"
-    // },
-    // {
-    //   imageSrc:
-    //     "https://images.unsplash.com/photo-1473093226795-af9932fe5856?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80",
-    //   title: "Cajun Chicken",
-    //   content: "Roasted Chicken & Egg",
-    //   price: "$7.99",
-    //   rating: "4.2",
-    //   reviews: "19",
-    //   url: "#"
-    // }
   ];
 
   // Shuffle array

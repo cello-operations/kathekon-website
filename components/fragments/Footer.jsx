@@ -126,7 +126,7 @@ const Footer = () => {
         <Divider />
         <ThreeColRow>
           <LogoContainer>
-            <LogoImg src={'/images/kathekon-logo.svg'} alt="Kathekon Logo" />
+            <LogoImg src={'https://res.cloudinary.com/tolulope-od/image/upload/v1605094631/Kathekon-redesign-green-blue_izpgnc.png'} alt="Kathekon Logo" />
           </LogoContainer>
           <CopywrightNotice>
             &copy; {new Date().getFullYear()} Kathēkon. All Rights Reserved.

@@ -10,6 +10,11 @@ export const truncateText = (str, length, ending) => {
   if (str.length > stringLength) {
     return str.substring(0, stringLength - stringEnding.length) + stringEnding;
   }
+
+  if (str.length < stringLength) {
+    const remaining = stringLength - str.length;
+    return str + new Array(remaining + 1).join(' ');
+  }
   return str;
 };
 

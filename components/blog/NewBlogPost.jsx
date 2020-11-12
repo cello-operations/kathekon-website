@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import Head from 'next/head';
 import Axios from 'axios';
 import dynamic from 'next/dynamic';
+import Router from 'next/router';
+import { toast } from 'react-toastify';
 import AnimationRevealPage from "../../helpers/AnimationRevealPage.jsx";
 import tw from "twin.macro";
 import styled from "styled-components";
@@ -11,6 +13,7 @@ import { PrimaryButton } from "../misc/Buttons.jsx";
 import { EDITOR_JS_TOOLS, Image } from '../../utils/tools';
 import APIHelper from '../../helpers/APIHelpers';
 import { generalHelpers } from '../../helpers/generalHelpers';
+import AuthContext from '../../context/AuthContext';
 
 const EditorJS = dynamic(() => import('react-editor-js'), { ssr: false });
 
@@ -54,7 +57,6 @@ const NewBlogPost = () => {
   // body, title, description, tags, status,
   //       coverImage,
   const handleSubmit = async () => {
-    console.log(instance);
     if (!instance) {
       return alert('no editor instance')
     }
@@ -63,7 +65,6 @@ const NewBlogPost = () => {
 
     const coverImage = images.length > 0 ? images[0].file.url : defaultCoverImage;
 
-    console.log(savedData);
     const data = {
       title, description, coverImage, status: 'PUBLISHED',
       body: JSON.stringify(savedData),
@@ -71,11 +72,27 @@ const NewBlogPost = () => {
     try {
       const request = await APIHelper.post('/blogs', data);
 
-      console.log(request)
+      toast.success(request.data.message);
+      Router.push('/blog');
     } catch (error) {
-      console.log(error);
+      if (error.response) {
+        return toast.error(error.response.data.message)
+      }
+      return toast.error('Something went wrong! Please try again')
     }
   }
+
+  const { state } = React.useContext(AuthContext);
+  React.useEffect(() => {
+    if (!state.isAuthenticated) {
+      Router.push('/blog');
+    }
+
+    if (state.isAuthenticated && state.user.userType === "REQUESTER") {
+      Router.push('/blog')
+    }
+
+  }, []);
   return (
     <>
       <Head>

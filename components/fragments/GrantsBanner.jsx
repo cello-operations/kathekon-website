@@ -29,7 +29,7 @@ const DecoratorBlob1 = tw(SvgDecoratorBlob1)`absolute bottom-0 left-0 w-80 h-80 
 const DecoratorBlob2 = tw(SvgDecoratorBlob1)`absolute top-0 right-0 w-80 h-80 transform  translate-x-20 -translate-y-64 text-primary-700 opacity-50`
 const GrantsBanner = ({
   text = "We care about the future of our society.",
-  subtext = "That is why we give easily accessible grants and scholarships",
+  subtext = "",
   pushDownFooter = false
 }) => {
   return (

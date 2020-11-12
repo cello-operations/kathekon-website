@@ -94,10 +94,6 @@ export const AuthLinks = ({
       flexDirection: 'row',
       justifyContent: 'space-between',
     }}>
-    <SubmitButton onClick={handleLogout}>
-      <Logout className="icon" />
-      <span className="text">Logout</span>
-    </SubmitButton>
     <UserInfo>
       <UserImage
         alt={`${firstName} ${lastName} profile image on kathekon`}
@@ -105,7 +101,9 @@ export const AuthLinks = ({
       />
       <UserNameAndType>
         <UserName>{firstName}</UserName>
-        <UserProfile>{userType.split('_').join(' ')}</UserProfile>
+        <UserProfile>
+            <span style={{ cursor: 'pointer' }} onClick={handleLogout} className="text">Logout</span>
+        </UserProfile>
       </UserNameAndType>
     </UserInfo>
   </div>
@@ -115,7 +113,7 @@ const LightHeader = ({
   roundedHeaderButton = false,
   logoLink, links, className, collapseBreakpointClass = "lg",
   transparent = false,
-  logoUrl = 'https://res.cloudinary.com/tolulope-od/image/upload/v1597492351/Kathekon-redesign-13_cxjtts.png',
+  logoUrl = 'https://res.cloudinary.com/tolulope-od/image/upload/v1605094663/Kathekon-redesign-13-13_e9qpnx.png',
   firstName = "User",
   lastName = "Name",
   userType = "ADMIN",
@@ -226,8 +224,6 @@ const PageNavLinks = [
 
   logoLink = logoLink || defaultLogoLink;
   links = transparent ? defaultLinks : PageNavLinks;
-
-  console.log(state);
 
   return (
     <Header className={className || "header-light"}>

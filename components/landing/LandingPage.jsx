@@ -68,6 +68,7 @@ const Landing = (props) => {
               "The impediment to action advances action.",
             customerName: "Marcus Aurelius",
             customerTitle: "",
+            hasQuote: true,
             heading: "Our Vision",
             description: "To transform society through evidence-driven investments in education, social welfare, and civil society.",
           },
@@ -81,6 +82,7 @@ const Landing = (props) => {
               "Something profound goes here as a quote from a famous person.",
             customerName: "DJ Cuppy",
             customerTitle: "",
+            hasQuote: false,
             heading: "Our Mission",
             description: "To operate like a startup in the social impact space, thus focusing only on areas where we can maximize value.",
           },
@@ -99,7 +101,7 @@ const Landing = (props) => {
         subheading={"Our Blog"}
         hasDescription={true}
         description={"Our amazing team loves to write articles to share what the atmosphere at the organization feels and also to share insights on our grant application processes."}
-        linkText={"View more Articles"}
+        linkText={"View more articles"}
         headingHtmlComponent={
           (
             <Title>
@@ -107,7 +109,7 @@ const Landing = (props) => {
             </Title>
           )
         }
-        cards={cards}
+        cards={props.blogPosts}
       />
       <GetStarted
         heading={"We are open to partnerships and collaborations "}

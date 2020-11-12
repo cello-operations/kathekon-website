@@ -7,13 +7,24 @@ const BlogPostsPage = (props) => (
 );
 
 export const getStaticProps = async () => {
-  // get blog posts
+ try {
+    // get blog posts
   const request = await APIHelper.get('/blogs');
+
   return {
     props: {
       blogPosts: request.data.data.posts,
     },
   }
+ } catch (error) {
+   if (error.response) {
+     return {
+       props: {
+         blogPosts: [],
+       },
+     };
+   }
+ }
 };
 
 export default BlogPostsPage;

@@ -6,7 +6,7 @@ import AnimationRevealPage from "../../helpers/AnimationRevealPage.jsx";
 import MainFeature1 from "../fragments/TwoColFeatureSection.jsx";
 import Features from "../fragments/ThreeColFeatures.jsx";
 import TeamCardGrid from "../fragments/TeamCardGrid.jsx";
-import { PageNavLinks } from '../header/NavLinks.jsx';
+import OurTeam from "../fragments/OurTeam.jsx";
 
 const Subheading = tw.span`uppercase tracking-wider text-sm`;
 const AboutUs = () => {
@@ -16,13 +16,18 @@ const AboutUs = () => {
         <title>Kathēkon - About Kathekon</title>
         <meta name="description" content="About Kathekon: Transforming society through evidence-driven investments in education, social welfare, and civil society" />
         <meta name="keywords" content="about kathēkon scholarships transforming nigeria kathekon education civil society social welfare investment africa" />
+        <meta property="og:url"           content={`${process.env.HOST_URL}/about`} />
+        <meta property="og:type"          content="website" />
+        <meta property="og:title"         content="Kathēkon - About Kathekon" />
+        <meta property="og:description"   content="Kathekon supports organisations that seek to transform society through evidence-driven investments in education, social welfare, and civil society in Nigeria." />
+        <meta property="og:image"         content="https://res.cloudinary.com/tolulope-od/image/upload/v1605094663/Kathekon-redesign-13-13_e9qpnx.png" />
       </Head>
       <AnimationRevealPage>
       <MainFeature1
         subheading={<Subheading>About Kathēkon</Subheading>}
-        heading="Transforming society through evidence-driven investments in education, social welfare, and civil society"
+        heading=""
         buttonRounded={false}
-        description={''}
+        description={'Kathekon supports organisations that seek to transform society through evidence-driven investments in education, social welfare, and civil society in Nigeria. Kathekon welcomes experimental ideas that drive pragmatic and significant change while depending on data as a measurement tool. Kathekon seeks to partner and build a generation of selfless individuals who would give themselves over to pragmatic change. While Nigeria is a current focus, Kathekon will equally focus on other African countries.'}
         primaryButtonUrl={"/our-workx"}
         primaryButtonText="See Our Work"
         imageCredits={(
@@ -78,6 +83,7 @@ const AboutUs = () => {
       <TeamCardGrid 
         subheading={<Subheading>Our Team</Subheading>}
       />
+      <OurTeam />
     </AnimationRevealPage>
     </>
   );

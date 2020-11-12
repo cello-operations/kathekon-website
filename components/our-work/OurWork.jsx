@@ -53,7 +53,7 @@ const OurWork = () => {
       </Head>
       <AnimationRevealPage>
         <OurWorkFeatures />
-        <TwoColWithSteps
+        {/* <TwoColWithSteps
           subheading={"Our Future (2020 -2021)"}
           heading={(
             <React.Fragment>
@@ -64,7 +64,7 @@ const OurWork = () => {
           imageCredits={(<span style={{ color: '#333', fontSize: '10px', fontWeight: 100 }}>Photo by <a style={{ color: '#34a4dd' }} href="https://unsplash.com/@kofoshotit?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Omotayo Kofoworola</a> on <a style={{ color: '#34a4dd' }} href="https://unsplash.com/s/photos/nigeria?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>)}
           steps={steps}
           imageSrc={'https://res.cloudinary.com/tolulope-od/image/upload/v1601225152/omotayo-kofoworola-7eHPxnhY_uA-unsplash_rgkel8.jpg'}
-        />
+        /> */}
       </AnimationRevealPage>
     </>
   );

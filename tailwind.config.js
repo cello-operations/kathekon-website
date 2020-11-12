@@ -271,9 +271,8 @@ module.exports = {
       default: '1',
     },
     fontFamily: {
-      display: ['GT Sectra Medium', 'sans-serif'],
+      display: ['Poppins', 'sans-serif'],
       sans: [
-        'GT Sectra Medium',
         'Raleway',
         'system-ui',
         '-apple-system',
@@ -291,7 +290,7 @@ module.exports = {
         'Poppins',
       ],
       'sans-serif': ['Poppins', 'Raleway', 'sans-serif'],
-      serif: ['GT Sectra Medium', 'Georgia', 'Cambria', '"Times New Roman"', 'Times', 'serif'],
+      serif: ['Georgia', 'Cambria', '"Times New Roman"', 'Times', 'serif'],
       mono: ['Menlo', 'Monaco', 'Consolas', '"Liberation Mono"', '"Courier New"', 'monospace'],
     },
     fontSize: {

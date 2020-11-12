@@ -63,20 +63,13 @@ const VerticalImageSection = () => {
     {
       imageSrc: "https://res.cloudinary.com/tolulope-od/image/upload/v1601215756/annie-spratt-KBpIcWV6o2c-unsplash_vrmi0u.jpg",
       subtitle: "Education",
-      title: "After-school program",
+      title: "Investment In Education",
       description: (
         <span style={{ fontSize: '18px' }}>
-        The gulf between public primary/secondary schools and private 
-        schools in Nigeria continues to widen. 
-        Students rarely have basic resources for proper learning, 
-        and many students who graduate from the best public schools find 
-        themselves at a tremendous disadvantage against students 
-        graduating from middling private schools. 
-        This year, we will test a project intended 
-        to intervene in this area.
+        The gulf in good education in Nigeria continues to widen. Students rarely have basic resources for proper learning, and many students find themselves at a tremendous disadvantage against students from across the world. Part of our work at Kathekon is to identify inefficiencies in education and help rebuild a well standardized model by providing funds to schools that have the potential, but are limited in resources.
         </span>
       ),
-      url: "/partnerships",
+      url: "/contact-us",
       imageCredit: (<span style={{ color: '#333', fontSize: '10px', fontWeight: 100 }}>Photo by <a style={{ color: '#34a4dd' }} href="https://unsplash.com/@olajidetunde?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Annie Spratt</a> on <a style={{ color: '#34a4dd' }} href="https://unsplash.com/s/photos/nigeria?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>),
     },
     {
@@ -89,9 +82,23 @@ const VerticalImageSection = () => {
           We will provide local NGOs with funds in order to reshape societies through investments in social impact spaces such as Education, Civil Societies and Social welfare. Also, we make provision for discretionary grants to support humanitarian response to emergencies and relevant long-term interventions that fall within the specific thematic areas of choice.
         </span>
       ),
-      url: "https://timerse.com",
+      url: "/contact-us",
       hasSteps: true,
       imageCredit: (<span style={{ color: '#333', fontSize: '10px', fontWeight: 100 }}>Photo by <a style={{ color: '#34a4dd' }} href="https://unsplash.com/@olajidetunde?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Babatunde Olajide</a> on <a style={{ color: '#34a4dd' }} href="https://unsplash.com/s/photos/nigeria?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>),
+    },
+    {
+      imageSrc:
+        "https://res.cloudinary.com/tolulope-od/image/upload/v1601138950/logan-weaver-uwyqYYWUQJw-unsplash_upqyxf.jpg",
+      subtitle: "General Framework",
+      title: "Civil Society framework",
+      description: (
+        <span style={{ fontSize: '18px' }}>
+          We recognize the important work of the civil society in a country like Nigeria and often times those in the civil society find themselves working in the most challenging environments either as a result of government stifling the civic space or the limited number of funds available.
+        </span>
+      ),
+      url: "/contact-us",
+      hasSteps: true,
+      imageCredit: (<span style={{ color: '#333333', fontSize: '10px', fontWeight: 100 }}>Photo by <a style={{ color: '#34a4dd' }} href="https://unsplash.com/@wwarby?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">William Warby</a> on <a style={{ color: '#34a4dd' }} href="https://unsplash.com/s/photos/measurement?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>),
     },
     // {
     //   imageSrc:
@@ -142,7 +149,7 @@ const VerticalImageSection = () => {
             <MotionDiv key={i} whileHover={{
               scale: 1.2,
               transition: { duration: 1 },
-            }} whileTap={{ scale: 0.9 }}>
+            }}>
               <Card key={i} reversed={i % 2 === 1}>
                 <Image imageSrc={card.imageSrc} />
                 <Details>

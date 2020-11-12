@@ -25,27 +25,27 @@ const StyledHeader = styled(Header)`
 `;
 
 
-const GlobalStyle = createGlobalStyle`
-  @font-face {
-    font-family: 'GT Sectra Bold';
-    font-style: normal;
-    font-weight: normal;
-    src: local('GT Sectra Bold'), url('/static/fonts/GT-Sectra-Bold.woff2') format('woff2');
-  }
-  @font-face {
-    font-family: 'GT Sectra Regular';
-    font-style: normal;
-    font-weight: normal;
-    src: local('GT Sectra Regular'), url('/static/fonts/GT-Sectra-Regular.woff2') format('woff2');
-  }
+// const GlobalStyle = createGlobalStyle`
+//   @font-face {
+//     font-family: 'GT Sectra Bold';
+//     font-style: normal;
+//     font-weight: normal;
+//     src: local('GT Sectra Bold'), url('/static/fonts/GT-Sectra-Bold.woff2') format('woff2');
+//   }
+//   @font-face {
+//     font-family: 'GT Sectra Regular';
+//     font-style: normal;
+//     font-weight: normal;
+//     src: local('GT Sectra Regular'), url('/static/fonts/GT-Sectra-Regular.woff2') format('woff2');
+//   }
 
-  @font-face {
-    font-family: 'GT Sectra Medium';
-    font-style: normal;
-    font-weight: normal;
-    src: local('GT Sectra Medium'), url('/static/fonts/GT-Sectra-Display-Regular.woff2') format('woff2');
-  }
-`;
+//   @font-face {
+//     font-family: 'GT Sectra Medium';
+//     font-style: normal;
+//     font-weight: normal;
+//     src: local('GT Sectra Medium'), url('/static/fonts/GT-Sectra-Display-Regular.woff2') format('woff2');
+//   }
+// `;
 
 
 const App = (props) => {
@@ -108,7 +108,7 @@ const App = (props) => {
 
   }, []);
 
-  const pagesWithoutHeader = ['/', '/sign-up', '/login'];
+  const pagesWithoutHeader = ['Home', '/sign-up', '/login'];
 
   return (
     <>
@@ -151,14 +151,14 @@ const App = (props) => {
         
         <title>Kathekon - Transforming society through evidence-driven investments</title>
       </Head>
-        <GlobalStyle />
+        {/* <GlobalStyle /> */}
         <div
           style={{
             display: pagesWithoutHeader.includes(props.requestedPathName) ? 'none': ''
           }}
         >
           <Container>
-            <Header transparent={false} logoUrl={'https://res.cloudinary.com/tolulope-od/image/upload/v1597492350/Kathekon-redesign-13-13_bsnael.png'} />
+            <Header transparent={false} logoUrl={'https://res.cloudinary.com/tolulope-od/image/upload/v1605094663/Kathekon-redesign-13-13_e9qpnx.png'} />
           </Container>
         </div>
         <Component {...pageProps} {...props} />
@@ -178,7 +178,7 @@ function Wrapper(props) { return (<AuthStateProvider><App {...props}/></AuthStat
 Wrapper.getInitialProps = (ctx) => {
   const context = ctx?.ctx || ctx;
   const requestedPathName = context?.req?.url;
-  return { requestedPathName };
+  return { requestedPathName: requestedPathName === "/" ? "Home" : requestedPathName };
 }
 
 export default Wrapper;

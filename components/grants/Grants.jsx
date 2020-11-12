@@ -30,7 +30,7 @@ const MotionSection = styled.section`
 const StyledDiv = tw.div`font-display min-h-screen text-secondary-500 p-8 overflow-hidden`;
 const Container = tw.div`grid grid-cols-13`;
 
-const Grants = () => {
+const Grants = (props) => {
   return (
     <>
       <Head>
@@ -42,7 +42,7 @@ const Grants = () => {
         <GrantsBanner />
         <StyledDiv>
           <MotionSection>
-            <GrantsTabs />
+            <GrantsTabs tabs={props.grants} />
           </MotionSection>
         </StyledDiv>
       </Container>

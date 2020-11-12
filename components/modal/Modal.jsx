@@ -13,14 +13,20 @@ const Overlay = styled(motion.div)`
 `;
 
 const ModalContainer = styled.div`
-    width:50%;
-    height:50%;
+    width: 50%;
+    max-height: 100%;
     background-color: white;
-    position:absolute;               
-    top:50%;                         
-    left:50%;                        
-    transform:translate(-50%,-50%);
-border-radius:12px`
+    position: absolute;               
+    top: 50%;                         
+    left: 50%;                        
+    transform: translate(-50%,-50%);
+    border-radius: 12px;
+
+    @media (max-width: 414px) {
+      width: 95%;
+      overflow-y: auto;
+    }
+`
 
 const CloseButton = styled.svg`
     width:20px;

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import Link from 'next/link';
 import { NavLink, NavLinks, PrimaryLink } from './LightHeader.jsx';
+import { PrimaryLink as PrimaryLinkBase } from "../misc/Links.jsx";
 
 const buttonRoundedCss = false;
 
@@ -26,6 +27,14 @@ function PrimaryLinkItem({ href, name }) {
     </Link>
   );
 }
+
+export function ForwardLink (props) {
+  return (
+    <Link href={props.href}>
+      <PrimaryLinkBase>{props.children}</PrimaryLinkBase>
+    </Link>
+  );
+};
 
 export const PageNavLinks = [
   <NavLinks key={1}>

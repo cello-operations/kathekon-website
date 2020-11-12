@@ -1,5 +1,6 @@
 import React from "react";
 import tw from "twin.macro";
+import Link from 'next/link';
 import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
 import { SectionHeading, Subheading } from "../misc/Headings.jsx";
@@ -8,6 +9,7 @@ import { PrimaryButton as PrimaryButtonBase } from "../misc/Buttons.jsx";
 import { ReactComponent as LocationIcon } from "feather-icons/dist/icons/map-pin.svg";
 import { ReactComponent as TimeIcon } from "feather-icons/dist/icons/clock.svg";
 import { ReactComponent as ArrowRightIcon } from "../../public/images/arrow-right-icon.svg";
+import { truncateText } from '../../helpers/truncateText';
 
 const Container = tw.div`relative`;
 const Content = tw.div`max-w-screen-xl mx-auto py-20 lg:py-24`;
@@ -68,28 +70,7 @@ const FeaturedBlogsSection = ({
   linkText = "View all Projects",
   cardLinkText = "Read Case Study",
   textOnLeft = false,
-  hasMeta = false,
-  hasDescription = false,
-  cards =  [
-    {
-      imageSrc:
-        "https://images.unsplash.com/photo-1563461660947-507ef49e9c47?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=768&q=80",
-      company: "Tesla Inc.",
-      type: "Ad Campaign",
-      title: "Personalized Ad Campaign using Google AdWords",
-      durationText: "90 Days Campaign",
-      locationText: "New York",
-    },
-    {
-      imageSrc:
-        "https://images.unsplash.com/photo-1573165231977-3f0e27806045?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=768&q=80",
-      company: "Nestle",
-      type: "SEO Marketing",
-      title: "Ranking #1 for keywords like Chocolate, Snack",
-      durationText: "180 Day Campaign",
-      locationText: "Palo Alto",
-    },
-  ],
+  cards,
 }) => {
   return (
     <Container>
@@ -100,45 +81,50 @@ const FeaturedBlogsSection = ({
               <Subheading>{subheading}</Subheading>
               <HeadingTitle>{headingHtmlComponent}</HeadingTitle>
               <HeadingDescription>{description}</HeadingDescription>
-              <PrimaryLink>
+              <PrimaryLink href={'/blog'}>
                 {linkText} <ArrowRightIcon />
               </PrimaryLink>
             </HeadingInfoContainer>
           </HeadingColumn>
-          {cards.map((card, index) => (
-            <CardColumn key={index}>
-              <Card>
-                <CardImage imageSrc={card.imageSrc} />
-                <CardText>
-                  <CardHeader>
-                    <CardCompany>{card.company}</CardCompany>
-                    <CardType>{card.type}</CardType>
-                  </CardHeader>
-                  <CardTitle>{card.title}</CardTitle>
-                  {
-                    hasDescription && (
-                      <Description>
-                        {card.description}
-                      </Description>
-                    )
-                  }
-                  {
-                    hasMeta && (
-                      <CardMeta>
-                        <CardMetaFeature>
-                          <TimeIcon /> {card.durationText}
-                        </CardMetaFeature>
-                        <CardMetaFeature>
-                          <LocationIcon /> {card.locationText}
-                        </CardMetaFeature>
-                      </CardMeta>
-                    )
-                  }
-                  <CardAction>{cardLinkText}</CardAction>
-                </CardText>
-              </Card>
-            </CardColumn>
-          ))}
+          {
+            cards.length > 0 ? cards.map((card, index) => (
+              <CardColumn key={index}>
+                <Card>
+                  <CardImage imageSrc={card.coverImage} />
+                  <CardText>
+                    <CardHeader>
+                      <CardCompany>{card.author.firstName} {card.author.lastName[0]}.</CardCompany>
+                      <CardType>{''}</CardType>
+                    </CardHeader>
+                    <CardTitle>{truncateText(card.title, 90)}</CardTitle>
+                    <Description style={{ minHeight: '43px' }}>
+                      {truncateText(card.description, 150)}
+                    </Description>
+                    {/* <CardMeta>
+                      <CardMetaFeature>
+                        <TimeIcon /> {card.readTime < 0 ? '< 1 Min.' : `${card.readTime} Min.`}
+                      </CardMetaFeature>
+                      <CardMetaFeature>
+                        <LocationIcon /> {card.createdOn}
+                      </CardMetaFeature>
+                    </CardMeta> */}
+                    <Link href={`/blog/post/${card.slug}`}>
+                      <CardAction>{cardLinkText}</CardAction>
+                    </Link>
+                  </CardText>
+                </Card>
+              </CardColumn>
+            )) : (
+              <CardColumn>
+                <div>
+                  <h2
+                    style={{ fontWeight: '900', marginTop: '2.5rem' }}
+                  >
+                    No Posts to Display</h2>
+                </div>
+              </CardColumn>
+            )
+        }
         </ThreeColumn>
       </Content>
     </Container>

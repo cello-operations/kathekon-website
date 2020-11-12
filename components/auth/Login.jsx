@@ -75,7 +75,7 @@ const Login = ({
               <Heading>{headingText}</Heading>
               <FormContainer>
                 <DividerTextContainer>
-                  <DividerText>Sign in track your requsts</DividerText>
+                  <DividerText>Sign in to your Kathēkon account</DividerText>
                 </DividerTextContainer>
                 <Formik
                   initialValues={{ email: "", password: "" }}
@@ -104,7 +104,7 @@ const Login = ({
                         draggable: true,
                         progress: undefined,
                       });
-                      return Router.push('/');
+                      return Router.push('/grants');
                     } catch (error) {
                       let message = error.response?.data?.message;
   
