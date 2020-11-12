@@ -1,1 +1,0 @@
-{"ast":null,"code":"var __jsx = React.createElement;\nimport * as React from 'react';\nimport SignUp from '../components/auth/SignUp.jsx';\n\nconst SignUpPage = () => __jsx(SignUp, null);\n\nexport default SignUp;","map":null,"metadata":{},"sourceType":"module"}
