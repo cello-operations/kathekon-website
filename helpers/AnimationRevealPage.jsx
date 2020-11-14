@@ -35,15 +35,6 @@ function AnimatedSlideInComponent({ direction = "left", offset = 30, children })
 
   return (
     <motion.section
-      initial={{ x: x.initial }}
-      animate={{ 
-        x: inView && x.target,
-        transitionEnd:{
-          x: inView && 0
-        },
-      }}
-      transition={{ type: "spring", damping: 100, duration: 1 }}
-      ref={ref}
     >
       {children}
     </motion.section>

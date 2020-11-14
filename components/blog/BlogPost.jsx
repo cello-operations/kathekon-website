@@ -48,23 +48,6 @@ const BlogPost = (props) => {
             post={post}
             recentPosts={recentPosts}
           />
-          {/* <Content>
-            <InputContainer>
-              <Title>
-                {postObject.title}
-              </Title>
-                <Description>
-                  <em>{postObject.description}</em>
-                </Description>
-                <br />
-                <Description style={{ fontSize: '14px' }}>
-                  {Number(postObject.readTime) < 1 ? 'Less than one minute read' : `${postObject.readTime}-minute read`}
-                </Description>
-              </InputContainer>
-            </Content>
-          <Content>
-          {ReactHtmlParser(post)}
-          </Content> */}
         </Container>
     </>
   )

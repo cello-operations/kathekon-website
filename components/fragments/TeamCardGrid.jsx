@@ -48,77 +48,45 @@ const TeamCardGrid = ({
   cards = [
     {
       imageSrc: "https://res.cloudinary.com/tolulope-od/image/upload/v1601211702/web-9_whr5dl.jpg",
-      position: "Title",
+      position: "Executive Director",
       name: "Ifedolapo Jubee",
       links: [
         {
-          url: "https://twitter.com/Ogunjubee1",
-          icon: TwitterSVGIcon ,
-        },
-        {
           url: "https://www.linkedin.com/in/ifedolapo-ogunjubee",
           icon: LinkedinSVGIcon,
-        },
-        {
-          url: "https://facebook.com",
-          icon: FacebookSVGIcon,
         },
       ],
     },
     {
       imageSrc: "https://res.cloudinary.com/tolulope-od/image/upload/v1605095626/WhatsApp_Image_2020-09-29_at_16.53.52_s719q5.jpg",
-      position: "Title 2",
+      position: "Director of Operations",
       name: "Morisola Alaba",
       links: [
         {
-          url: "https://twitter.com",
-          icon: TwitterSVGIcon ,
-        },
-        {
           url: "https://linkedin.com",
           icon: LinkedinSVGIcon,
-        },
-        {
-          url: "https://facebook.com",
-          icon: FacebookSVGIcon,
         },
       ],
     },
     {
       imageSrc: "https://res.cloudinary.com/tolulope-od/image/upload/v1605096180/WhatsApp_Image_2020-11-03_at_11.06.20_jbgfye.jpg",
-      position: "Media Manager",
+      position: "Social Media Manager",
       name: "Adebimpe Adeyemi",
       links: [
         {
-          url: "https://twitter.com",
-          icon: TwitterSVGIcon ,
-        },
-        {
           url: "https://linkedin.com",
           icon: LinkedinSVGIcon,
-        },
-        {
-          url: "https://facebook.com",
-          icon: FacebookSVGIcon,
         },
       ],
     },
     {
       imageSrc: "https://res.cloudinary.com/tolulope-od/image/upload/v1605095625/WhatsApp_Image_2020-09-30_at_11.06.35_luwk2f.jpg",
-      position: "Title Developer",
+      position: "Director of Communications",
       name: "Socrates Mbalu",
       links: [
         {
-          url: "https://twitter.com/socratesmbamalu",
-          icon: TwitterSVGIcon ,
-        },
-        {
           url: "https://linkedin.com",
           icon: LinkedinSVGIcon,
-        },
-        {
-          url: "https://facebook.com",
-          icon: FacebookSVGIcon,
         },
       ],
     },

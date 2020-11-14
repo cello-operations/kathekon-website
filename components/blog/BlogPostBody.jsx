@@ -24,14 +24,14 @@ const Image = styled(motion.div)(props => [
   tw`h-64 bg-cover bg-center rounded`
 ]);
 const Title = tw.h5`mt-6 text-xl font-bold transition duration-300 group-hover:text-primary-500`;
-const Description = tw.p`mt-2 font-medium text-secondary-100 leading-loose text-sm`;
+const Description = tw.p`mt-2 text-secondary-100 leading-loose text-sm`;
 const AuthorInfo = tw.div`mt-6 flex items-center`;
 const AuthorImage = tw.img`w-12 h-12 rounded-full`;
 const AuthorNameAndProfession = tw.div`ml-4`;
 const AuthorName = tw.h6`font-semibold text-lg`;
 const AuthorProfile = tw.p`text-secondary-100 text-sm`;
 const Plan = styled.div`
-  ${tw`w-full bg-white rounded-lg shadow-lg py-10 xl:p-10 flex flex-col justify-between mt-16 first:mt-0 lg:mt-0 shadow-md`}
+  ${tw`w-full bg-white px-10 rounded-lg shadow-lg py-10 xl:p-10 flex flex-col justify-between mt-16 first:mt-0 lg:mt-0 shadow-md`}
 `;
 const PlanHeader = styled.div`
   .nameAndFeaturedContainer {
@@ -99,11 +99,13 @@ const BlogPostBody = ({ postObject, post, recentPosts }) => {
   return (
     <Container style={{ fontFamily: 'Poppins' }}>
       <div id="fb-root"></div>
-      <script async defer crossOrigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v8.0" nonce="drEjQ4iO"></script>
+      <script async defer={true} crossOrigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v8.0" nonce="drEjQ4iO"></script>
       <ContentWithPaddingXl>
         <Row>
           <PopularPostsContainer>
             <Heading>{postObject.title}</Heading>
+            <br />
+            <Description><em>{postObject.description}</em></Description>
             <AuthorInfo>
                 <AuthorImage src={postObject.author.avatar} alt={`${postObject.author.firstName} ${postObject.author.lastName} profile image`} />
                 <AuthorNameAndProfession>

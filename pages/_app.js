@@ -1,52 +1,20 @@
 import * as React from 'react';
 import Head from 'next/head';
-import styled from "styled-components";
 import tw from "twin.macro";
+import styled from 'styled-components';
 import Link from 'next/link';
 import { ToastContainer } from 'react-toastify';
-import { createGlobalStyle } from "styled-components";
 import Footer from '../components/fragments/Footer.jsx'
 import Header, { NavLink, NavLinks, PrimaryLink, LogoLink, NavToggle, DesktopNavLinks } from "../components/header/LightHeader.jsx";
-import { Container, ContentWithPaddingXl } from "../components/misc/Layouts.jsx"
+import { Container } from "../components/misc/Layouts.jsx"
 import { AuthStateProvider } from '../context/AuthContext';
 import useAuth from '../hooks/useAuth';
 import '../styles/tailwind.css';
 import 'react-toastify/dist/ReactToastify.css';
 
-
-const StyledHeader = styled(Header)`
+const AppHeader = styled(Header)`
   ${tw`pt-8 max-w-none w-9/12`}
-  ${DesktopNavLinks} ${NavLink}, ${LogoLink} {
-    ${tw`text-gray-100 hover:border-gray-300 hover:text-gray-300`}
-  }
-  ${NavToggle}.closed {
-    ${tw`text-gray-100 hover:text-primary-500`}
-  }
 `;
-
-
-// const GlobalStyle = createGlobalStyle`
-//   @font-face {
-//     font-family: 'GT Sectra Bold';
-//     font-style: normal;
-//     font-weight: normal;
-//     src: local('GT Sectra Bold'), url('/static/fonts/GT-Sectra-Bold.woff2') format('woff2');
-//   }
-//   @font-face {
-//     font-family: 'GT Sectra Regular';
-//     font-style: normal;
-//     font-weight: normal;
-//     src: local('GT Sectra Regular'), url('/static/fonts/GT-Sectra-Regular.woff2') format('woff2');
-//   }
-
-//   @font-face {
-//     font-family: 'GT Sectra Medium';
-//     font-style: normal;
-//     font-weight: normal;
-//     src: local('GT Sectra Medium'), url('/static/fonts/GT-Sectra-Display-Regular.woff2') format('woff2');
-//   }
-// `;
-
 
 const App = (props) => {
   const { Component, pageProps } = props;
@@ -75,10 +43,6 @@ const App = (props) => {
       </Link>
     );
   }
-
-  let RouterAlias = {
-    route: '/',
-  };
   
   const navLinks = [
     <NavLinks key={1}>
@@ -126,13 +90,13 @@ const App = (props) => {
         <meta property="og:image" content={`/${faivconURL}`} />
         <meta name="apple-touch-fullscreen" content="yes" />
         <meta name="twitter:card" content="photo" />
-        <meta name="twitter:title" content="Kathekon: A Social Transoformation Catalyst" />
+        <meta name="twitter:title" content="Kathēkon: Transforming society through investments in education, social welfare, and civil society" />
         <meta name="twitter:description" content="Kathekon is a non-governmental organization that seeks to transform society through investments in education, social welfare, and civil society"></meta>
-        <meta name="twitter:image:src" content="/logo192.png" />
-        <link rel="icon" sizes="32x32" href="/logo192.png" />
-        <link rel="apple-touch-icon" sizes="152x152" href="/logo192.png" />
-        <link rel="apple-touch-icon" sizes="167x167" href="/logo192.png" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/logo192.png" />
+        <meta name="twitter:image:src" content="https://res.cloudinary.com/tolulope-od/image/upload/v1605094663/Kathekon-redesign-13-13_e9qpnx.png" />
+        <link rel="icon" sizes="32x32" href="https://res.cloudinary.com/tolulope-od/image/upload/v1605094663/Kathekon-redesign-13-13_e9qpnx.png" />
+        <link rel="apple-touch-icon" sizes="152x152" href="https://res.cloudinary.com/tolulope-od/image/upload/v1605094663/Kathekon-redesign-13-13_e9qpnx.png" />
+        <link rel="apple-touch-icon" sizes="167x167" href="https://res.cloudinary.com/tolulope-od/image/upload/v1605094663/Kathekon-redesign-13-13_e9qpnx.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="https://res.cloudinary.com/tolulope-od/image/upload/v1605094663/Kathekon-redesign-13-13_e9qpnx.png" />
         <link rel="icon" sizes="192x192" href="/logo192.png" />
         <meta name="robots" content="index, follow" />
         <meta name="description" content="Kathekon seeks to transform society through investments in education, social welfare, and civil society" />
@@ -158,7 +122,7 @@ const App = (props) => {
           }}
         >
           <Container>
-            <Header transparent={false} logoUrl={'https://res.cloudinary.com/tolulope-od/image/upload/v1605094663/Kathekon-redesign-13-13_e9qpnx.png'} />
+            <AppHeader transparent={false} logoUrl={'https://res.cloudinary.com/tolulope-od/image/upload/v1605094663/Kathekon-redesign-13-13_e9qpnx.png'} />
           </Container>
         </div>
         <Component {...pageProps} {...props} />
