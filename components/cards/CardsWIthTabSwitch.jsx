@@ -2,13 +2,15 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Formik } from "formik";
 import * as Yup from "yup";
+import dayjs from "dayjs";
 import { toast } from 'react-toastify';
+import { ReactComponent as DownloadIcon } from "feather-icons/dist/icons/download.svg";
 import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
 import { Container } from "../misc/Layouts.jsx";
 import { SectionHeading } from "../misc/Headings.jsx";
-import { PrimaryButton } from "../misc/Buttons.jsx";
+import { PrimaryButton, PrimaryLink } from "../misc/Buttons.jsx";
 import {
   Post, PostContainer, Posts, Info,
   Title, CreationDate, Description,
@@ -24,6 +26,8 @@ import AlternatingLoader from '../loaders/AlternatingLoader.jsx';
 import AuthContext from '../../context/AuthContext';
 import APIHelper from "../../helpers/APIHelpers.js";
 import fileToBase64 from '../../utils/fileConverter';
+import { truncateText } from '../../helpers/truncateText';
+import GrantApplications from '../grants/GrantApplications.jsx';
 
 const HeaderRow = tw.div`flex justify-between items-center flex-col xl:flex-row`;
 const Header = tw(SectionHeading)``;
@@ -71,14 +75,12 @@ const ModalContentWrapper = styled.div`
   }
 `;
 
-const Label = styled.label`
-  background-color: indigo;
-  color: white;
-  padding: 0.5rem;
-  font-family: sans-serif;
-  border-radius: 0.3rem;
-  cursor: pointer;
-  margin-top: 1rem;
+const DetailWrapper = styled.div`
+  padding: 1rem 0;
+  h5 {
+    font-weight: bold;
+    padding: .5rem 0;
+  }
 `;
 
 const SubmitButton = styled.button`
@@ -92,26 +94,22 @@ const SubmitButton = styled.button`
 `;
 
 const TabContent = tw(motion.div)`mt-6 flex flex-wrap sm:-mr-10 md:-mr-6 lg:-mr-12`;
-const CardContainer = tw.div`mt-10 w-full sm:w-1/2 md:w-1/3 lg:w-1/4 sm:pr-10 md:pr-6 lg:pr-12`;
-const Card = tw(motion.a)`bg-gray-200 rounded-b block max-w-xs mx-auto sm:max-w-none sm:mx-0`;
-const CardImageContainer = styled.div`
-  ${props => css`background-image: url("${props.imageSrc}");`}
-  ${tw`h-56 xl:h-64 bg-center bg-cover relative rounded-t`}
-`;
-const CardRatingContainer = tw.div`leading-none absolute inline-flex bg-gray-100 bottom-0 left-0 ml-4 mb-4 rounded-full px-5 py-2 items-end`;
-const CardRating = styled.div`
-  ${tw`mr-1 text-sm font-bold flex items-end`}
-  svg {
-    ${tw`w-4 h-4 fill-current text-orange-400 mr-1`}
-  }
-`;
 
 const CardHoverOverlay = styled(motion.div)`
   background-color: rgba(255, 255, 255, 0.5);
   ${tw`absolute inset-0 flex justify-center items-center`}
 `;
 const CreateButton = styled(PrimaryButton)`
-  ${tw`shadow-lg uppercase text-sm transition duration-300 transform focus:outline-none focus:shadow-outline hover:bg-gray-100 hover:text-primary-700 hocus:-translate-y-px hocus:shadow-xl`}
+  ${(props) => props.shadowed ?
+    tw`shadow-lg uppercase text-sm transition duration-300 transform focus:outline-none focus:shadow-outline hover:bg-gray-100 hover:text-primary-700 hocus:-translate-y-px hocus:shadow-xl`
+    : tw`bg-gray-100 text-primary-700 text-sm transition duration-300 transform focus:outline-none focus:shadow-outline hocus:-translate-y-px`
+  }
+  .icon {
+    display: inline;
+  }
+  .text {
+    ${tw`ml-3`}
+  }
 `;
 
 const CardsWithTabSwitch = ({
@@ -207,11 +205,49 @@ const CardsWithTabSwitch = ({
   const tabsKeys = Object.keys(tabs);
   const [activeTab, setActiveTab] = useState(tabsKeys[0]);
   const [modalOpen, setModalOpen] = React.useState(false);
+  const [grantDetailsModalOpen, setGrantDetailsModalOpen] = React.useState(false);
+  const [grantDetails, setGrantDetails] = React.useState({});
+  const [userWindow, setUserWindow] = React.useState({});
+  const [userGrantApplications, setUserGrantApplications] = React.useState([]);
+  const [grantApplicationsCount, setGrantApplicationsCount] = React.useState({
+    total: 0,
+    current: 0,
+  });
+
+  const handleOpenGrantDetails = (details) => {
+    setGrantDetails(details);
+    setGrantDetailsModalOpen(true);
+  }
 
   const handleOpenModal = (open) => {
-    console.log(open)
     setModalOpen(open);
   }
+
+  const getGrantApplications = async () => {
+    try {
+      const request = await APIHelper.get('/grants/applications');
+      const applications = request.data.data.grantApplications.length
+        <= 0
+        ? []
+        : request.data.data.grantApplications.reduce((accumulator, grantApplication) => {
+          accumulator.push(grantApplication.grantId);
+          return accumulator;
+        }, []);
+      setUserGrantApplications(request.data.data.grantApplications);
+      setGrantApplicationsCount({
+        total: request.data.meta.totalCount,
+        current: request.data.meta.currentCount,
+      })
+      tabs.Applications = applications;
+    } catch (error) {
+      return error
+    }
+  }
+
+  React.useEffect(() => {
+    setUserWindow(window)
+    getGrantApplications();
+  }, [grantDetails])
 
   const { state } = React.useContext(AuthContext);
 
@@ -237,6 +273,7 @@ const CardsWithTabSwitch = ({
               <div />
             )
         }
+        
         </div>
           <Modal isOpen={modalOpen} handleClose={() => handleOpenModal(false)}>
             <ModalHeading>
@@ -261,7 +298,6 @@ const CardsWithTabSwitch = ({
                     toast.success(response.data.message);
                     setModalOpen(false);
                   } catch (error) {
-                    console.dir(error);
                     if (error.response && error.response.data.message === 'Validation error') {
                       return err.setErrors(error.response.data.error)
                     } else if (error.response && error.response.data.message !== 'Validation error') {
@@ -406,7 +442,7 @@ const CardsWithTabSwitch = ({
                       </SubmitButton>
                       </div>
                     </Form>
-                    )}}
+                  )}}
                 </Formik>
             </ModalContentWrapper>
           </Modal>
@@ -430,56 +466,149 @@ const CardsWithTabSwitch = ({
             animate={activeTab === tabKey ? "current" : "hidden"}
           >
             <Posts key={index}>
-            
-              
-              {tabs[tabKey].map((post, index) => (
+              {activeTab !== "Applications" && tabs[tabKey].map((post, index) => (
                 <PostContainer key={index} featured={true}>
-                  <Post className="group" as="a" href={post.image}>
+                  <Post className="group" as="a" onClick={() => handleOpenGrantDetails(post)}>
                     <Image imageSrc={post.image} />
                     <Info>
                       <Category>{post.grantType}</Category>
-                      <CreationDate>{post.createdOn}</CreationDate>
+                      <CreationDate>{dayjs(post.createdOn).format('DD MMMM YYYY')}</CreationDate>
                       <Title>{post.grantName}</Title>
-                      {post.description && <Description>{post.description}</Description>}
+                      {post.description && <Description>{truncateText(post.description, 400)}</Description>}
                     </Info>
                   </Post>
                 </PostContainer>
               ))}
             
             </Posts>
+            <Posts style={{ width: '100%' }}>
+             {
+               activeTab === "Applications" && (<GrantApplications applications={userGrantApplications} grantsCount={grantApplicationsCount} />)
+             }
+            </Posts>
           </TabContent>
         ))}
+         <Modal isOpen={grantDetailsModalOpen} handleClose={() => {
+           setGrantDetailsModalOpen(false);
+           setGrantDetails({});
+          }}>
+         <ModalHeading>
+            <h4>{grantDetails.grantName}</h4>
+          </ModalHeading>
+          <ModalContentWrapper style={{ height: userWindow.innerHeight * 0.8 ?? '400px', overflow: 'auto' }}>
+            <DetailWrapper>
+              <h5>Type:</h5>
+              {grantDetails.grantType && `${grantDetails?.grantType[0]?.toUpperCase()}${grantDetails?.grantType?.slice(1)}`}
+            </DetailWrapper>
+            <DetailWrapper>
+              <h5>Description:</h5>
+              {grantDetails.description}
+            </DetailWrapper>
+            <DetailWrapper>
+              <h5>Application Requirement:</h5>
+              You will be required to fulfill the requirements stated in the document which can be downloaded below, if required, you will also need to fill and submit the document also.
+              
+              <div style={{ marginTop: '1rem' }}>
+                <a href={grantDetails.upload} download={`${grantDetails.grantName} - Requirements`}>
+                  <CreateButton type="submit">
+                    <DownloadIcon className="icon" />
+                    <span className="text">Download Document</span>
+                  </CreateButton>
+                </a>
+              </div>
+            </DetailWrapper>
+            <DetailWrapper>
+              <h5>Applications Start:</h5>
+              {dayjs(grantDetails.applicationStartDate).format('DD MMMM YYYY')}
+            </DetailWrapper>
+            <DetailWrapper>
+              <h5>Applications Expire:</h5>
+              {dayjs(grantDetails.expiryDate).format('DD MMMM YYYY')}
+            </DetailWrapper>
+            <DetailWrapper>
+              <h5>Created On:</h5>
+              {dayjs(grantDetails.createdOn).format('DD MMMM YYYY')}
+            </DetailWrapper>
+            {
+              state.isAuthenticated && state.user.userType === "REQUESTER" ? (
+              <Formik
+                initialValues={{ upload: null }}
+                onSubmit={async (values, err) => {
+                  try {
+                    // convert file to base64
+                    const b64File = await fileToBase64(values.upload);
+                    
+                    const response = await APIHelper.post(`/grants/application/${grantDetails._id}`, {
+                      applicationDocument: b64File,
+                    });
+
+                    toast.success(response.data.message);
+                    setGrantDetailsModalOpen(false);
+                  } catch (error) {
+                    console.dir(error);
+                    if (error.response && error.response.data.message === 'Validation error') {
+                      return err.setErrors(error.response.data.error)
+                    } else if (error.response && error.response.data.message !== 'Validation error') {
+                      return toast.error(error.response.data.message);
+                    } else {
+                      return toast.error('Something went wrong! Please try again');
+                    }
+                  }  
+                }}
+                validationSchema={Yup.object().shape({
+                  upload: Yup.mixed().required("Please add the required document"),
+                })}
+            >
+                {(props) => {
+                  const { values, touched, errors, isSubmitting, handleChange, handleBlur, handleSubmit, setFieldValue } = props;
+
+                  return (
+                    <Form onSubmit={handleSubmit} style={{ display: 'block' }}>
+                      <div>
+                        <Upload
+                          allow=".pdf" 
+                          name={"upload"}
+                          placeholder="Application Document"
+                          handleChange={(event) => {
+                            setFieldValue("upload", event.currentTarget.files[0]);
+                          }}
+                          handleBlur={handleBlur}
+                          errors={errors}
+                          touched={touched}
+                          values={values}
+                          label={"Application Document"}
+                        />
+                      </div>
+                      <SubmitButton disabled={isSubmitting} type="submit">
+                        {
+                          isSubmitting ? (
+                            <React.Fragment>
+                              <AlternatingLoader className="icon" />
+                              <span className="text">Loading</span>
+                            </React.Fragment>
+                          ) : (
+                            <React.Fragment>
+                              Apply
+                            </React.Fragment>
+                          )
+                        }
+                      </SubmitButton>
+                    </Form>
+                  )}}
+                </Formik>
+              ) : (
+                <div>
+                  <center>
+                    <h3 style={{ fontSize: '20px', fontWeight: 'bolder' }}>Login to apply</h3>
+                  </center>
+                </div>
+              )
+            }
+          </ModalContentWrapper>
+         </Modal>
       </ContentWithPaddingXl>
     </Container>
   );
-};
-
-/* This function is only there for demo purposes. It populates placeholder cards */
-const getRandomCards = () => {
-  const cards = [
-    {
-      imageSrc:
-        "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80",
-      title: "Chicken Chilled",
-      content: "Chicken Main Course",
-      price: "$5.99",
-      rating: "5.0",
-      reviews: "87",
-      url: "#",
-      imageSrc:
-        "https://images.unsplash.com/photo-1499678329028-101435549a4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1024&q=80",
-      category: "Grants",
-      date: "April 21, 2020",
-      title: "Another One",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.  Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      url: "https://timerse.com",
-      featured: true
-    },
-  ];
-
-  // Shuffle array
-  return cards.sort(() => Math.random() - 0.5);
 };
 
 export default CardsWithTabSwitch;

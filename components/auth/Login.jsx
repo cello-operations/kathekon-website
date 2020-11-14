@@ -96,8 +96,7 @@ const Login = ({
                       Promise.resolve();
                       
                       toast.success(`${request.data.message}`, {
-                        position: "top-center",
-                        autoClose: 5000,
+                        autoClose: 7000,
                         hideProgressBar: false,
                         closeOnClick: true,
                         pauseOnHover: true,

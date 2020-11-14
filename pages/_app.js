@@ -13,7 +13,7 @@ import '../styles/tailwind.css';
 import 'react-toastify/dist/ReactToastify.css';
 
 const AppHeader = styled(Header)`
-  ${tw`pt-8 max-w-none w-9/12`}
+  ${tw`pt-2 max-w-none w-9/12`}
 `;
 
 const App = (props) => {
@@ -43,20 +43,6 @@ const App = (props) => {
       </Link>
     );
   }
-  
-  const navLinks = [
-    <NavLinks key={1}>
-      <NavItemLink passHref name="About" href="/about"/>
-      <NavItemLink passHref name="Our Work" href="/our-work"/>
-      <NavItemLink passHref name="Blog" href="/blog"/>
-      <NavItemLink passHref name="Grants" href="/grants"/>
-    </NavLinks>,
-    <NavLinks key={2}>
-      <NavItemLinkSolo passHref name="Login" href="/login"/>
-      
-      <PrimaryLinkItem passHref name={"Sign Up"} href="/sign-up" />
-    </NavLinks>
-  ];
 
   useAuth();
 
@@ -85,7 +71,6 @@ const App = (props) => {
         <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,200;0,300;0,400;0,600;0,800;0,900;1,200;1,300&display=swap" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,800&display=swap" rel="stylesheet" />
         <meta name="author" content="Tolulope Odueke" />
-
         <meta name="title" content="Kathekon - Transforming society through evidence-driven investments in education, social welfare, and civil society" />
         <meta property="og:image" content={`/${faivconURL}`} />
         <meta name="apple-touch-fullscreen" content="yes" />
@@ -112,6 +97,17 @@ const App = (props) => {
         <meta name="twitter:site" content="@Kathekon2" />
         <meta name="twitter:creator" content="@Kathekon2" />
         <link rel="apple-touch-icon" href="/Kathekon-fav-blue-15.png" />
+        <link
+          rel="stylesheet"
+          type="text/css"
+          charSet="UTF-8"
+          href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
+        />
+        <link
+          rel="stylesheet"
+          type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
+        />
         
         <title>Kathēkon - Transforming society through evidence-driven investments</title>
       </Head>
