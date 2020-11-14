@@ -141,7 +141,7 @@ const LightHeader = ({
       <NavLink href="/about">About</NavLink>
       <NavLink href="/our-work">Our Work</NavLink>
       <NavLink href="/blog">Blog</NavLink>
-      <NavLink href="/">Grants</NavLink>
+      <NavLink href="/grants">Grants</NavLink>
     </NavLinks>,
     <NavLinks key={2}>
       <NavLink href="/login" tw="lg:ml-12!">

@@ -27,12 +27,14 @@ export const getStaticProps = async () => {
      All: [],
      Scholarships: [],
      Grants: [],
+     Applications: [],
    })
  
    return {
      props: {
        grants,
      },
+     revalidate: 1,
    }
   } catch (error) {
     if (error.response) {
@@ -43,6 +45,7 @@ export const getStaticProps = async () => {
             Scholarships: [],
             Grants: [],
           },
+          revalidate: 1,
         },
       };
     }

@@ -22,7 +22,7 @@ const ModalContainer = styled.div`
     transform: translate(-50%,-50%);
     border-radius: 12px;
 
-    @media (max-width: 414px) {
+    @media (max-width: 1024px) {
       width: 95%;
       overflow-y: auto;
     }

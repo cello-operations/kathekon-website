@@ -44,7 +44,7 @@ const AboutUs = () => {
         features={[
           "To improve the quality of education available to low-income families.",
           "To invest ininnovative organizations providing financial assistance and business development support to people living in poverty.",
-          "Torebrandandreenergizecivilsociety.",
+          "To rebrand and reenergize civil society.",
         ]}
         imageCredits={(
           <span style={{ color: '#333', fontSize: '10px', fontWeight: 100 }}>Photo by <a style={{ color: '#34a4dd' }} href="https://unsplash.com/@oviidaniel?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Ovinuchi Ejiohuo</a> on <a href="https://unsplash.com/s/photos/nigeria-society?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>

@@ -15,6 +15,7 @@ export const getStaticProps = async () => {
     props: {
       blogPosts: request.data.data.posts,
     },
+    revalidate: 1,
   }
  } catch (error) {
    if (error.response) {
@@ -22,6 +23,7 @@ export const getStaticProps = async () => {
        props: {
          blogPosts: [],
        },
+       revalidate: 1,
      };
    }
  }
