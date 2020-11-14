@@ -113,7 +113,7 @@ const App = (props) => {
         <meta name="twitter:creator" content="@Kathekon2" />
         <link rel="apple-touch-icon" href="/Kathekon-fav-blue-15.png" />
         
-        <title>Kathekon - Transforming society through evidence-driven investments</title>
+        <title>Kathēkon - Transforming society through evidence-driven investments</title>
       </Head>
         {/* <GlobalStyle /> */}
         <div
