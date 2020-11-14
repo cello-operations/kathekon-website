@@ -54,14 +54,14 @@ const Landing = (props) => {
           },
           1: {
             heading: "Our Mission",
-            description: "To operate like a startup in the social impact space, thus focusing only on areas where we can maximize value.",
+            description: "To focus on value-maximizing investments in the social impact space, thus using an empirical approach that tests rigorously the viability and productivity of every project and jettisons programs unamenable to improved processes.",
           },
         }}
         testimonials={[
           {
             id: 0,
             imageSrc:
-              "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1024&q=80",
+              "https://res.cloudinary.com/tolulope-od/image/upload/v1599943083/nathan-dumlao-VJHb4QPBgV4-unsplash_zuahht.jpg",
             profileImageSrc:
               "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3.25&w=512&h=512&q=80",
             quote:
@@ -75,16 +75,17 @@ const Landing = (props) => {
           {
             id: 1,
             imageSrc:
-              "https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1024&q=80",
+              "https://res.cloudinary.com/tolulope-od/image/upload/v1599957294/bernard-hermant-z9AOxTYQBy4-unsplash_awrrpy.jpg",
             profileImageSrc:
               "https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=512&h=512&q=80",
-            quote:
-              "Something profound goes here as a quote from a famous person.",
-            customerName: "DJ Cuppy",
+              quote:
+              "The impediment to action advances action.",
+          
+            customerName: "Marcus Aurelius",
             customerTitle: "",
-            hasQuote: false,
+            hasQuote: true,
             heading: "Our Mission",
-            description: "To operate like a startup in the social impact space, thus focusing only on areas where we can maximize value.",
+            description: "To focus on value-maximizing investments in the social impact space, thus using an empirical approach that tests rigorously the viability and productivity of every project and jettisons programs unamenable to improved processes.",
           },
         ]}
         textOnLeft={true}
