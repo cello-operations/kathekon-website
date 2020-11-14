@@ -9,9 +9,18 @@ import { motion } from "framer-motion";
 import { css } from "styled-components/macro"; //eslint-disable-line
 import { SectionHeading } from "../misc/Headings.jsx";
 import { Container, ContentWithPaddingXl } from "../misc/Layouts.jsx";
-import FacebookIcon from "../../public/images/facebook-icon.svg";
 
 dayjs.extend(relativeTime);
+
+const PaddedContent = styled.div`
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 3rem;
+  padding-right: 3rem;
+  padding-top: 5rem;
+  padding-bottom: 5rem
+`;
 
 const Row = tw.div`flex flex-col lg:flex-row -mb-10`;
 const Heading = tw(SectionHeading)`text-left text-gray-900 lg:text-4xl xl:text-5xl`;
@@ -96,6 +105,14 @@ const BlogPostBody = ({ postObject, post, recentPosts }) => {
     }
   };
 
+  // max-width: 1280px;
+  // margin-left: auto;
+  // margin-right: auto;
+  // padding-left: 3rem;
+  // padding-right: 3rem;
+  // padding-top: 5rem;
+  // padding-bottom: 5rem
+
   return (
     <Container style={{ fontFamily: 'Poppins' }}>
       <div id="fb-root"></div>
@@ -126,7 +143,7 @@ const BlogPostBody = ({ postObject, post, recentPosts }) => {
             </Post>
             </PostsContainer>
           </PopularPostsContainer>
-          <RecentPostsContainer style={{ paddingRight: '1.75rem', paddingLeft: '1.75rem' }}>
+          <RecentPostsContainer>
             <Heading />  
             <PostsContainer>
             <>
@@ -189,7 +206,7 @@ const BlogPostBody = ({ postObject, post, recentPosts }) => {
                 </PlanHeader>
                 {recentPosts.map((post, index) => (
                   <Link key={post._id} href={`/blog/post/${post.slug}`}>
-                    <Post className="group">
+                    <Post className="group" style={{ width: '100%' }}>
                       <PostTextContainer>
                         <Title>{post.title}</Title>
                         <AuthorName>{post.author.firstName} {post.author.lastName}</AuthorName>

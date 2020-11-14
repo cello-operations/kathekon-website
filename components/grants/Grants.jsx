@@ -7,16 +7,6 @@ import GrantsBanner from '../fragments/GrantsBanner.jsx';
 import GrantsTabs from '../cards/CardsWIthTabSwitch.jsx';
 import { PageNavLinks } from '../header/NavLinks.jsx';
 
-// const PaddedBackground = styled.div`
-//   ${tw.div`max-w-screen-xl mx-auto px-6 py-6 lg:px-8 lg:py-8`}
-//   background: white;
-//   border-radius: 0.75rem;
-//   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-//   z-index: 2;
-//   position: absolute;
-//   transform: translate(10%, 30%);
-// `;
-
 const MotionSection = styled.section`
   background: white;
   padding: 2rem 4rem;

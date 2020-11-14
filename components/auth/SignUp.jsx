@@ -78,8 +78,7 @@ const SignUp = ({
 
                     Promise.resolve();
                     toast.success(`${request.data.message}`, {
-                      position: "top-center",
-                      autoClose: 5000,
+                      autoClose: 7000,
                       hideProgressBar: false,
                       closeOnClick: true,
                       pauseOnHover: true,
@@ -95,7 +94,6 @@ const SignUp = ({
                     }
 
                     return toast.error(`Error: ${message}`, {
-                      position: "top-center",
                       autoClose: false,
                       hideProgressBar: false,
                       closeOnClick: true,
@@ -112,7 +110,7 @@ const SignUp = ({
                   firstName: Yup.string().min(2, 'First name is too short').max(55, 'First name is too long').required("First name is required"),
                   lastName: Yup.string().min(2, 'Last name is too short').max(55, 'Last name is too long').required("Last name is required"),
                   password: Yup.string().min(2, 'Password is too short').max(55, 'Password is too long').required("Password is required"),
-                  phoneNumber: Yup.string().min(10, 'Phone number cannot be less than 10 digits').max(10, 'Phone number cannot be more than 10 digits'),
+                  phoneNumber: Yup.string().min(11, 'Phone number cannot be less than 10 digits').max(11, 'Phone number cannot be more than 11 digits'),
                 })}
               >
                 {(props) => {

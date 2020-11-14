@@ -88,6 +88,7 @@ export const Upload = (props) => (
       placeholder={props.placeholder}
       onChange={props.handleChange}
       onBlur={props.handleBlur}
+      accept={props.allow}
     />
     {
       props.errors[props.name] && props.touched[props.name] && (

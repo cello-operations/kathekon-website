@@ -69,9 +69,9 @@ const TeamCardGrid = ({
       ],
     },
     {
-      imageSrc: "https://res.cloudinary.com/tolulope-od/image/upload/v1605096180/WhatsApp_Image_2020-11-03_at_11.06.20_jbgfye.jpg",
-      position: "Social Media Manager",
-      name: "Adebimpe Adeyemi",
+      imageSrc: "https://res.cloudinary.com/tolulope-od/image/upload/v1605095625/WhatsApp_Image_2020-09-30_at_11.06.35_luwk2f.jpg",
+      position: "Director of Communications",
+      name: "Socrates Mbalu",
       links: [
         {
           url: "https://linkedin.com",
@@ -80,9 +80,9 @@ const TeamCardGrid = ({
       ],
     },
     {
-      imageSrc: "https://res.cloudinary.com/tolulope-od/image/upload/v1605095625/WhatsApp_Image_2020-09-30_at_11.06.35_luwk2f.jpg",
-      position: "Director of Communications",
-      name: "Socrates Mbalu",
+      imageSrc: "https://res.cloudinary.com/tolulope-od/image/upload/v1605096180/WhatsApp_Image_2020-11-03_at_11.06.20_jbgfye.jpg",
+      position: "Social Media Manager",
+      name: "Adebimpe Adeyemi",
       links: [
         {
           url: "https://linkedin.com",
