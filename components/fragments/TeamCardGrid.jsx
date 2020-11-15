@@ -63,7 +63,7 @@ const TeamCardGrid = ({
       name: "Morisola Alaba",
       links: [
         {
-          url: "https://linkedin.com",
+          url: "https://www.linkedin.com/in/morisola-alaba-4506aa83",
           icon: LinkedinSVGIcon,
         },
       ],
@@ -74,7 +74,7 @@ const TeamCardGrid = ({
       name: "Socrates Mbamalu",
       links: [
         {
-          url: "https://linkedin.com",
+          url: "https://www.linkedin.com/in/socrates-mbamalu-7b159b7b",
           icon: LinkedinSVGIcon,
         },
       ],
@@ -85,7 +85,7 @@ const TeamCardGrid = ({
       name: "Adebimpe Adeyemi",
       links: [
         {
-          url: "https://linkedin.com",
+          url: "https://www.linkedin.com/in/adebimpe-adeyemi-a44a50149",
           icon: LinkedinSVGIcon,
         },
       ],
