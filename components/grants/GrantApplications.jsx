@@ -254,7 +254,7 @@ const GrantApplications = (props) => {
                                           </span>
                                         </td>
                                     </tr>
-                                )) : <center><em>No applications to view at this time</em></center>
+                                )) : <tr><td><em>No applications to view at this time</em></td></tr>
                               }
                             </tbody>
                         </table>

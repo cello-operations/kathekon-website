@@ -30,7 +30,7 @@ const CustomersLogoStrip = styled.div`
     ${tw`uppercase text-sm lg:text-xs tracking-wider font-bold text-gray-500`}
   }
   img {
-    ${tw`mt-4 w-full lg:pr-16 xl:pr-32 opacity-50`}
+    ${tw`mt-4 w-9/12 lg:pr-16 xl:pr-32 opacity-50`}
   }
 `;
 const GetStarted = ({
@@ -51,8 +51,8 @@ const GetStarted = ({
             {subheading && <Subheading>{subheading}</Subheading>}
             <Heading>{heading}</Heading>
             <CustomersLogoStrip>
-              {/* <p>Our TRUSTED Partners</p>
-              <img src={'/images/customers-logo-strip.png'} alt="Our Customers" /> */}
+              <p>Our TRUSTED Partners</p>
+              <img src={'/images/logo-strip.png'} alt="Our Customers" />
             </CustomersLogoStrip>
           </TextContainer>
           <LinksContainer>
