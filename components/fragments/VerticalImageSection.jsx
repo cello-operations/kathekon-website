@@ -62,7 +62,7 @@ const VerticalImageSection = () => {
   const cards = [
     {
       imageSrc: "https://res.cloudinary.com/tolulope-od/image/upload/v1601215756/annie-spratt-KBpIcWV6o2c-unsplash_vrmi0u.jpg",
-      subtitle: "Education",
+      subtitle: "",
       title: "Investment In Education",
       description: (
         <span style={{ fontSize: '18px' }}>
@@ -75,8 +75,8 @@ const VerticalImageSection = () => {
     {
       imageSrc:
         "https://res.cloudinary.com/tolulope-od/image/upload/v1601224310/babatunde-olajide-q4ZBGVzJskE-unsplash_aie8pm.jpg",
-      subtitle: "General Framework",
-      title: "Long-term Goals",
+      subtitle: "",
+      title: "Social Welfare",
       description: (
         <span style={{ fontSize: '18px' }}>
           We will provide local NGOs with funds in order to reshape societies through investments in social impact spaces such as Education, Civil Societies and Social welfare. Also, we make provision for discretionary grants to support humanitarian response to emergencies and relevant long-term interventions that fall within the specific thematic areas of choice.
@@ -89,8 +89,8 @@ const VerticalImageSection = () => {
     {
       imageSrc:
         "https://res.cloudinary.com/tolulope-od/image/upload/v1601138950/logan-weaver-uwyqYYWUQJw-unsplash_upqyxf.jpg",
-      subtitle: "General Framework",
-      title: "Civil Society framework",
+      subtitle: "",
+      title: "Civil Society",
       description: (
         <span style={{ fontSize: '18px' }}>
           We recognize the important work of the civil society in a country like Nigeria and often times those in the civil society find themselves working in the most challenging environments either as a result of government stifling the civic space or the limited number of funds available.

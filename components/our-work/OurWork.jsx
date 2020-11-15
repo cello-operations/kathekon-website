@@ -1,9 +1,7 @@
 import * as React from "react";
 import Head from 'next/head';
 import AnimationRevealPage from "../../helpers/AnimationRevealPage.jsx";
-import Header from "../header/LightHeader.jsx";
 import OurWorkFeatures from "../fragments/VerticalImageSection.jsx";
-import TwoColWithSteps from "../fragments/TwoColWithSteps.jsx";
 const steps = [
   {
     number: 'I',
