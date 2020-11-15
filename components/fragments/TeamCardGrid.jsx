@@ -49,7 +49,7 @@ const TeamCardGrid = ({
     {
       imageSrc: "https://res.cloudinary.com/tolulope-od/image/upload/v1601211702/web-9_whr5dl.jpg",
       position: "Executive Director",
-      name: "Ifedolapo Jubee",
+      name: "Ifedolapo Ogunjubee",
       links: [
         {
           url: "https://www.linkedin.com/in/ifedolapo-ogunjubee",
@@ -71,7 +71,7 @@ const TeamCardGrid = ({
     {
       imageSrc: "https://res.cloudinary.com/tolulope-od/image/upload/v1605095625/WhatsApp_Image_2020-09-30_at_11.06.35_luwk2f.jpg",
       position: "Director of Communications",
-      name: "Socrates Mbalu",
+      name: "Socrates Mbamalu",
       links: [
         {
           url: "https://linkedin.com",

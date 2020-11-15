@@ -25,7 +25,7 @@ const AboutUs = () => {
         subheading={<Subheading>About Kathēkon</Subheading>}
         heading=""
         buttonRounded={false}
-        description={'Kathekon supports organisations that seek to transform society through evidence-driven investments in education, social welfare, and civil society in Nigeria. Kathekon welcomes experimental ideas that drive pragmatic and significant change while depending on data as a measurement tool. Kathekon seeks to partner and build a generation of selfless individuals who would give themselves over to pragmatic change. While Nigeria is a current focus, Kathekon will equally focus on other African countries.'}
+        description={'Kathekon supports organisations that seek to transform society through evidence-driven investments in education, social welfare, and civil society in Nigeria. We welcome experimental ideas that drive pragmatic and significant change while depending on data as a measurement tool. Kathekon seeks to partner and build a generation of selfless individuals who would give themselves over to pragmatic change. While Nigeria is a current focus, Kathekon will equally focus on other African countries.'}
         primaryButtonUrl={"/our-workx"}
         primaryButtonText="See Our Work"
         imageCredits={(
@@ -35,7 +35,7 @@ const AboutUs = () => {
       />
       <MainFeature1
         subheading={<Subheading>Our Goals</Subheading>}
-        heading="To fundamentally transform our three areas of focus (education, social welfare, and civil society) by undertaking development programs that scale up every year and, in time, yield systemic changes."
+        heading="To fundamentally transform three areas of focus (education, social welfare, and civil society) by undertaking development programs that scale up every year and, in time, yield systemic changes."
         buttonRounded={false}
         primaryButtonText="Partner With Us"
         imageSrc="https://res.cloudinary.com/tolulope-od/image/upload/v1601229705/ovinuchi-ejiohuo-OxesnxkySD0-unsplash_lvswaz.jpg"

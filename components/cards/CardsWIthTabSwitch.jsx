@@ -213,6 +213,7 @@ const CardsWithTabSwitch = ({
     total: 0,
     current: 0,
   });
+  const { state } = React.useContext(AuthContext);
 
   const handleOpenGrantDetails = (details) => {
     setGrantDetails(details);
@@ -238,18 +239,23 @@ const CardsWithTabSwitch = ({
         total: request.data.meta.totalCount,
         current: request.data.meta.currentCount,
       })
-      tabs.Applications = applications;
+      state.isAuthenticated ? tabs.Applications = applications : delete tabs.Applications;
     } catch (error) {
       return error
     }
   }
 
   React.useEffect(() => {
+    console.log(state);
     setUserWindow(window)
-    getGrantApplications();
-  }, [grantDetails])
+    if (state.isAuthenticated) {
+      getGrantApplications();
+    }
 
-  const { state } = React.useContext(AuthContext);
+    if (!state.isAuthenticated) {
+      delete tabs.Applications
+    }
+  }, [grantDetails])
 
   return (
     <Container style={{ fontFamily: 'Raleway' }}>
