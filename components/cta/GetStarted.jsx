@@ -33,6 +33,14 @@ const CustomersLogoStrip = styled.div`
     ${tw`mt-4 w-9/12 lg:pr-16 xl:pr-32 opacity-50`}
   }
 `;
+
+const StyledImage = styled.img`
+  margin-left: -1.25rem;
+  
+  @media(max-width: 400px) {
+    margin-left: .75rem;
+  }
+`;
 const GetStarted = ({
   subheading = "Interested in Treact ?",
   heading = "Join the closed beta now.",
@@ -51,8 +59,8 @@ const GetStarted = ({
             {subheading && <Subheading>{subheading}</Subheading>}
             <Heading>{heading}</Heading>
             <CustomersLogoStrip>
-              <p>Our TRUSTED Partners</p>
-              <img src={'/images/logo-strip.png'} alt="Our Customers" />
+              <p>Our TRUSTED Partner</p>
+              <StyledImage src={'/images/logo-strip.png'} alt="Musonious Rufus logo: Kathekon partner" />
             </CustomersLogoStrip>
           </TextContainer>
           <LinksContainer>

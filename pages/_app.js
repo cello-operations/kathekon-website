@@ -2,15 +2,15 @@ import * as React from 'react';
 import Head from 'next/head';
 import tw from "twin.macro";
 import styled from 'styled-components';
-import Link from 'next/link';
 import { ToastContainer } from 'react-toastify';
 import Footer from '../components/fragments/Footer.jsx'
-import Header, { NavLink, NavLinks, PrimaryLink, LogoLink, NavToggle, DesktopNavLinks } from "../components/header/LightHeader.jsx";
+import Header, { NavLink, PrimaryLink } from "../components/header/LightHeader.jsx";
 import { Container } from "../components/misc/Layouts.jsx"
 import { AuthStateProvider } from '../context/AuthContext';
 import useAuth from '../hooks/useAuth';
-import '../styles/tailwind.css';
 import 'react-toastify/dist/ReactToastify.css';
+
+import '../styles/tailwind.css';
 
 const AppHeader = styled(Header)`
   ${tw`pt-2 max-w-none w-9/12`}
@@ -18,32 +18,6 @@ const AppHeader = styled(Header)`
 
 const App = (props) => {
   const { Component, pageProps } = props;
-  const buttonRounded = false;
-  const buttonRoundedCss = buttonRounded && tw`rounded-full`;
-  function NavItemLink({ href, name}) {
-    return (
-      <Link href={href}>
-        <NavLink style={{ cursor: 'pointer' }}>{name}</NavLink>
-      </Link>
-    )
-  }
-
-  function NavItemLinkSolo({ href, name }) {
-    return (
-      <Link href={href}>
-        <NavLink tw="lg:ml-12!" style={{ cursor: 'pointer' }}>{name}</NavLink>
-      </Link>
-    )
-  }
-
-  function PrimaryLinkItem({ href, name }) {
-    return (
-      <Link href={href}>
-        <PrimaryLink css={buttonRoundedCss} style={{ cursor: 'pointer' }}>{name}</PrimaryLink>
-      </Link>
-    );
-  }
-
   useAuth();
 
   const [faivconURL, setFaviconURL] = React.useState('favicon.png');
@@ -76,7 +50,7 @@ const App = (props) => {
         <meta name="apple-touch-fullscreen" content="yes" />
         <meta name="twitter:card" content="photo" />
         <meta name="twitter:title" content="Kathēkon: Transforming society through investments in education, social welfare, and civil society" />
-        <meta name="twitter:description" content="Kathekon is a non-governmental organization that seeks to transform society through investments in education, social welfare, and civil society"></meta>
+        <meta name="twitter:description" content="Kathekon is a non-governmental organization that seeks to transform society through investments in education, social welfare, and civil society" />
         <meta name="twitter:image:src" content="https://res.cloudinary.com/tolulope-od/image/upload/v1605094663/Kathekon-redesign-13-13_e9qpnx.png" />
         <link rel="icon" sizes="32x32" href="https://res.cloudinary.com/tolulope-od/image/upload/v1605094663/Kathekon-redesign-13-13_e9qpnx.png" />
         <link rel="apple-touch-icon" sizes="152x152" href="https://res.cloudinary.com/tolulope-od/image/upload/v1605094663/Kathekon-redesign-13-13_e9qpnx.png" />

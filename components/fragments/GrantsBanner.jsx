@@ -15,7 +15,7 @@ const Row = tw.div`px-8 max-w-screen-lg mx-auto relative text-center`;
 const ColumnContainer = tw.div`lg:w-1/2 max-w-lg`
 const TextContainer = tw(ColumnContainer)``;
 const Text = tw.h5`text-gray-100 text-2xl sm:text-3xl font-bold`;
-const SubText = tw.p`text-gray-400 mt-3`;
+const SubText = tw.p`text-gray-300 mt-3`;
 
 const LinksContainer = tw(ColumnContainer)`flex justify-center lg:justify-end mt-6 lg:mt-0 flex-col sm:flex-row`;
 
@@ -29,7 +29,7 @@ const DecoratorBlob1 = tw(SvgDecoratorBlob1)`absolute bottom-0 left-0 w-80 h-80 
 const DecoratorBlob2 = tw(SvgDecoratorBlob1)`absolute top-0 right-0 w-80 h-80 transform  translate-x-20 -translate-y-64 text-primary-700 opacity-50`
 const GrantsBanner = ({
   text = "Credible organizations can apply for grants",
-  subtext = "",
+  subtext = "We implore individuals and organizations whose values are consistent with ours, whose goals for the future are reflected in ours, and whose vision for change is as radical, urgent, and pragmatic as ours, to apply for grants.",
   pushDownFooter = false
 }) => {
   return (

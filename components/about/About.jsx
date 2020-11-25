@@ -7,6 +7,8 @@ import Features from "../fragments/ThreeColFeatures.jsx";
 import TeamCardGrid from "../fragments/TeamCardGrid.jsx";
 
 const Subheading = tw.span`uppercase tracking-wider text-sm`;
+const Description = tw.p`mt-4 text-center md:text-left md:text-base lg:text-lg font-medium leading-relaxed text-secondary-900 font-sans`;
+
 const AboutUs = () => {
   return (
     <>
@@ -35,7 +37,9 @@ const AboutUs = () => {
       />
       <MainFeature1
         subheading={<Subheading>Our Goals</Subheading>}
-        heading="To fundamentally transform three areas of focus (education, social welfare, and civil society) by undertaking development programs that scale up every year and, in time, yield systemic changes."
+        heading={(
+          <Description>To make systemic changes in specific areas of choice while undertaking development programs that scale up each year.</Description>
+        )}
         buttonRounded={false}
         primaryButtonText="Partner With Us"
         imageSrc="https://res.cloudinary.com/tolulope-od/image/upload/v1601229705/ovinuchi-ejiohuo-OxesnxkySD0-unsplash_lvswaz.jpg"
@@ -43,7 +47,7 @@ const AboutUs = () => {
         hasList={true}
         features={[
           "To improve the quality of education available to low-income families.",
-          "To invest ininnovative organizations providing financial assistance and business development support to people living in poverty.",
+          "To fund credible organizations and support underserved communities.",
           "To rebrand and reenergize civil society.",
         ]}
         imageCredits={(
@@ -52,7 +56,7 @@ const AboutUs = () => {
       />
       <Features
         subheading={<Subheading>General Framework</Subheading>}
-        heading="An empirical approach."
+        heading=""
         description="​If results fall too far below the anticipated outcomes, we shall redirect capital: to a new region where the project will likely be more successful, or to support an entirely different area of need"
         cards={[
           {

@@ -192,7 +192,6 @@ const PageNavLinks = [
             handleLogout={() => {
               const cookies = new Cookie()
               localStorage.clear();
-              cookies.remove('servicePortalJWToken');
               cookies.remove('kathekonToken');
               dispatch({ type: "logout" });
               if (window) {

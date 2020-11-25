@@ -1,25 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import Head from 'next/head';
-import ReactHtmlParser from 'react-html-parser';
-import dynamic from 'next/dynamic';
-import AnimationRevealPage from "../../helpers/AnimationRevealPage.jsx";
 import tw from "twin.macro";
-import styled from "styled-components";
+import EDJSParser from "editorjs-parser";
 import { css } from "styled-components/macro";
-import { PrimaryButton } from "../misc/Buttons.jsx";
-import APIHelper from '../../helpers/APIHelpers';
 import { generalHelpers } from '../../helpers/generalHelpers';
 import parseEditorData from '../../utils/parseEditorData'
 import BlogPostBody from "./BlogPostBody.jsx";
 
-const Content = tw.div`max-w-screen-xl mx-auto pb-20 lg:pb-24`;
 const Container = tw.div`grid grid-cols-13`;
-const InputContainer = tw.div`relative mt-2`;
-const Title = styled.p`text-align: center;
-${tw`w-full bg-transparent text-4xl font-black tracking-wide border-b-0 hocus:border-red-0 focus:outline-none transition duration-200`};`
-
-const Description = styled.p`text-align: center;
-${tw`w-full bg-transparent font-light tracking-wide border-b-0 hocus:border-red-0 focus:outline-none transition duration-200`};`
 
 const BlogPost = (props) => {
   
@@ -28,6 +16,8 @@ const BlogPost = (props) => {
   const postBody = JSON.parse(postObject.body);
   
   const post = parseEditorData(postBody)
+  const parser = new EDJSParser();
+  const markup = parser.parse(postBody);
 
   return (
     <>
@@ -41,6 +31,9 @@ const BlogPost = (props) => {
         <meta property="og:title"         content={`${postObject.title} - Kathekon`} />
         <meta property="og:description"   content={postObject.description} />
         <meta property="og:image"         content={postObject.coverImage} />
+        <meta name="twitter:image:src" content={postObject.coverImage} />
+        <meta name="twitter:title" content="Kathēkon: Transforming society through investments in education, social welfare, and civil society" />
+        <meta name="twitter:description" content={postObject.description} />
       </Head>
         <Container>
           <BlogPostBody
