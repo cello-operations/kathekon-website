@@ -1,13 +1,14 @@
-import { useRouter } from 'next/router'
+import * as React from 'react';
+import { useRouter } from 'next/router';
 import BlogPost from '../../../components/blog/BlogPost.jsx';
 import APIHelper from '../../../helpers/APIHelpers';
+import PostLoading from '../../../components/blog/PostLoading.jsx';
 
 const Post = (props) => {
   const router = useRouter()
-  const { slug } = router.query;
 
   if (router.isFallback) {
-    return <div>Loading....</div>
+    return <PostLoading />
   }
 
   return (

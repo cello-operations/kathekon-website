@@ -17,10 +17,9 @@ const Landing = (props) => {
   return (
     <div>
       <AnimationRevealPage>
-        {/* <h1 className="title" style={{ display: 'none' }}>kathekon</h1> */}
         <BackgroundWithCenteredContent
           requestedPathName={props.requestedPathName}
-          backgroundImage={"https://res.cloudinary.com/tolulope-od/image/upload/v1603023426/agence-olloweb-Z2ImfOCafFk-unsplash_asukce.jpg"}
+          backgroundImage={"https://res.cloudinary.com/tolulope-od/image/upload/v1601250870/aaron-burden-NXt5PrOb_7U-unsplash_uix1mv.jpg"}
         />
         <TwoColFeatureSection
           subheading={(
@@ -29,7 +28,7 @@ const Landing = (props) => {
             </Subheading>
           )}
           heading={<Title>We are <span tw="text-primary-500">Kathēkon.</span></Title>}
-          description={"Dedicated to Rebuiilding Societies through strategic investments in the social impact space"}
+          description={"Dedicated to Rebuilding Societies through strategic investments in the social impact space"}
           buttonRounded={false}
           primaryButtonText="About Us"
           imageSrc="https://res.cloudinary.com/tolulope-od/image/upload/v1601139589/santi-vedri-O5EMzfdxedg-unsplash_forq9q.jpg"
@@ -54,7 +53,7 @@ const Landing = (props) => {
           },
           1: {
             heading: "Our Mission",
-            description: "To focus on value-maximizing investments in the social impact space, thus using an empirical approach that tests rigorously the viability and productivity of every project and jettisons programs unamenable to improved processes.",
+            description: "To focus on investing in the social impact space with the aim of productivity through tested rigorous processes in various programs, and simultaneously improving on them.",
           },
         }}
         testimonials={[
@@ -85,28 +84,28 @@ const Landing = (props) => {
             customerTitle: "",
             hasQuote: true,
             heading: "Our Mission",
-            description: "To focus on value-maximizing investments in the social impact space, thus using an empirical approach that tests rigorously the viability and productivity of every project and jettisons programs unamenable to improved processes.",
+            description: "To build a community through investments in the social impact space with the aim of supporting productive programs",
           },
         ]}
         textOnLeft={true}
       />
       <GrantsSection
-        subheading={"Grants"}
-        heading ={<Title>We grant <span tw="text-primary-500">Funding.</span></Title>}
-        description={"What do we fund?"}
+        subheading={""}
+        heading ={<Title>What do we <span tw="text-primary-900">Fund?</span></Title>}
+        description={""}
         cta={"Apply Here"}
         posts={fundingCategories}
       />
       <FeaturedBlogsSection
         cardLinkText={"Read Article"}
-        subheading={"Our Blog"}
+        subheading={""}
         hasDescription={true}
         description={"Our amazing team loves to write articles to share what the atmosphere at the organization feels and also to share insights on our grant application processes."}
         linkText={"View more articles"}
         headingHtmlComponent={
           (
             <Title>
-              We write some very <span tw="text-primary-500">amazing articles.</span>
+              Our <span tw="text-primary-500">Blog</span>
             </Title>
           )
         }

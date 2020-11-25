@@ -88,7 +88,7 @@ const VerticalImageSection = () => {
     },
     {
       imageSrc:
-        "https://res.cloudinary.com/tolulope-od/image/upload/v1601138950/logan-weaver-uwyqYYWUQJw-unsplash_upqyxf.jpg",
+        "https://res.cloudinary.com/tolulope-od/image/upload/v1605993332/samson-maxwell--D2Mcv1JN8k-unsplash_e8cfli.jpg",
       subtitle: "",
       title: "Civil Society",
       description: (
@@ -98,7 +98,7 @@ const VerticalImageSection = () => {
       ),
       url: "/contact-us",
       hasSteps: true,
-      imageCredit: (<span style={{ color: '#333333', fontSize: '10px', fontWeight: 100 }}>Photo by <a style={{ color: '#34a4dd' }} href="https://unsplash.com/@wwarby?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">William Warby</a> on <a style={{ color: '#34a4dd' }} href="https://unsplash.com/s/photos/measurement?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>),
+      imageCredit: (<span style={{ color: '#333333', fontSize: '10px', fontWeight: 100 }}>Photo by <a style={{ color: '#34a4dd' }} href="https://unsplash.com/@mxwll?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Samson Maxwell</a> on <a style={{ color: '#34a4dd' }} href="https://unsplash.com/s/photos/%23endsars?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>),
     },
     // {
     //   imageSrc:

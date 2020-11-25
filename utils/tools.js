@@ -24,16 +24,26 @@ export const EDITOR_JS_TOOLS = {
   list: List,
   warning: Warning,
   code: Code,
-  linkTool: LinkTool,
-  raw: Raw,
-  header: {
-    class: Header,
-    shortcut: 'CMD+SHIFT+H',
+  linkTool: {
+    class: LinkTool,
+    config: {
+      endpoint: '/api/v1/link',
+    },
   },
-  quote: Quote,
+  raw: Raw,
+  header: Header,
+  quote: {
+    class: Quote,
+    inlineToolbar: true,
+    shortcut: 'CMD+SHIFT+O',
+    config: {
+      quotePlaceholder: 'Enter a quote',
+      captionPlaceholder: 'Quote\'s author',
+    },
+  },
   marker: Marker,
   checklist: CheckList,
   delimiter: Delimiter,
   inlineCode: InlineCode,
-  simpleImage: SimpleImage
+  simpleImage: SimpleImage,
 };

@@ -1,3 +1,4 @@
+import * as React from 'react';
 import Landing from '../components/landing/LandingPage.jsx';
 import APIHelper from '../helpers/APIHelpers';
 

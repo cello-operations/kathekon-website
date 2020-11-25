@@ -32,8 +32,8 @@ const Meta = styled.div`
   }
 `;
 
-const Title = tw.h5`mt-4 leading-snug font-bold text-lg`;
-const Description = tw.p`mt-2 text-sm text-secondary-100`;
+const Title = tw.h5`mt-4 leading-snug font-bold text-2xl`;
+const Description = tw.p`mt-2 text-lg text-secondary-100`;
 const Link = styled(PrimaryButtonBase).attrs({as: "a"})`
   ${tw`inline-block mt-4 text-sm font-semibold`}
 `
