@@ -57,7 +57,7 @@ const Footer = () => {
     );
   }
   return (
-    <Container>
+    <Container style={{ fontFamily: 'Poppins, sans-serif' }}>
       <Content>
         <SixColumns>
           <Column>

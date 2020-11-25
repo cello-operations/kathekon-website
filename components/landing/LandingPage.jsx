@@ -8,7 +8,7 @@ import GrantsSection from '../fragments/GrantsSection.jsx';
 import FeaturedBlogsSection from '../fragments/FeaturedBlogsSection.jsx';
 import GetStarted from '../cta/GetStarted.jsx';
 
-import { cards, fundingCategories } from '../../utils/grantsInformation';
+import { fundingCategories } from '../../utils/grantsInformation';
 
 const Subheading = tw.span`uppercase tracking-wider text-sm`;
 const Title = tw.div`text-secondary-700`;

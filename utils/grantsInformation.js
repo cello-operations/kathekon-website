@@ -7,7 +7,7 @@ export const fundingCategories = [
     // author: "Adam Wathan",
     // category: "Education",
     title: "Education",
-    description: "Education is a necessity in our society and part of our work at Kathekon is to identify inefficiencies in this area and help rebuild and achieve a well standardized model by providing funds to schools that have the potential but are limited in resources.",
+    description: "Education is a necessity in our society and part of our work at Kathēkon is to identify inefficiencies in this area and help rebuild in order to achieve a well-standardized model by providing funds to schools that have the potential but are limited in resources.",
     url: "/grants",
   },
   {

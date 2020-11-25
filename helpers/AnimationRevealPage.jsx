@@ -42,7 +42,7 @@ function AnimatedSlideInComponent({ direction = "left", offset = 30, children })
 }
 
 const AnimationRevealPage = (props) => (
-  <StyledDiv className="App">
+  <StyledDiv className="App" style={{ fontFamily: 'Raleway' }}>
     <AnimationReveal {...props} />
   </StyledDiv>
 );

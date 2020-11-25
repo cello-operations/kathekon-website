@@ -2,9 +2,7 @@ import React from "react";
 import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro";
-import { ReactComponent as TwitterSVGIcon } from "feather-icons/dist/icons/twitter.svg";
 import { ReactComponent as LinkedinSVGIcon } from "feather-icons/dist/icons/linkedin.svg";
-import { ReactComponent as FacebookSVGIcon } from "feather-icons/dist/icons/facebook.svg";
 import { Container, ContentWithPaddingXl } from "../misc/Layouts.jsx";
 import { SectionHeading, Subheading as SubheadingBase } from "../misc/Headings.jsx";
 import {SectionDescription} from "../misc/Typography.jsx";
@@ -24,7 +22,10 @@ const CardImage = styled.div`
 const CardContent = styled.div`
   ${tw`flex flex-col items-center mt-6`}
   .position {
-    ${tw`uppercase font-bold tracking-widest text-xs text-primary-500`}
+    ${tw`uppercase font-bold tracking-widest text-sm text-primary-500`}
+  }
+  .role {
+    ${tw`uppercase font-bold tracking-widest text-xs text-secondary-100`}
   }
   .name {
     ${tw`mt-1 text-xl font-medium text-gray-900`}
@@ -42,13 +43,14 @@ const CardLinks = styled.div`
 `
 
 const TeamCardGrid = ({
-  heading = "Meet Our Team.",
+  heading = "",
   subheading = "Our Team",
   description = "",
   cards = [
     {
       imageSrc: "https://res.cloudinary.com/tolulope-od/image/upload/v1601211702/web-9_whr5dl.jpg",
       position: "Executive Director",
+      role: "Co-Founder",
       name: "Ifedolapo Ogunjubee",
       links: [
         {
@@ -60,6 +62,7 @@ const TeamCardGrid = ({
     {
       imageSrc: "https://res.cloudinary.com/tolulope-od/image/upload/v1605095626/WhatsApp_Image_2020-09-29_at_16.53.52_s719q5.jpg",
       position: "Director of Operations",
+      role: "Co-Founder",
       name: "Morisola Alaba",
       links: [
         {
@@ -71,6 +74,7 @@ const TeamCardGrid = ({
     {
       imageSrc: "https://res.cloudinary.com/tolulope-od/image/upload/v1605095625/WhatsApp_Image_2020-09-30_at_11.06.35_luwk2f.jpg",
       position: "Director of Communications",
+      role: "Co-Founder",
       name: "Socrates Mbamalu",
       links: [
         {
@@ -82,6 +86,7 @@ const TeamCardGrid = ({
     {
       imageSrc: "https://res.cloudinary.com/tolulope-od/image/upload/v1605096180/WhatsApp_Image_2020-11-03_at_11.06.20_jbgfye.jpg",
       position: "Social Media Manager",
+      role: "",
       name: "Adebimpe Adeyemi",
       links: [
         {
@@ -105,6 +110,7 @@ const TeamCardGrid = ({
             <Card key={index}>
               <CardImage imageSrc={card.imageSrc} />
               <CardContent>
+                <span className="role">{card.role}</span>
                 <span className="position">{card.position}</span>
                 <span className="name">{card.name}</span>
                 <CardLinks>
