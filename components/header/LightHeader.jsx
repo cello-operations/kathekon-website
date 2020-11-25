@@ -155,14 +155,14 @@ const LightHeader = ({
 
 function NavItemLink({ href, name}) {
   return (
-    <Link href={href}>
+    <Link passHref href={href}>
       <NavLink style={{ cursor: 'pointer' }}>{name}</NavLink>
     </Link>
   )
 }
 function NavItemLinkSolo({ href, name }) {
   return (
-    <Link href={href}>
+    <Link passHref href={href}>
       <NavLink tw="lg:ml-12!" style={{ cursor: 'pointer' }}>{name}</NavLink>
     </Link>
   )
@@ -170,7 +170,7 @@ function NavItemLinkSolo({ href, name }) {
 
 function PrimaryLinkItem({ href, name }) {
   return (
-    <Link href={href}>
+    <Link passHref href={href}>
       <PrimaryLink css={buttonRoundedCss} style={{ cursor: 'pointer' }}>{name}</PrimaryLink>
     </Link>
   );

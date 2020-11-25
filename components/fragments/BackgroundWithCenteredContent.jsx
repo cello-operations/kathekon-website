@@ -77,7 +77,7 @@ const BackgroundAsImageWithCenteredContent = ({
     <NavLinks key={2}>
       <NavItemLinkSolo passHref name="Login" href="/login"/>
       <PrimaryLinkItem passHref name={"Sign Up"} href="/sign-up" />
-    </NavLinks>
+    </NavLinks>,
   ];
 
   const Container = styled.div`
@@ -85,29 +85,19 @@ const BackgroundAsImageWithCenteredContent = ({
   background-image: url(${backgroundImage});
 `;
 
-  const cookies = new Cookies();
   return (
     <Container>
       <OpacityOverlay />
       <HeroContainer>
         <div style={{
-          display: requestedPathName === 'Home' ? '': 'none'
+          display: requestedPathName === 'Home' ? '': 'none',
         }}>
           <StyledHeader logoUrl={"https://res.cloudinary.com/tolulope-od/image/upload/v1605094682/Kathekon-redesign-13_xjg32j.png"} transparent={true} />
         </div>
         <Content>
           <Heading>
             Transforming society through evidence-driven investments in education, social welfare, and civil society
-              {/*<br />*/}
-              {/*Looks like you are lost*/}
           </Heading>
-          {/* <PrimaryAction onClick={() => {
-            return {}
-          }}>
-            <Link href={"/"}>
-              Back Home
-            </Link>
-          </PrimaryAction> */}
         </Content>
       </HeroContainer>
     </Container>
