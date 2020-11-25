@@ -3,8 +3,13 @@ import Cookie from 'universal-cookie';
 
 const cookies = new Cookie();
 
+const API_BASE_URL =
+	process.env.VERCEL_GITHUB_COMMIT_REF === 'dev'
+		? process.env.NEXT_PUBLIC_DEV_API_BASE_URL
+		:  process.env.NEXT_PUBLIC_API_BASE_URL
+
 const instance = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_BASE_URL,
+  baseURL: API_BASE_URL,
 });
 
 const useConfig = (config) => {
