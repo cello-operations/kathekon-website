@@ -148,16 +148,16 @@ const BlogPostBody = ({ postObject, post, recentPosts }) => {
               </Plan>
               </>
               <>
-                <Plan style={{  marginBottom: '1.75rem' }}>
-                  <PlanHeader>
-                    <span className="nameAndFeaturedContainer">
-                      <span className="name">Subscribe to our blog</span>
-                    </span>
-                    <div style={{ borderTopWidth: '1px', marginTop: '1.5rem' }}/>
-                    <p className="description">Subscribe to get more content like this in your email</p>
-                  </PlanHeader>
+                {/*<Plan style={{  marginBottom: '1.75rem' }}>*/}
+                {/*  <PlanHeader>*/}
+                {/*    <span className="nameAndFeaturedContainer">*/}
+                {/*      <span className="name">Subscribe to our blog</span>*/}
+                {/*    </span>*/}
+                {/*    <div style={{ borderTopWidth: '1px', marginTop: '1.5rem' }}/>*/}
+                {/*    <p className="description">Subscribe to get more content like this in your email</p>*/}
+                {/*  </PlanHeader>*/}
                 
-                </Plan>
+                {/*</Plan>*/}
               </>
               <Plan>
                 <PlanHeader>

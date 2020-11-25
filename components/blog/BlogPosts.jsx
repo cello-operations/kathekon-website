@@ -116,7 +116,7 @@ const BlogPosts = (props) => {
                     <Post className="group" as="a" href={`/blog/post/${blogPosts[0].slug}`}>
                       <Image imageSrc={blogPosts[0].coverImage} />
                       <Info>
-                        <Category>{'Test'}</Category>
+                        <Category>{`${blogPosts[0]?.author?.firstName} ${blogPosts[0]?.author?.lastName}.`}</Category>
                         <CreationDate>{dayjs(blogPosts[0].createdOn).format('MMMM DD, YYYY')}</CreationDate>
                         <Title>{blogPosts[0].title}</Title>
                         <Description>{blogPosts[0].description}</Description>
@@ -133,7 +133,7 @@ const BlogPosts = (props) => {
                   <Post className="group" as="a" href={`/blog/post/${post.slug}`}>
                     <Image imageSrc={post.coverImage} />
                     <Info>
-                      <Category>{'Staging'}</Category>
+                      <Category>{`${post.author?.firstName} ${post.author?.lastName[0]}.`}</Category>
                       <CreationDate>
                         {dayjs(post.createdOn).format('MMMM DD, YYYY')}
                       </CreationDate>
