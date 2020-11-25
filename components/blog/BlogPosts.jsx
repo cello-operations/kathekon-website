@@ -10,7 +10,6 @@ import styled from "styled-components";
 import { css } from "styled-components/macro";
 import { SectionHeading } from "../misc/Headings.jsx";
 import { PrimaryButton } from "../misc/Buttons.jsx";
-import APIHelper from '../../helpers/APIHelpers';
 import AuthContext from '../../context/AuthContext';
 
 const HeadingRow = tw.div`flex`;
@@ -31,7 +30,7 @@ const ActionButtonContainer = styled.div`
   align-content: center;
 `;
 
-export const Posts = tw.div`mt-6 sm:-mr-8 flex flex-wrap`;''
+export const Posts = tw.div`mt-6 sm:-mr-8 flex flex-wrap`;
 export const PostContainer = styled.div`
   ${tw`mt-10 w-full sm:w-1/2 lg:w-1/3 sm:pr-8`}
   ${props =>
@@ -75,7 +74,7 @@ function CreatePostLink({ href, name }) {
 }
 
 const BlogPosts = (props) => {
-  const [visible, setVisible] = useState(7);
+  const [visible, setVisible] = useState(20);
   const onLoadMoreClick = () => {
     setVisible(v => v + 6);
   };
@@ -129,7 +128,7 @@ const BlogPosts = (props) => {
               )
             }
             <Posts>
-              {blogPosts.slice(0, visible).map((post, index) => (
+              {blogPosts.slice(1, visible).map((post, index) => (
                 <PostContainer key={index} featured={post.featured}>
                   <Post className="group" as="a" href={`/blog/post/${post.slug}`}>
                     <Image imageSrc={post.coverImage} />

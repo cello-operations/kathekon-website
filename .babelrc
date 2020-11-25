@@ -8,6 +8,12 @@
     ],
     "inline-react-svg"
   ],
-
+  "env": {
+    "production": {
+      "plugins": [
+        ["styled-components", { "ssr": true, "displayName": false, "preprocess": false }]
+      ]
+    }
+  },
   "ignore": ["node_modules"]
 }

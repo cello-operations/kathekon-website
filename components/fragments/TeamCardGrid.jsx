@@ -18,7 +18,7 @@ const Cards = tw.div`flex flex-wrap flex-row justify-center sm:max-w-2xl lg:max-
 const Card = tw.div`mt-24 w-full sm:w-1/2 lg:w-1/3 flex flex-col items-center`
 const CardImage = styled.div`
   ${props => css`background-image: url("${props.imageSrc}");`}
-  ${tw`w-48 h-48 bg-contain bg-center rounded`}
+  ${tw`w-56 h-56 bg-cover bg-center rounded`}
   border-radius: 50%;
 `
 const CardContent = styled.div`
@@ -110,7 +110,7 @@ const TeamCardGrid = ({
                 <CardLinks>
                   {card.links.map((link, linkIndex) => (
                     <a key={linkIndex} className="link" href={link.url}>
-                      <link.icon className="icon" />
+                      <link.icon className="icon" color={'#32a3dc'}/>
                     </a>
                   ))}
                 </CardLinks>

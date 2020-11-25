@@ -1,14 +1,16 @@
 import React from "react";
 import Link from 'next/link';
-import tw from "twin.macro";
 import styled from "styled-components";
 import dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime';
 import ReactHtmlParser from 'react-html-parser';
-import { motion } from "framer-motion";
-import { css } from "styled-components/macro"; //eslint-disable-line
-import { SectionHeading } from "../misc/Headings.jsx";
 import { Container, ContentWithPaddingXl } from "../misc/Layouts.jsx";
+import {
+  Row, Description, Title, Heading, Image, AuthorImage,
+  AuthorInfo, AuthorName, AuthorNameAndProfession, AuthorProfile,
+  RecentPostsContainer, Plan, PlanHeader, PopularPostsContainer, Post,
+  PostsContainer, PostTextContainer, SocialLinksContainer,
+} from '../../styles';
 
 dayjs.extend(relativeTime);
 
@@ -22,100 +24,58 @@ const PaddedContent = styled.div`
   padding-bottom: 5rem
 `;
 
-const Row = tw.div`flex flex-col lg:flex-row -mb-10`;
-const Heading = tw(SectionHeading)`text-left text-gray-900 lg:text-4xl xl:text-5xl`;
-
-const PopularPostsContainer = tw.div`lg:w-2/3`;
-const PostsContainer = tw.div`mt-12`;
-const Post = tw(motion.div)`block text-gray-800 cursor-pointer mb-16 last:mb-0 sm:mb-0 sm:odd:mr-8 lg:mr-8 xl:mr-16`;
-const Image = styled(motion.div)(props => [
-  `background-image: url("${props.imageSrc}");`,
-  tw`h-64 bg-cover bg-center rounded`
-]);
-const Title = tw.h5`mt-6 text-xl font-bold transition duration-300 group-hover:text-primary-500`;
-const Description = tw.p`mt-2 text-secondary-100 leading-loose text-sm`;
-const AuthorInfo = tw.div`mt-6 flex items-center`;
-const AuthorImage = tw.img`w-12 h-12 rounded-full`;
-const AuthorNameAndProfession = tw.div`ml-4`;
-const AuthorName = tw.h6`font-semibold text-lg`;
-const AuthorProfile = tw.p`text-secondary-100 text-sm`;
-const Plan = styled.div`
-  ${tw`w-full bg-white px-10 rounded-lg shadow-lg py-10 xl:p-10 flex flex-col justify-between mt-16 first:mt-0 lg:mt-0 shadow-md`}
+const PBody = styled.div`
+    
+  ::-moz-selection{background-color:#d4ecff;}
+  ::selection{background-color:#d4ecff;}
+  .ce-block a{cursor:pointer;text-decoration:underline;}
+  .cdx-block{padding:.4em 0;}
+  
+  a{background-color:transparent;}
+  p{margin:0;}
+  *,::before,::after{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e2e8f0;}
+  a{color:inherit;text-decoration:inherit;}
+  
+  .link-tool{position:relative;}
+  .link-tool__content{display:block;padding:25px;border-radius:2px;box-shadow:0 0 0 2px #fff;color:initial!important;text-decoration:none!important;}
+  .link-tool__content::after{content:"";clear:both;display:table;}
+  .link-tool__content--rendered{background:#fff;border:1px solid rgba(201, 201, 204, 0.48);box-shadow:0 1px 3px rgba(0,0,0, .1);border-radius:6px;will-change:filter;animation:link-in 450ms 1 cubic-bezier(0.215, 0.61, 0.355, 1);}
+  .link-tool__content--rendered:hover{box-shadow:0 0 3px rgba(0,0,0, .16);}
+  .link-tool__image{background-position:center center;background-repeat:no-repeat;background-size:cover;margin:0 0 0 30px;width:65px;height:65px;border-radius:3px;float:right;}
+  .link-tool__title{font-size:17px;font-weight:600;line-height:1.5em;margin:0 0 10px 0;}
+  .link-tool__description{margin:0 0 20px 0;font-size:15px;line-height:1.55em;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;}
+  .link-tool__anchor{display:block;font-size:15px;line-height:1em;color:#888!important;border:0!important;padding:0!important;}
+  
+  @keyframes link-in{from{filter:blur(5px);}to{filter:none;}}
+  
+    
+  .codex-editor__redactor [contenteditable]:empty:after{content:"\\feff ";}
+  ::-moz-selection{background-color:#d4ecff;}
+  ::selection{background-color:#d4ecff;}
+  .ce-block__content{position:relative;max-width:650px;margin:0 auto;-webkit-transition:background-color .15s ease;transition:background-color .15s ease;}
+  .cdx-block{padding:.4em 0;}
+  .cdx-input{border:1px solid rgba(201,201,204,.48);-webkit-box-shadow:inset 0 1px 2px 0 rgba(35,44,72,.06);box-shadow:inset 0 1px 2px 0 rgba(35,44,72,.06);border-radius:3px;padding:10px 12px;outline:none;width:100%;-webkit-box-sizing:border-box;box-sizing:border-box;}
+  .cdx-input[data-placeholder]:before{position:static!important;display:inline-block;width:0;white-space:nowrap;pointer-events:none;}
+  
+  *,::before,::after{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e2e8f0;}
+  iframe{display:block;vertical-align:middle;}
+  
+  .embed-tool__preloader{display:none;position:relative;height:200px;box-sizing:border-box;border-radius:5px;border:1px solid #e6e9eb;}
+  .embed-tool__preloader::before{content:'';position:absolute;z-index:3;left:50%;top:50%;width:30px;height:30px;margin-top:-25px;margin-left:-15px;border-radius:50%;border:2px solid #cdd1e0;border-top-color:#388ae5;box-sizing:border-box;animation:embed-preloader-spin 2s infinite linear;}
+  .embed-tool__url{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);max-width:250px;color:#7b7e89;font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .embed-tool__content{width:100%;}
+  .embed-tool__caption{margin-top:7px;}
+  .embed-tool__caption[contentEditable=true][data-placeholder]::before{position:absolute;content:attr(data-placeholder);color:#707684;font-weight:normal;opacity:0;}
+  .embed-tool__caption[contentEditable=true][data-placeholder]:empty::before{opacity:1;}
+  .embed-tool__caption[contentEditable=true][data-placeholder]:empty:focus::before{opacity:0;}
+  
+  @keyframes embed-preloader-spin{0%{transform:rotate(0deg);}100%{transform:rotate(360deg);}}
 `;
-const PlanHeader = styled.div`
-  .nameAndFeaturedContainer {
-    ${tw`flex flex-wrap flex-col sm:flex-row justify-between items-center`}
-  }
-  .name {
-    ${tw`lg:text-lg xl:text-xl font-bold uppercase tracking-wider mr-3`}
-  }
-  .featuredText {
-    ${tw`text-xs font-bold px-3 rounded py-2 uppercase bg-green-300 text-green-900 leading-none mt-4 sm:mt-0 w-full sm:w-auto text-center`}
-  }
-  .pricingContainer {
-    ${tw`mt-6 flex items-end justify-between`}
-    .currentPrice {
-      ${tw`text-lg font-bold leading-none`}
-      .bigText {
-        ${tw`text-3xl font-bold`}
-      }
-    }
-    .oldPrice {
-      ${tw`text-gray-500 text-lg line-through hidden sm:block`}
-    }
-  }
-  .description {
-    ${tw`mt-8 font-medium text-gray-700 lg:text-sm xl:text-base`}
-  }
-`;
-
-const RecentPostsContainer = styled.div`
-  ${tw`mt-24 lg:mt-0 lg:w-1/3`}
-  ${PostsContainer} {
-    ${tw`flex flex-wrap lg:flex-col`}
-  }
-  ${Post} {
-    ${tw`flex justify-between mb-10 max-w-none w-full sm:w-1/2 lg:w-auto sm:odd:pr-12 lg:odd:pr-0 mr-0`}
-  }
-  ${Title} {
-    ${tw`text-base xl:text-lg mt-0 mr-4 lg:max-w-xs`}
-  }
-  ${AuthorName} {
-    ${tw`mt-3 text-sm text-secondary-100 font-normal leading-none`}
-  }
-  ${Image} {
-    ${tw`h-20 w-20 flex-shrink-0`}
-  }
-`;
-
-
-
-const PostTextContainer = tw.div``
-
-const SocialLinksContainer = tw.div`mt-8 md:mt-0 flex`;
 
 const BlogPostBody = ({ postObject, post, recentPosts }) => {
-  // This setting is for animating the post background image on hover
-  const postBackgroundSizeAnimation = {
-    rest: {
-      backgroundSize: "100%"
-    },
-    hover: {
-      backgroundSize: "110%"
-    }
-  };
-
-  // max-width: 1280px;
-  // margin-left: auto;
-  // margin-right: auto;
-  // padding-left: 3rem;
-  // padding-right: 3rem;
-  // padding-top: 5rem;
-  // padding-bottom: 5rem
-
   return (
     <Container style={{ fontFamily: 'Poppins' }}>
-      <div id="fb-root"></div>
+      <div id="fb-root" />
       <script async defer={true} crossOrigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v8.0" nonce="drEjQ4iO"></script>
       <ContentWithPaddingXl>
         <Row>
@@ -136,9 +96,12 @@ const BlogPostBody = ({ postObject, post, recentPosts }) => {
             <Post>
               <div style={{
                 maxWidth: '100%', textAlign: 'justify', textJustify: 'inter-word',
-                lineHeight: '2rem', wordSpacing: '2px'
+                lineHeight: '2rem', wordSpacing: '2px',
               }}>
-                {ReactHtmlParser(post)}
+                <PBody>
+                  {ReactHtmlParser(post)}
+                </PBody>
+
               </div>
             </Post>
             </PostsContainer>

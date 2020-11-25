@@ -5,8 +5,6 @@ import tw from "twin.macro";
 import { css } from "styled-components/macro"; //eslint-disable-line
 import { SectionHeading, Subheading as SubheadingBase } from "../misc/Headings.jsx";
 import { PrimaryButton } from "../misc/Buttons.jsx";
-// import { ReactComponent as QuotesLeftIcon } from "../../public/images/quotes-l.svg";
-// import { ReactComponent as QuotesRightIcon } from "../../public/images/quotes-r.svg";
 import { ReactComponent as ChevronLeftIcon } from "feather-icons/dist/icons/chevron-left.svg";
 import { ReactComponent as ChevronRightIcon } from "feather-icons/dist/icons/chevron-right.svg";
 import { ReactComponent as SvgDecoratorBlob1 } from "../../public/images/svg-decorator-blob-4.svg";
@@ -133,7 +131,15 @@ const TwoColWithImageSlider = ({
         <TestimonialsContainer>
           <Testimonials>
             <Testimonial>
-              <TestimonialImageSlider afterChange={(index) => setActiveIndex(index)} arrows={false} ref={setImageSliderRef} asNavFor={textSliderRef} fade={true}>
+              <TestimonialImageSlider
+                afterChange={(index) => setActiveIndex(index)}
+                arrows={false}
+                ref={setImageSliderRef}
+                asNavFor={textSliderRef}
+                fade={true}
+                autoplaySpeed={5000}
+                autoplay={true}
+              >
                 {testimonials.map((testimonial, index) => (
                   <ImageAndControlContainer key={index}>
                     <Image imageSrc={testimonial.imageSrc} />

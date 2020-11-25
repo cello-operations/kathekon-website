@@ -12,11 +12,11 @@ export const fundingCategories = [
   },
   {
     imageSrc:
-      "https://res.cloudinary.com/tolulope-od/image/upload/v1601224310/babatunde-olajide-q4ZBGVzJskE-unsplash_aie8pm.jpg",
+      "https://res.cloudinary.com/tolulope-od/image/upload/v1601138950/logan-weaver-uwyqYYWUQJw-unsplash_upqyxf.jpg",
     // author: "Owais Khan",
     // category: "Civil Society",
     title: "Civil Society",
-    description: "We are poised to close the gap with regards to funding, whereby driving a change through contributing to the funding opportunities for civil society organization currently carrying on work at the grassroots level in specific thematic areas.",
+    description: `We are poised to close the gap with regards to funding, whereby driving a change through contributing to the funding opportunities for civil society organization currently carrying on work at the grassroots level in specific thematic areas ${'          '}`,
     url: "/grants",
   },
   {
