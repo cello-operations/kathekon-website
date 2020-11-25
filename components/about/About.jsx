@@ -27,7 +27,7 @@ const AboutUs = () => {
         subheading={<Subheading>About Kathēkon</Subheading>}
         heading=""
         buttonRounded={false}
-        description={'Kathekon supports organisations that seek to transform society through evidence-driven investments in education, social welfare, and civil society in Nigeria. We welcome experimental ideas that drive pragmatic and significant change while depending on data as a measurement tool. Kathekon seeks to partner and build a generation of selfless individuals who would give themselves over to pragmatic change. While Nigeria is a current focus, Kathekon will equally focus on other African countries.'}
+        description={'Kathekon supports organisations that seek to transform society through evidence-driven investments in education, social welfare, and civil society in Nigeria. We welcome experimental ideas that drive pragmatic and significant change while depending on data as a measurement tool. We seek to partner and build a generation of selfless individuals who would give themselves over to pragmatic change. While Nigeria is a current focus, Kathekon will equally focus on other African countries.'}
         primaryButtonUrl={"/our-workx"}
         primaryButtonText="See Our Work"
         imageCredits={(

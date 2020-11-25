@@ -20,7 +20,7 @@ const HeadingDescription = tw.p`mt-4 font-medium text-gray-600 text-center max-w
 const Card = tw.div`lg:mx-4 xl:mx-8 max-w-sm flex flex-col h-full`;
 const Image = styled.div(props => [
   `background-image: url("${props.imageSrc}");`,
-  tw`bg-cover bg-center h-80 lg:h-64 rounded rounded-b-none`
+  tw`bg-cover bg-center h-80 lg:h-64 rounded rounded-b-none`,
 ]);
 
 const Details = tw.div`p-6 rounded border-2 border-t-0 rounded-t-none border-dashed border-primary-100 flex-1 flex flex-col items-center text-center lg:block lg:text-left`;

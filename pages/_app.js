@@ -4,7 +4,7 @@ import tw from "twin.macro";
 import styled from 'styled-components';
 import { ToastContainer } from 'react-toastify';
 import Footer from '../components/fragments/Footer.jsx'
-import Header, { NavLink, PrimaryLink } from "../components/header/LightHeader.jsx";
+import Header from "../components/header/LightHeader.jsx";
 import { Container } from "../components/misc/Layouts.jsx"
 import { AuthStateProvider } from '../context/AuthContext';
 import useAuth from '../hooks/useAuth';
@@ -13,6 +13,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import '../styles/tailwind.css';
 
 const AppHeader = styled(Header)`
+  font-family: Raleway, sans-serif;
   ${tw`pt-2 max-w-none w-9/12`}
 `;
 
@@ -96,11 +97,6 @@ const App = (props) => {
           </Container>
         </div>
         <Component {...pageProps} {...props} />
-        {/* <AuthContext.Consumer>
-          {(auth) => (
-            <Component {...pageProps} {...auth} {...props} />
-          )}
-        </AuthContext.Consumer> */}
         <Footer />
         <ToastContainer style={{ fontFamily: 'GT Sectra Regular' }} />
     </>
