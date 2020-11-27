@@ -74,6 +74,11 @@ const PBody = styled.div`
 `;
 
 const BlogPostBody = ({ postObject, post, recentPosts }) => {
+  const hostURL =
+    process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_REF !== 'master'
+      ? process.env.NEXT_PUBLIC_DEV_HOST_URL
+      : process.env.NEXT_PUBLIC_HOST_URL
+
   return (
     <Container style={{ fontFamily: 'Poppins' }}>
       <div id="fb-root" />
@@ -122,11 +127,11 @@ const BlogPostBody = ({ postObject, post, recentPosts }) => {
                 <SocialLinksContainer style={{ marginTop: '1.75rem' }}>
                   <div
                     className="fb-share-button"
-                    data-href={`${process.env.NEXT_PUBLIC_HOST_URL}/blog/post/${postObject.slug}`}
+                    data-href={`${hostURL}/blog/post/${postObject.slug}`}
                     data-layout="button"
                     data-lazy="true"
                     data-size="small">
-                    <a target="_blank" href={`https://www.facebook.com/sharer/sharer.php?u=${process.env.NEXT_PUBLIC_HOST_URL}/blog/post/${postObject.slug}&amp;src=sdkpreparse`} className="fb-xfbml-parse-ignore">
+                    <a target="_blank" href={`https://www.facebook.com/sharer/sharer.php?u=${hostURL}/blog/post/${postObject.slug}&amp;src=sdkpreparse`} className="fb-xfbml-parse-ignore">
                       <span style={{ display: 'flex', flexDirection: 'row', justifyContent: 'flex-end' }}>
                         <FaceBookIcon width={16} height={16} style={{ marginTop: '.33rem' }} />
                         <span style={{ fontSize: '14px', marginTop: '.3rem', marginLeft: '.19rem' }}>Share</span>
@@ -139,7 +144,7 @@ const BlogPostBody = ({ postObject, post, recentPosts }) => {
                       href="https://twitter.com/share?ref_src=twsrc%5Etfw"
                       className="twitter-share-button"
                       data-text={`${postObject.title} by ${postObject.author.firstName} ${postObject.author.lastName}`}
-                      data-url={`${process.env.NEXT_PUBLIC_HOST_URL}/blog/post/${postObject.slug}`}
+                      data-url={`${hostURL}/blog/post/${postObject.slug}`}
                       data-show-count="false">
                         Tweet
                       </a>
