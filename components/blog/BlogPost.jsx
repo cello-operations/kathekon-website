@@ -17,7 +17,7 @@ const BlogPost = (props) => {
   const post = parseEditorData(postBody)
 
   const hostURL =
-    process.env.VERCEL_GITHUB_COMMIT_REF === 'dev'
+    process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_REF === 'dev'
       ? process.env.NEXT_PUBLIC_DEV_HOST_URL
       : process.env.NEXT_PUBLIC_HOST_URL
 
