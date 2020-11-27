@@ -23,12 +23,10 @@ const Landing = (props) => {
         />
         <TwoColFeatureSection
           subheading={(
-            <Subheading>
-              Who are we?
-            </Subheading>
+            <Subheading />
           )}
           heading={<Title>We are <span tw="text-primary-500">Kathēkon.</span></Title>}
-          description={"Dedicated to Rebuilding Societies through strategic investments in the social impact space"}
+          description={"Dedicated to rebuilding society through strategic investments in the social impact space."}
           buttonRounded={false}
           primaryButtonText="About Us"
           imageSrc="https://res.cloudinary.com/tolulope-od/image/upload/v1601139589/santi-vedri-O5EMzfdxedg-unsplash_forq9q.jpg"
@@ -53,7 +51,7 @@ const Landing = (props) => {
           },
           1: {
             heading: "Our Mission",
-            description: "To focus on investing in the social impact space with the aim of productivity through tested rigorous processes in various programs, and simultaneously improving on them.",
+            description: "To invest in the social impact space using rigorous evidence-driven processes that are improved or discarded as new information becomes available.",
           },
         }}
         testimonials={[

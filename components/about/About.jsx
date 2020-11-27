@@ -27,7 +27,7 @@ const AboutUs = () => {
         subheading={<Subheading>About Kathēkon</Subheading>}
         heading=""
         buttonRounded={false}
-        description={'Many children are out of school and don’t receive quality education in Nigeria. Plastics and polythene bags litter both our lands and waters. There is a failure of governance mostly because “the best lack all conviction, while the worst are full of passionate intensity.” Kathékon is not just looking for the best, we seek the passionate who are unafraid to test pragmatic ideas capable of driving significant change. Thus, we provide grants to organisations seeking to transform society through evidence-driven investments in education, social welfare, and civil society in Nigeria. While Nigeria is a current focus, Kathekon seeks to impact the world through Africa.'}
+        description={'Kathekon provides grants to organisations seeking to transform society through evidence-driven investments in education, social welfare, and civil society. While Nigeria is a current focus, we seek to impact the world through Africa.'}
         primaryButtonUrl={"/our-workx"}
         primaryButtonText="See Our Work"
         imageCredits={(
@@ -38,7 +38,7 @@ const AboutUs = () => {
       <MainFeature1
         subheading={<Subheading>Our Goals</Subheading>}
         heading={(
-          <Description>To make systemic changes in specific areas of choice while undertaking development programs that scale up each year.</Description>
+          <Description>To undertake scalable development programs in our areas of focus until they yield systemic change.</Description>
         )}
         buttonRounded={false}
         primaryButtonText="Partner With Us"
@@ -57,12 +57,12 @@ const AboutUs = () => {
       <Features
         subheading={<Subheading>General Framework</Subheading>}
         heading=""
-        description="​If results fall too far below the anticipated outcomes, we shall redirect capital: to a new region where the project will likely be more successful, or to support an entirely different area of need"
+        description="If results fall too far below the anticipated outcomes, we shall redirect capital to a new region where the project will probably be more successful, or to support an entirely different area of need."
         cards={[
           {
             imageSrc: '/images/support-icon.svg',
             title: "Select Area",
-            description: "We will pick an area of need",
+            description: "We pick an area of need",
           },
           {
             imageSrc: '/images/shield-icon.svg',
