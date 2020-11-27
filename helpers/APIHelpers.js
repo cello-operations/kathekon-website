@@ -12,8 +12,6 @@ const instance = axios.create({
   baseURL: API_BASE_URL,
 });
 
-console.log(API_BASE_URL);
-console.log(process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_REF)
 const useConfig = (config) => {
   const customConfig = config;
   const kathekonToken = cookies.get("kathekonToken");
