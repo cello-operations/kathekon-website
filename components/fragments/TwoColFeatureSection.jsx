@@ -5,7 +5,6 @@ import { css } from "styled-components/macro"; //eslint-disable-line
 import { SectionHeading, Subheading as SubheadingBase } from "../misc/Headings.jsx";
 import { motion } from "framer-motion";
 import { PrimaryButton as PrimaryButtonBase } from "../misc/Buttons.jsx";
-import TeamIllustrationSrc from "../../public/images/team-illustration-2.svg";
 import { ReactComponent as SvgDotPattern } from "../../public/images/dot-pattern.svg"
 import { ReactComponent as CheckboxIcon } from "feather-icons/dist/icons/check-circle.svg";
 

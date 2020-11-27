@@ -115,7 +115,7 @@ const Footer = () => {
             <SubscribeNewsletterContainer>
               <ColumnHeading>Subscribe to our Newsletter (Coming Soon)</ColumnHeading>
               <SubscribeText>
-                We deliver high quality blog posts written by professionals weekly. And we promise no spam.
+                We deliver quality posts written by professionals.
               </SubscribeText>
               <SubscribeForm method="get" action="#">
                 <Input type="email" placeholder="Your Email Address" />

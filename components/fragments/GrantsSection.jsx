@@ -4,8 +4,7 @@ import styled from "styled-components";
 import {css} from "styled-components/macro"; //eslint-disable-line
 import { SectionHeading as HeadingTitle, Subheading } from "../misc/Headings.jsx";
 import { PrimaryButton as PrimaryButtonBase } from "../misc/Buttons.jsx";
-import { ReactComponent as UserIcon } from "feather-icons/dist/icons/user.svg";
-import { ReactComponent as TagIcon } from "feather-icons/dist/icons/tag.svg";
+import { ReactComponent as ChevronIcon } from "feather-icons/dist/icons/chevron-right.svg";
 import { ReactComponent as SvgDecoratorBlob1 } from "../../public/images/svg-decorator-blob-3.svg";
 import { ReactComponent as SvgDecoratorBlob2 } from "../../public/images/svg-decorator-blob-3.svg";
 
@@ -33,7 +32,17 @@ const Meta = styled.div`
 `;
 
 const Title = tw.h5`mt-4 leading-snug font-bold text-2xl`;
-const Description = tw.p`mt-2 text-lg text-secondary-100`;
+const Description = styled.span`
+  height: 340px;
+  display: block;
+  p.description {
+    ${tw`mt-2 text-lg text-secondary-100 font-medium`}
+  }
+  
+  @media(max-width: 1023px) {
+    height: auto;
+  }
+`;
 const Link = styled(PrimaryButtonBase).attrs({as: "a"})`
   ${tw`inline-block mt-4 text-sm font-semibold`}
 `
@@ -53,7 +62,7 @@ const blogPosts = [
     category: "SEO",
     title: "Optimizing your website for your main keyword",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    url: "https://reddit.com"
+    url: "https://reddit.com",
   },
   {
     imageSrc:
@@ -62,7 +71,7 @@ const blogPosts = [
     category: "Advertising",
     title: "Creating The perfect advertisement campaign",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    url: "https://timerse.com"
+    url: "https://timerse.com",
   },
   {
     imageSrc:
@@ -71,9 +80,14 @@ const blogPosts = [
     category: "Social Media",
     title: "Efficient management of your social media assets",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    url: "https://timerse.com"
-  }
+    url: "https://timerse.com",
+  },
 ];
+
+const FeatureList = tw.ul`mt-2 leading-loose`;
+const Feature = tw.li`flex items-center`;
+const FeatureIcon = tw(ChevronIcon)`w-4 h-4 text-primary-500`;
+const FeatureText = tw.p`ml-2 font-medium text-secondary-100 font-sans`;
 
 const GrantsSection = ({
   subheading = "Blog",
@@ -97,7 +111,21 @@ const GrantsSection = ({
                 <Image imageSrc={post.imageSrc} />
                 <Details>
                   <Title>{post.title}</Title>
-                  <Description>{post.description}</Description>
+                  <Description>
+                    <p className="description">
+                      {post.description}
+                    </p>
+                    {
+                      post?.hasList ? post?.list?.map((listItem) => (
+                        <FeatureList>
+                          <Feature>
+                            <FeatureIcon />
+                            <FeatureText>{listItem}</FeatureText>
+                          </Feature>
+                        </FeatureList>
+                      )) : <></>
+                    }
+                  </Description>
                   <Link href={post.url}>{cta}</Link>
                 </Details>
               </Card>

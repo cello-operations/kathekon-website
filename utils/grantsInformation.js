@@ -7,8 +7,9 @@ export const fundingCategories = [
     // author: "Adam Wathan",
     // category: "Education",
     title: "Education",
-    description: "Education is a necessity in our society and part of our work at Kathēkon is to identify inefficiencies in this area and help rebuild in order to achieve a well-standardized model by providing funds to schools that have the potential but are limited in resources.",
+    description: "Part of our work at Kathēkon is to improve the quality of education available to children from low-income families. We will fund free schools focused on bridging this quality gap as we continue to identify other transformative interventions.",
     url: "/grants",
+    hasList: false,
   },
   {
     imageSrc:
@@ -16,8 +17,10 @@ export const fundingCategories = [
     // author: "Owais Khan",
     // category: "Civil Society",
     title: "Civil Society",
-    description: `We are poised to close the gap with regards to funding, whereby driving a change through contributing to the funding opportunities for civil society organization currently carrying on work at the grassroots level in specific thematic areas ${'          '}`,
+    description: `We are poised to close the gap with regards to finding, whereby driving  a change through contributing to the funding opportunities for civil society organization currently carrying on work at the grassroots level in our  thematic areas. Our thematic areas are:`,
     url: "/grants",
+    hasList: true,
+    list: ['Free Speech', 'Environment', 'Internet governance'],
   },
   {
     imageSrc:
@@ -25,8 +28,9 @@ export const fundingCategories = [
     // author: "Steve Schoger",
     // category: "July 10",
     title: "Social Welfare",
-    description: "We invest in credible organizations dedicated to catering for the underserved communities with basic needs and amenities lacking in the environment they decide to work in. Some communities still lack clean water, good roads, daily meals for families. ",
+    description: "Drinkable water, daily meals, and reliable housing are crucial to human dignity. Kathēkon will work with credible community leaders and organizations dedicated to serving underserved communities.",
     url: "/grants",
+    hasList: false,
   },
 ];
 
