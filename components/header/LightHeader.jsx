@@ -111,7 +111,7 @@ export const AuthLinks = ({
 
 const LightHeader = ({
   roundedHeaderButton = false,
-  logoLink, links, className, collapseBreakpointClass = "lg",
+  logoLink, links, className, collapseBreakpointClass = "xl",
   transparent = false,
   logoUrl = 'https://res.cloudinary.com/tolulope-od/image/upload/v1605094663/Kathekon-redesign-13-13_e9qpnx.png',
   firstName = "User",

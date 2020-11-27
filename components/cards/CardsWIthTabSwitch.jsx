@@ -1,16 +1,17 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { Formik } from "formik";
+import { Formik, FieldArray, Field } from "formik";
 import * as Yup from "yup";
 import dayjs from "dayjs";
 import { toast } from 'react-toastify';
 import { ReactComponent as DownloadIcon } from "feather-icons/dist/icons/download.svg";
 import tw from "twin.macro";
 import styled from "styled-components";
+import { ReactComponent as ChevronIcon } from "feather-icons/dist/icons/chevron-right.svg";
 import { css } from "styled-components/macro"; //eslint-disable-line
 import { Container } from "../misc/Layouts.jsx";
 import { SectionHeading } from "../misc/Headings.jsx";
-import { PrimaryButton, PrimaryLink } from "../misc/Buttons.jsx";
+import { PrimaryButton } from "../misc/Buttons.jsx";
 import {
   Post, PostContainer, Posts, Info,
   Title, CreationDate, Description,
@@ -26,15 +27,19 @@ import AlternatingLoader from '../loaders/AlternatingLoader.jsx';
 import AuthContext from '../../context/AuthContext';
 import APIHelper from "../../helpers/APIHelpers.js";
 import fileToBase64 from '../../utils/fileConverter';
-import { truncateText } from '../../helpers/truncateText';
+import { isEmpty, truncateText } from '../../helpers/truncateText';
 import GrantApplications from '../grants/GrantApplications.jsx';
 
 const HeaderRow = tw.div`flex justify-between items-center flex-col xl:flex-row`;
 const Header = tw(SectionHeading)``;
 const TabsControl = tw.div`flex flex-wrap bg-gray-200 px-2 py-2 rounded leading-none mt-12 xl:mt-0`;
-// const PaddedBackground = tw.div`max-w-screen-xl mx-auto px-6 py-6 lg:px-8 lg:py-8`;
 const ContentWithPaddingXl= tw.div`max-w-screen-xl mx-auto py-10 lg:py-12`;
 const Form = tw.form`mx-auto`;
+
+const FeatureIcon = tw(ChevronIcon)`text-primary-500`;
+const FeatureList = tw.ul`mt-2 leading-loose`;
+const Feature = tw.li`mt-1 mb-1 flex items-center`;
+const FeatureText = tw.p`ml-2 font-sans`;
 
 const TabControl = styled.div`
   ${tw`cursor-pointer px-6 py-3 mt-2 sm:mt-0 sm:mr-2 last:mr-0 text-gray-600 font-medium rounded-sm transition duration-300 text-sm sm:text-base w-1/2 sm:w-auto text-center`}
@@ -112,89 +117,22 @@ const CreateButton = styled(PrimaryButton)`
   }
 `;
 
+const ButtonContainer = styled.div`
+    align-self: center;
+    display: flex;
+    justify-content: center;
+    
+    @media(min-width: 1028px) {
+      display: block;
+    } 
+`
+
 const CardsWithTabSwitch = ({
   heading = "Available funding options",
   tabs = {
-    All: [{
-        imageSrc:
-          "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80",
-        title: "Chicken Chilled",
-        content: "Chicken Main Course",
-        price: "$5.99",
-        rating: "5.0",
-        reviews: "87",
-        url: "#",
-        imageSrc:
-          "https://images.unsplash.com/photo-1499678329028-101435549a4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1024&q=80",
-        category: "Grants",
-        date: "April 21, 2020",
-        title: "Introducing the Femi Falana Grant",
-        description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.  Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-        url: "https://timerse.com",
-        featured: true
-      },
-      {
-        imageSrc:
-          "https://images.unsplash.com/photo-1582254465498-6bc70419b607?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80",
-        title: "Samsa Beef",
-        content: "Fried Mexican Beef",
-        price: "$3.99",
-        rating: "4.5",
-        reviews: "34",
-        url: "#",
-        imageSrc:
-          "https://images.unsplash.com/photo-1499678329028-101435549a4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1024&q=80",
-        category: "Scholarships",
-        date: "April 21, 2020",
-        title: "Random Scholarship for you",
-        description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.  Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-        url: "https://timerse.com",
-        featured: true
-      }],
-    Grants: [
-      {
-        imageSrc:
-          "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80",
-        title: "Chicken Chilled",
-        content: "Chicken Main Course",
-        price: "$5.99",
-        rating: "5.0",
-        reviews: "87",
-        url: "#",
-        imageSrc:
-          "https://images.unsplash.com/photo-1499678329028-101435549a4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1024&q=80",
-        category: "Grants",
-        date: "April 21, 2020",
-        title: "Another Two",
-        description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.  Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-        url: "https://timerse.com",
-        featured: true
-      }
-    ],
-    Scholarships: [
-      {
-        imageSrc:
-          "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80",
-        title: "Secure you future",
-        content: "Incredible Scholarships await you",
-        price: "$5.99",
-        rating: "5.0",
-        reviews: "87",
-        url: "#",
-        imageSrc:
-          "https://images.unsplash.com/photo-1499678329028-101435549a4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1024&q=80",
-        category: "Scholarships",
-        date: "April 21, 2020",
-        title: "Another One",
-        description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.  Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-        url: "https://timerse.com",
-        featured: true
-      }
-    ],
+    All: [],
+    Grants: [],
+    Scholarships: [],
   }
 }) => {
   /*
@@ -246,7 +184,6 @@ const CardsWithTabSwitch = ({
   }
 
   React.useEffect(() => {
-    console.log(state);
     setUserWindow(window)
     if (state.isAuthenticated) {
       getGrantApplications();
@@ -274,7 +211,9 @@ const CardsWithTabSwitch = ({
         {
           state.isAuthenticated && state.user.userType === "ADMIN" || state.user.userType === "SUPER_ADMIN"
             ? (
-            <OpenModalButton handleButtonClick={() => handleOpenModal(true)}>Create New Grant</OpenModalButton>
+              <ButtonContainer>
+                <OpenModalButton handleButtonClick={() => handleOpenModal(true)}>Create New Grant</OpenModalButton>
+              </ButtonContainer>
             ) : (
               <div />
             )
@@ -288,7 +227,17 @@ const CardsWithTabSwitch = ({
             </ModalHeading>
             <ModalContentWrapper>
             <Formik
-                initialValues={{ grantName: "", description: "", status: "", expiryDate: "", applicationStartDate: "", grantType: "", upload: null }}
+                initialValues={{
+                  grantName: "",
+                  description: "",
+                  status: "",
+                  expiryDate: "",
+                  applicationStartDate: "",
+                  grantType: "",
+                  upload: null,
+                  thematicAreas: [""],
+                  requirements: [""],
+                }}
                 onSubmit={async (values, err) => {
                   try {
                     // convert file to base64
@@ -430,7 +379,7 @@ const CardsWithTabSwitch = ({
                                 {value}
                               </Option>
                             ))
-                         } 
+                         }
                         </Select>
                         <SubmitButton disabled={isSubmitting} type="submit">
                         {
@@ -509,10 +458,37 @@ const CardsWithTabSwitch = ({
             <DetailWrapper>
               <h5>Description:</h5>
               {grantDetails.description}
+              {grantDetails?.thematicAreas && grantDetails?.thematicAreas?.length > 0
+              && (
+                <FeatureList>
+                  {
+                    grantDetails.thematicAreas?.map((thematicArea) => (
+                      <Feature key={thematicArea}>
+                        <FeatureText>{thematicArea}</FeatureText>
+                      </Feature>
+                    ))
+                  }
+                </FeatureList>
+              )}
             </DetailWrapper>
             <DetailWrapper>
-              <h5>Application Requirement:</h5>
-              You will be required to fulfill the requirements stated in the document which can be downloaded below, if required, you will also need to fill and submit the document also.
+              <h5>Application Requirement(s):</h5>
+              {
+                grantDetails?.grantType === 'grant'
+                  && !isEmpty(grantDetails?.requirements)
+                  ? grantDetails.requirements?.map((requirement) => (
+                    <FeatureList key={requirement}>
+                      <Feature>
+                        <FeatureIcon width={16} height={16} />
+                        <FeatureText>{requirement}</FeatureText>
+                      </Feature>
+                    </FeatureList>
+                  )) : (
+                    <React.Fragment>
+                      You will be required to fulfill the requirements stated in the document which can be downloaded below, if required, you will also need to fill and submit the document also.
+                    </React.Fragment>
+                  )
+              }
               
               <div style={{ marginTop: '1rem' }}>
                 <a href={grantDetails.upload} download={`${grantDetails.grantName} - Requirements`}>
@@ -551,7 +527,6 @@ const CardsWithTabSwitch = ({
                     toast.success(response.data.message);
                     setGrantDetailsModalOpen(false);
                   } catch (error) {
-                    console.dir(error);
                     if (error.response && error.response.data.message === 'Validation error') {
                       return err.setErrors(error.response.data.error)
                     } else if (error.response && error.response.data.message !== 'Validation error') {
