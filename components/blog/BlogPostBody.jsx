@@ -4,6 +4,7 @@ import styled from "styled-components";
 import dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime';
 import ReactHtmlParser from 'react-html-parser';
+import { ReactComponent as FaceBookIcon } from "feather-icons/dist/icons/facebook.svg";
 import { Container, ContentWithPaddingXl } from "../misc/Layouts.jsx";
 import {
   Row, Description, Title, Heading, Image, AuthorImage,
@@ -126,7 +127,10 @@ const BlogPostBody = ({ postObject, post, recentPosts }) => {
                     data-lazy="true"
                     data-size="small">
                     <a target="_blank" href={`https://www.facebook.com/sharer/sharer.php?u=${process.env.NEXT_PUBLIC_HOST_URL}/blog/post/${postObject.slug}&amp;src=sdkpreparse`} className="fb-xfbml-parse-ignore">
-                      Share
+                      <span style={{ display: 'flex', flexDirection: 'row', justifyContent: 'flex-end' }}>
+                        <FaceBookIcon width={16} height={16} style={{ marginTop: '.33rem' }} />
+                        <span style={{ fontSize: '14px', marginTop: '.3rem', marginLeft: '.19rem' }}>Share</span>
+                      </span>
                     </a>
                   </div>
                   <div style={{ marginLeft: '1rem', marginTop: '4px' }}>

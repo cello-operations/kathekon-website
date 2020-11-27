@@ -14,7 +14,7 @@ export const Image = styled(motion.div)(props => [
   tw`h-64 bg-cover bg-center rounded`,
 ]);
 export const Title = tw.h5`mt-6 text-xl font-bold transition duration-300 group-hover:text-primary-500`;
-export const Description = tw.p`mt-2 text-secondary-100 leading-loose text-sm`;
+export const Description = tw.p`px-2 mt-2 text-secondary-100 leading-loose text-sm`;
 export const AuthorInfo = tw.div`mt-6 flex items-center`;
 export const AuthorImage = tw.img`w-12 h-12 rounded-full`;
 export const AuthorNameAndProfession = tw.div`ml-4`;

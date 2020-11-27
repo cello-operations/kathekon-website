@@ -33,7 +33,7 @@ const Meta = styled.div`
 
 const Title = tw.h5`mt-4 leading-snug font-bold text-2xl`;
 const Description = styled.span`
-  height: 340px;
+  height: 300px;
   display: block;
   p.description {
     ${tw`mt-2 text-lg text-secondary-100 font-medium`}
@@ -85,9 +85,9 @@ const blogPosts = [
 ];
 
 const FeatureList = tw.ul`mt-2 leading-loose`;
-const Feature = tw.li`flex items-center`;
+const Feature = tw.li`mt-1 flex items-center`;
 const FeatureIcon = tw(ChevronIcon)`w-4 h-4 text-primary-500`;
-const FeatureText = tw.p`ml-2 font-medium text-secondary-100 font-sans`;
+const FeatureText = tw.p`ml-2 text-secondary-100 font-sans`;
 
 const GrantsSection = ({
   subheading = "Blog",
@@ -117,12 +117,10 @@ const GrantsSection = ({
                     </p>
                     {
                       post?.hasList ? post?.list?.map((listItem) => (
-                        <FeatureList>
-                          <Feature>
-                            <FeatureIcon />
-                            <FeatureText>{listItem}</FeatureText>
-                          </Feature>
-                        </FeatureList>
+                        <Feature key={listItem}>
+                          <FeatureIcon />
+                          <FeatureText>{listItem}</FeatureText>
+                        </Feature>
                       )) : <></>
                     }
                   </Description>

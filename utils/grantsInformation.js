@@ -17,9 +17,9 @@ export const fundingCategories = [
     // author: "Owais Khan",
     // category: "Civil Society",
     title: "Civil Society",
-    description: `We are poised to close the gap with regards to finding, whereby driving  a change through contributing to the funding opportunities for civil society organization currently carrying on work at the grassroots level in our  thematic areas. Our thematic areas are:`,
+    description: `We recognize the important work of civil society groups in a country like Nigeria. Often, because of the government stifling the civic space, or due to limited funding opportunities, civil society groups work in the most challenging environments. If you work on free speech and environmental issues, we urge you to apply for funding`,
     url: "/grants",
-    hasList: true,
+    hasList: false,
     list: ['Free Speech', 'Environment', 'Internet governance'],
   },
   {

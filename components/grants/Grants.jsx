@@ -2,10 +2,8 @@ import React from "react";
 import Head from 'next/head';
 import styled from "styled-components";
 import tw from 'twin.macro';
-import AnimationRevealPage from "../../helpers/AnimationRevealPage.jsx";
 import GrantsBanner from '../fragments/GrantsBanner.jsx';
 import GrantsTabs from '../cards/CardsWIthTabSwitch.jsx';
-import { PageNavLinks } from '../header/NavLinks.jsx';
 
 const MotionSection = styled.section`
   background: white;
@@ -15,10 +13,24 @@ const MotionSection = styled.section`
   z-index: 99999;
   justify-self: center;
   align-self: center;
+  
+  @media(min-width: 1440px) {
+    margin-top: 1rem;
+  }
+  
+  @media(max-width: 768px) {
+    padding: 2rem;
+  }
 `;
 
 const StyledDiv = tw.div`font-display min-h-screen text-secondary-500 p-8 overflow-hidden`;
 const Container = tw.div`grid grid-cols-13`;
+
+const ResponsiveStyledDiv = styled(StyledDiv)`
+  @media(max-width: 414px) {
+    padding: 0 !important;
+  }
+`;
 
 const Grants = (props) => {
   return (
@@ -30,11 +42,11 @@ const Grants = (props) => {
       </Head>
       <Container>
         <GrantsBanner />
-        <StyledDiv>
+        <ResponsiveStyledDiv>
           <MotionSection>
             <GrantsTabs tabs={props.grants} />
           </MotionSection>
-        </StyledDiv>
+        </ResponsiveStyledDiv>
       </Container>
     </>
   );
