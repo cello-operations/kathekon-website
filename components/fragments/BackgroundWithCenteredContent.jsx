@@ -95,12 +95,13 @@ const BackgroundAsImageWithCenteredContent = ({
     <Container>
       <OpacityOverlay />
       <HeroContainer>
-        <div style={{
-          display: 'none',
-          ...(displayHeader ? { display: 'block' } : {}),
-        }}>
-          <StyledHeader logoUrl={"https://res.cloudinary.com/tolulope-od/image/upload/v1605094682/Kathekon-redesign-13_xjg32j.png"} transparent={true} />
-        </div>
+        {
+          displayHeader && (
+            <div>
+              <StyledHeader logoUrl={"https://res.cloudinary.com/tolulope-od/image/upload/v1605094682/Kathekon-redesign-13_xjg32j.png"} transparent={true} />
+            </div>
+          )
+        }
         <Content>
           <Heading>
             Transforming society through evidence-driven investments in education, social welfare, and civil society
