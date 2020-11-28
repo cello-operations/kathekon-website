@@ -8,18 +8,18 @@ export const Heading = tw(SectionHeading)`text-left text-gray-900 lg:text-4xl xl
 
 export const PopularPostsContainer = tw.div`lg:w-2/3`;
 export const PostsContainer = tw.div`mt-12`;
-export const Post = tw(motion.div)`block text-gray-800 cursor-pointer mb-16 last:mb-0 sm:mb-0 sm:odd:mr-8 lg:mr-8 xl:mr-16`;
+export const Post = tw(motion.div)`block text-gray-800 cursor-pointer mb-16 last:mb-0 sm:mb-0 lg:mr-8 xl:mr-16`;
 export const Image = styled(motion.div)(props => [
   `background-image: url("${props.imageSrc}");`,
   tw`h-64 bg-cover bg-center rounded`,
 ]);
 export const Title = tw.h5`mt-6 text-xl font-bold transition duration-300 group-hover:text-primary-500`;
-export const Description = tw.p`mt-2 text-secondary-100 leading-loose text-sm`;
+export const Description = tw.p`px-2 mt-2 text-secondary-100 leading-loose text-sm`;
 export const AuthorInfo = tw.div`mt-6 flex items-center`;
 export const AuthorImage = tw.img`w-12 h-12 rounded-full`;
 export const AuthorNameAndProfession = tw.div`ml-4`;
 export const AuthorName = tw.h6`font-semibold text-lg`;
-export const AuthorProfile = tw.p`text-secondary-100 text-sm`;
+export const AuthorProfile = tw.span`text-secondary-100 text-sm`;
 export const Plan = styled.div`
   ${tw`w-full bg-white px-10 rounded-lg shadow-lg py-10 xl:p-10 flex flex-col justify-between mt-16 first:mt-0 lg:mt-0 shadow-md`}
 `;

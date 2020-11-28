@@ -48,7 +48,7 @@ const TeamCardGrid = ({
   description = "",
   cards = [
     {
-      imageSrc: "https://res.cloudinary.com/tolulope-od/image/upload/v1601211702/web-9_whr5dl.jpg",
+      imageSrc: "https://res.cloudinary.com/tolulope-od/image/upload/f_auto,q_auto/v1601211702/web-9_whr5dl.jpg",
       position: "Executive Director",
       role: "Co-Founder",
       name: "Ifedolapo Ogunjubee",
@@ -60,7 +60,7 @@ const TeamCardGrid = ({
       ],
     },
     {
-      imageSrc: "https://res.cloudinary.com/tolulope-od/image/upload/v1605095626/WhatsApp_Image_2020-09-29_at_16.53.52_s719q5.jpg",
+      imageSrc: "https://res.cloudinary.com/tolulope-od/image/upload/f_auto,q_auto/v1605095626/WhatsApp_Image_2020-09-29_at_16.53.52_s719q5.jpg",
       position: "Director of Operations",
       role: "Co-Founder",
       name: "Morisola Alaba",
@@ -72,7 +72,7 @@ const TeamCardGrid = ({
       ],
     },
     {
-      imageSrc: "https://res.cloudinary.com/tolulope-od/image/upload/v1605095625/WhatsApp_Image_2020-09-30_at_11.06.35_luwk2f.jpg",
+      imageSrc: "https://res.cloudinary.com/tolulope-od/image/upload/f_auto,q_auto/v1605095625/WhatsApp_Image_2020-09-30_at_11.06.35_luwk2f.jpg",
       position: "Director of Communications",
       role: "Co-Founder",
       name: "Socrates Mbamalu",
@@ -84,7 +84,7 @@ const TeamCardGrid = ({
       ],
     },
     {
-      imageSrc: "https://res.cloudinary.com/tolulope-od/image/upload/v1605096180/WhatsApp_Image_2020-11-03_at_11.06.20_jbgfye.jpg",
+      imageSrc: "https://res.cloudinary.com/tolulope-od/image/upload/f_auto,q_auto/v1605096180/WhatsApp_Image_2020-11-03_at_11.06.20_jbgfye.jpg",
       position: "Social Media Manager",
       role: "",
       name: "Adebimpe Adeyemi",

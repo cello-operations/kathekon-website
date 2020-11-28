@@ -8,10 +8,12 @@ const parseDataFromJSON = (json) => {
         }>`;
         break;
       case 'paragraph':
-        html += `<p>${block.data.text}</p><br />`;
+        html += `<p style="font-size: 15.5px;">${block.data.text}</p><br />`;
         break;
       case 'image':
-        html += `<br /><img src="${block.data.file.url}" title="${
+        html += `<br /><img  alt="${
+          block.data.caption
+        }" src="${block.data.file.url}" loading="lazy" title="${
           block.data.caption
         }" /><br /><div style="text-align: center; font-size: 13px; margin-top: -17px"><em>${block.data.caption}</em></div><br />`;
         break;
@@ -44,7 +46,7 @@ const parseDataFromJSON = (json) => {
         html += `<div class="ce-block" style="text-align: center">
                   <div class="ce-block__content">
                       <div class="ce-delimiter cdx-block">
-                        <h2 style="font-size: 26px; font-weight: 900; font-family: arial sans-serif">*   *   *   *</h2>
+                        <h2 style="font-size: 26px; font-weight: 900; font-family: arial sans-serif">*   *   * </h2>
                       </div>
                   </div>
                 </div>`;

@@ -42,27 +42,17 @@ const OurWork = () => {
     <>
       <Head>
         <title>Kathēkon - Our Work</title>
-        <meta name="description" content="Kathekon:  We will partner with local NGOs to build centers
-          that provide access to internet-enabled computers
-          or tablets to students.
-          The students will have access to online
-          learning platforms like Ulesson and Khan Academy" />
+        <meta name="og:title" property="og:title" content="Kathēkon - Our Work"/>
+        <meta name="twitter:card" content="photo" />
+        <meta name="twitter:title" content="Kathēkon - Our Work" />
+        <meta property="og:image" content="https://res.cloudinary.com/tolulope-od/image/upload/v1605094663/Kathekon-redesign-13-13_e9qpnx.png" />
+        <meta name="twitter:description" content="Part of our work at Kathēkon is to improve the quality of education available to children from low-income families. We will fund free schools focused on bridging this quality gap as we continue to identify other transformative interventions." />
+        <meta name="twitter:image:src" content="https://res.cloudinary.com/tolulope-od/image/upload/v1605094663/Kathekon-redesign-13-13_e9qpnx.png" />
+        <meta name="description" content="Part of our work at Kathēkon is to improve the quality of education available to children from low-income families. We will fund free schools focused on bridging this quality gap as we continue to identify other transformative interventions." />
         <meta name="keywords" content="our work ulesson khan academy kathēkon scholarships transforming nigeria kathekon education civil society social welfare investment africa" />
       </Head>
       <AnimationRevealPage>
         <OurWorkFeatures />
-        {/* <TwoColWithSteps
-          subheading={"Our Future (2020 -2021)"}
-          heading={(
-            <React.Fragment>
-              <span>Minimum </span>
-               Viable Project
-            </React.Fragment>
-          )}
-          imageCredits={(<span style={{ color: '#333', fontSize: '10px', fontWeight: 100 }}>Photo by <a style={{ color: '#34a4dd' }} href="https://unsplash.com/@kofoshotit?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Omotayo Kofoworola</a> on <a style={{ color: '#34a4dd' }} href="https://unsplash.com/s/photos/nigeria?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>)}
-          steps={steps}
-          imageSrc={'https://res.cloudinary.com/tolulope-od/image/upload/v1601225152/omotayo-kofoworola-7eHPxnhY_uA-unsplash_rgkel8.jpg'}
-        /> */}
       </AnimationRevealPage>
     </>
   );

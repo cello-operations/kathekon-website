@@ -15,7 +15,15 @@ import AuthContext from '../../context/AuthContext';
 const HeadingRow = tw.div`flex`;
 const Heading = tw(SectionHeading)`text-gray-900`;
 
-const Row = styled(HeadingRow)`
+const ResponsiveHeadingRow = styled(HeadingRow)`
+  @media(min-width: 768px) {
+    padding-left: inherit;
+    padding-right: inherit;
+    padding-top: .75rem;
+  }
+`;
+
+const Row = styled(ResponsiveHeadingRow)`
   flex-direction: row;
   justify-content: space-between;
 `;
@@ -30,7 +38,7 @@ const ActionButtonContainer = styled.div`
   align-content: center;
 `;
 
-export const Posts = tw.div`mt-6 sm:-mr-8 flex flex-wrap`;
+export const Posts = tw.div`mt-6 sm:mr-0 flex flex-wrap`;
 export const PostContainer = styled.div`
   ${tw`mt-10 w-full sm:w-1/2 lg:w-1/3 sm:pr-8`}
   ${props =>
@@ -65,6 +73,14 @@ export const Description = tw.div``;
 const ButtonContainer = tw.div`flex justify-center`;
 const LoadMoreButton = tw(PrimaryButton)`mt-16 mx-auto`;
 
+const ResponsiveContentWithPaddingXl = styled(ContentWithPaddingXl)`
+  padding-top: 0;
+  width: 100% !important;
+  @media(max-width: 414px) {
+      padding: 0 !important;
+    }
+`;
+
 function CreatePostLink({ href, name }) {
   return (
     <Link href={href}>
@@ -87,13 +103,19 @@ const BlogPosts = (props) => {
   return (
     <>
       <Head>
-        <title>Kathēkon - Blog Posts</title>
-        <meta name="description" content="Kathekon Blog, read enlightening artcules and personal discoveries by our team on the journey to transforming society for the better." />
+        <title>Kathēkon Blog</title>
+        <meta name="description" content="Read more about the work Kathekon is doing and how much of an impact we are leaving in the society" />
         <meta name="keywords" content="kathekon kathēkon blog articles posts stories scholarships transforming nigeria education civil society social welfare investment africa" />
+        <meta name="og:title" property="og:title" content="Kathekon Blog"/>
+        <meta name="twitter:card" content="photo" />
+        <meta name="twitter:title" content="Kathēkon Blog" />
+        <meta property="og:image" content="https://res.cloudinary.com/tolulope-od/image/upload/v1605094663/Kathekon-redesign-13-13_e9qpnx.png" />
+        <meta name="twitter:description" content="Read more about the work Kathekon is doing and how much of an impact we are leaving in the society." />
+        <meta name="twitter:image:src" content="https://res.cloudinary.com/tolulope-od/image/upload/v1605094663/Kathekon-redesign-13-13_e9qpnx.png" />
       </Head>
       <AnimationRevealPage>
         <Container>
-          <ContentWithPaddingXl>
+          <ResponsiveContentWithPaddingXl>
             <Row>
               <Heading>{headingText}</Heading>
               <ActionButtonContainer style={{ display: 'flex', alignItems: 'center' }}>
@@ -149,7 +171,7 @@ const BlogPosts = (props) => {
                 <LoadMoreButton onClick={onLoadMoreClick}>Load More</LoadMoreButton>
               </ButtonContainer>
             )}
-          </ContentWithPaddingXl>
+          </ResponsiveContentWithPaddingXl>
         </Container>
       </AnimationRevealPage>
     </>

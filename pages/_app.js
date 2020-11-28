@@ -69,9 +69,8 @@ const App = (props) => {
         <meta property="og:locale" content="en_US" />
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="Kathekon" />
-        <meta name="twitter:site" content="@Kathekon2" />
-        <meta name="twitter:creator" content="@Kathekon2" />
-        <link rel="apple-touch-icon" href="/Kathekon-fav-blue-15.png" />
+        <meta name="twitter:site" content="@Kathekon_" />
+        <meta name="twitter:creator" content="@Kathekon_" />
         <link
           rel="stylesheet"
           type="text/css"
@@ -83,7 +82,7 @@ const App = (props) => {
           type="text/css"
           href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
         />
-        
+
         <title>Kathēkon - Transforming society through evidence-driven investments</title>
       </Head>
         {/* <GlobalStyle /> */}

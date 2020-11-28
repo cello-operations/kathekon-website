@@ -1,15 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 import tw from "twin.macro";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowCircleRight } from '@fortawesome/free-solid-svg-icons'
 import { motion } from "framer-motion";
 import { ReactComponent as SvgDotPatternIcon } from "../../public/images/dot-pattern.svg";
 import { SectionHeading as HeadingTitle } from "../misc/Headings.jsx";
 
 const Container = tw.div`relative`;
 
-const SingleColumn = tw.div`max-w-screen-xl mx-auto py-20 lg:py-24`;
+const SingleColumn = tw.div`max-w-screen-xl mx-auto`;
 
 const HeadingInfoContainer = tw.div`flex flex-col items-center`;
 const HeadingDescription = tw.p`mt-4 font-medium text-gray-600 text-center max-w-sm`;
@@ -31,19 +29,8 @@ const Title = tw.h4`text-3xl font-bold text-gray-900`;
 const Description = tw.div`mt-2 text-sm leading-loose`;
 const Column = tw.div`w-full max-w-md mx-auto md:max-w-none md:mx-0`;
 const Link = tw.a`inline-block mt-4 text-sm text-primary-500 font-bold cursor-pointer transition duration-300 border-b-2 border-transparent hover:border-primary-500`;
-const TextColumn = styled(Column)(props => [
-  tw`md:w-full mt-16 md:mt-0`,
-  props.textOnLeft ? tw`md:mr-12 lg:mr-16 md:order-first` : tw`md:ml-12 lg:ml-16 md:order-last`,
-]);
-const Steps = tw.ul`mt-6`;
-const Step = tw.li`mt-8 flex flex-col md:flex-row items-center md:items-start`;
-const StepNumber = tw.div`font-semibold leading-none text-gray-400`;
-const StepText = tw.div`mt-3 md:mt-0 md:ml-6`;
-const StepHeading = tw.h6`leading-none text-xl font-semibold`;
-const StepDescription = tw.p`mt-3 max-w-xs leading-loose text-sm text-gray-600 font-medium`;
-const DescriptionWithSteps = tw.div`mt-2 text-sm leading-loose`;
 
-const TextContent = tw.div`text-center md:text-left`;
+const DescriptionWithSteps = tw.div`mt-2 text-sm leading-loose`;
 
 const SvgDotPattern1 = tw(
   SvgDotPatternIcon
@@ -66,7 +53,7 @@ const VerticalImageSection = () => {
       title: "Investment In Education",
       description: (
         <span style={{ fontSize: '18px' }}>
-        The gulf in good education in Nigeria continues to widen. Students rarely have basic resources for proper learning, and many students find themselves at a tremendous disadvantage against students from across the world. Part of our work at Kathekon is to identify inefficiencies in education and help rebuild a well standardized model by providing funds to schools that have the potential, but are limited in resources.
+          Part of our work at Kathēkon is to improve the quality of education available to children from low-income families. We will fund free schools focused on bridging this quality gap as we continue to identify other transformative interventions.
         </span>
       ),
       url: "/contact-us",
@@ -79,7 +66,7 @@ const VerticalImageSection = () => {
       title: "Social Welfare",
       description: (
         <span style={{ fontSize: '18px' }}>
-          We will provide local NGOs with funds in order to reshape societies through investments in social impact spaces such as Education, Civil Societies and Social welfare. Also, we make provision for discretionary grants to support humanitarian response to emergencies and relevant long-term interventions that fall within the specific thematic areas of choice.
+          Drinkable water, daily meals, and reliable housing are crucial to human dignity. Kathēkon will work with credible community leaders and organizations dedicated to serving underserved communities.
         </span>
       ),
       url: "/contact-us",
@@ -93,45 +80,13 @@ const VerticalImageSection = () => {
       title: "Civil Society",
       description: (
         <span style={{ fontSize: '18px' }}>
-          We recognize the important work of the civil society in a country like Nigeria and often times those in the civil society find themselves working in the most challenging environments either as a result of government stifling the civic space or the limited number of funds available.
+          We recognize the important work of civil society groups in a country like Nigeria. Often, because of the government stifling the civic space, or due to limited funding opportunities, civil society groups work in the most challenging environments. If you work on free speech and environmental issues, we urge you to apply for funding.
         </span>
       ),
       url: "/contact-us",
       hasSteps: true,
       imageCredit: (<span style={{ color: '#333333', fontSize: '10px', fontWeight: 100 }}>Photo by <a style={{ color: '#34a4dd' }} href="https://unsplash.com/@mxwll?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Samson Maxwell</a> on <a style={{ color: '#34a4dd' }} href="https://unsplash.com/s/photos/%23endsars?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>),
     },
-    // {
-    //   imageSrc:
-    //     "https://res.cloudinary.com/tolulope-od/image/upload/v1601238029/william-warby-WahfNoqbYnM-unsplash_a5y26m.jpg",
-    //   subtitle: "General Framework",
-    //   title: "Goal Measurements",
-    //   description: (
-    //     <TextColumn textOnLeft={true}>
-    //       <TextContent>
-    //         <Steps>
-    //           <Step>
-    //             <StepNumber><FontAwesomeIcon size={"2x"} icon={faArrowCircleRight} /></StepNumber>
-    //             <StepText>
-    //               <StepHeading>Make public school education in the South-West region of Nigeria competitive with private schools in Nigeria</StepHeading>
-    //               <StepDescription><b>Measurement:</b> performance on major exams: WASSCE, NECO, SAT, etc.
-    //               </StepDescription>
-    //             </StepText>
-    //           </Step>
-    //           <Step>
-    //             <StepNumber><FontAwesomeIcon size={"2x"} icon={faArrowCircleRight} /></StepNumber>
-    //             <StepText>
-    //               <StepHeading>Develop public school education in the South-West region of Nigeria to meet international standards</StepHeading>
-    //               <StepDescription><b>Measurement:</b> performance on SAT, IQ tests, and international competitions.
-    //               </StepDescription>
-    //             </StepText>
-    //           </Step>
-    //         </Steps>
-    //       </TextContent>
-    //     </TextColumn>
-    //   ),
-    //   url: "/",
-    //   imageCredit: (<span style={{ color: '#333333', fontSize: '10px', fontWeight: 100 }}>Photo by <a style={{ color: '#34a4dd' }} href="https://unsplash.com/@wwarby?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">William Warby</a> on <a style={{ color: '#34a4dd' }} href="https://unsplash.com/s/photos/measurement?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>),
-    // },
   ];
 
   return (

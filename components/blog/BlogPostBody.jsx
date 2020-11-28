@@ -4,6 +4,8 @@ import styled from "styled-components";
 import dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime';
 import ReactHtmlParser from 'react-html-parser';
+import { ReactComponent as FaceBookIcon } from "feather-icons/dist/icons/facebook.svg";
+import { ReactComponent as EyeIcon } from "feather-icons/dist/icons/eye.svg";
 import { Container, ContentWithPaddingXl } from "../misc/Layouts.jsx";
 import {
   Row, Description, Title, Heading, Image, AuthorImage,
@@ -14,14 +16,10 @@ import {
 
 dayjs.extend(relativeTime);
 
-const PaddedContent = styled.div`
-  max-width: 1280px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 3rem;
-  padding-right: 3rem;
-  padding-top: 5rem;
-  padding-bottom: 5rem
+const ResponsiveContentWithPaddingXl = styled(ContentWithPaddingXl)`
+  @media(max-width: 640px) {
+    padding: .65rem !important;
+  }
 `;
 
 const PBody = styled.div`
@@ -73,11 +71,16 @@ const PBody = styled.div`
 `;
 
 const BlogPostBody = ({ postObject, post, recentPosts }) => {
+  const hostURL =
+    process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_REF !== 'master'
+      ? process.env.NEXT_PUBLIC_DEV_HOST_URL
+      : process.env.NEXT_PUBLIC_HOST_URL
+
   return (
     <Container style={{ fontFamily: 'Poppins' }}>
       <div id="fb-root" />
       <script async defer={true} crossOrigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v8.0" nonce="drEjQ4iO"></script>
-      <ContentWithPaddingXl>
+      <ResponsiveContentWithPaddingXl>
         <Row>
           <PopularPostsContainer>
             <Heading>{postObject.title}</Heading>
@@ -87,16 +90,21 @@ const BlogPostBody = ({ postObject, post, recentPosts }) => {
                 <AuthorImage src={postObject.author.avatar} alt={`${postObject.author.firstName} ${postObject.author.lastName} profile image`} />
                 <AuthorNameAndProfession>
                 <AuthorName>{postObject.author.firstName} {postObject.author.lastName}</AuthorName>
-                <AuthorProfile>
-                  {dayjs(postObject.createdOn).fromNow()}   ·   {postObject.readTime < 1 ? 'A few minutes read' : `${postObject.readTime}-minute read`}
+                <AuthorProfile style={{ fontSize: '13px', display: 'flex', flexDirection: 'row', justifyContent: 'space-between', marginRight: '.5rem', flexFlow: 'wrap' }}>
+                  <div>
+                    {dayjs(postObject.createdOn).fromNow()}   ·   {postObject.readTime < 1 ? 'A few minutes read' : `${postObject.readTime}-minute read`} |
+                  </div>
+                  <div style={{ fontSize: '13px', display: 'flex', flexDirection: 'row', justifyContent: 'space-between', marginLeft: '.5rem' }}>
+                    <EyeIcon style={{ marginTop: '2.75px' }} width={13} height={13} /> <p style={{ marginLeft: '.5rem' }}>{postObject?.readCount}</p>
+                  </div>
                 </AuthorProfile>
               </AuthorNameAndProfession>
             </AuthorInfo>
             <PostsContainer>
             <Post>
               <div style={{
-                maxWidth: '100%', textAlign: 'justify', textJustify: 'inter-word',
-                lineHeight: '2rem', wordSpacing: '2px',
+                maxWidth: '100%',
+                lineHeight: '1.85rem', wordSpacing: '1px',
               }}>
                 <PBody>
                   {ReactHtmlParser(post)}
@@ -121,12 +129,15 @@ const BlogPostBody = ({ postObject, post, recentPosts }) => {
                 <SocialLinksContainer style={{ marginTop: '1.75rem' }}>
                   <div
                     className="fb-share-button"
-                    data-href={`${process.env.NEXT_PUBLIC_HOST_URL}/blog/post/${postObject.slug}`}
+                    data-href={`${hostURL}/blog/post/${postObject.slug}`}
                     data-layout="button"
                     data-lazy="true"
                     data-size="small">
-                    <a target="_blank" href={`https://www.facebook.com/sharer/sharer.php?u=${process.env.NEXT_PUBLIC_HOST_URL}/blog/post/${postObject.slug}&amp;src=sdkpreparse`} className="fb-xfbml-parse-ignore">
-                      Share
+                    <a target="_blank" href={`https://www.facebook.com/sharer/sharer.php?u=${hostURL}/blog/post/${postObject.slug}&amp;src=sdkpreparse`} className="fb-xfbml-parse-ignore">
+                      <span style={{ display: 'flex', flexDirection: 'row', justifyContent: 'flex-end' }}>
+                        <FaceBookIcon width={16} height={16} style={{ marginTop: '.33rem' }} />
+                        <span style={{ fontSize: '14px', marginTop: '.3rem', marginLeft: '.19rem' }}>Share</span>
+                      </span>
                     </a>
                   </div>
                   <div style={{ marginLeft: '1rem', marginTop: '4px' }}>
@@ -135,7 +146,7 @@ const BlogPostBody = ({ postObject, post, recentPosts }) => {
                       href="https://twitter.com/share?ref_src=twsrc%5Etfw"
                       className="twitter-share-button"
                       data-text={`${postObject.title} by ${postObject.author.firstName} ${postObject.author.lastName}`}
-                      data-url={`${process.env.NEXT_PUBLIC_HOST_URL}/blog/post/${postObject.slug}`}
+                      data-url={`${hostURL}/blog/post/${postObject.slug}`}
                       data-show-count="false">
                         Tweet
                       </a>
@@ -169,7 +180,7 @@ const BlogPostBody = ({ postObject, post, recentPosts }) => {
                 </PlanHeader>
                 {recentPosts.map((post, index) => (
                   <Link key={post._id} href={`/blog/post/${post.slug}`}>
-                    <Post className="group" style={{ width: '100%' }}>
+                    <Post className="group" style={{ width: '100%', paddingRight: 0 }}>
                       <PostTextContainer>
                         <Title>{post.title}</Title>
                         <AuthorName>{post.author.firstName} {post.author.lastName}</AuthorName>
@@ -182,7 +193,7 @@ const BlogPostBody = ({ postObject, post, recentPosts }) => {
             </PostsContainer>
           </RecentPostsContainer>
         </Row>
-      </ContentWithPaddingXl>
+      </ResponsiveContentWithPaddingXl>
     </Container>
   );
 };

@@ -12,11 +12,17 @@ import useAnimatedNavToggler from "../../helpers/useAnimatedNavToggler.js";
 import { ReactComponent as MenuIcon } from "feather-icons/dist/icons/menu.svg";
 import { ReactComponent as CloseIcon } from "feather-icons/dist/icons/x.svg";
 import AuthContext from "../../context/AuthContext";
-import Cookies from "universal-cookie";
 
 const Header = tw.header`
   flex justify-between items-center
-  max-w-screen-xl mx-auto
+  max-w-screen-xl mx-auto w-3/4
+`;
+
+const ResponsiveHeader = styled(Header)`
+  @media(max-width: 1024px) {
+    width: 97.5% !important;
+    padding: .75rem .3rem !important;
+  }
 `;
 
 export const NavLinks = tw.div`inline-block`;
@@ -111,7 +117,7 @@ export const AuthLinks = ({
 
 const LightHeader = ({
   roundedHeaderButton = false,
-  logoLink, links, className, collapseBreakpointClass = "lg",
+  logoLink, links, className, collapseBreakpointClass = "xl",
   transparent = false,
   logoUrl = 'https://res.cloudinary.com/tolulope-od/image/upload/v1605094663/Kathekon-redesign-13-13_e9qpnx.png',
   firstName = "User",
@@ -225,7 +231,7 @@ const PageNavLinks = [
   links = transparent ? defaultLinks : PageNavLinks;
 
   return (
-    <Header className={className || "header-light"}>
+    <ResponsiveHeader className={className || "header-light"}>
       <DesktopNavLinks css={collapseBreakpointCss.desktopNavLinks}>
         {logoLink}
         {links}
@@ -237,10 +243,10 @@ const PageNavLinks = [
           {links}
         </MobileNavLinks>
         <NavToggle onClick={toggleNavbar} className={showNavLinks ? "open" : "closed"}>
-          {showNavLinks ? <CloseIcon tw="w-6 h-6" /> : <MenuIcon tw="w-6 h-6" />}
+          {showNavLinks ? <CloseIcon tw="w-6 h-6" style={{ marginRight: '2rem' }} /> : <MenuIcon tw="w-6 h-6" />}
         </NavToggle>
       </MobileNavLinksContainer>
-    </Header>
+    </ResponsiveHeader>
   );
 };
 

@@ -5,12 +5,11 @@ import { css } from "styled-components/macro"; //eslint-disable-line
 import { SectionHeading, Subheading as SubheadingBase } from "../misc/Headings.jsx";
 import { motion } from "framer-motion";
 import { PrimaryButton as PrimaryButtonBase } from "../misc/Buttons.jsx";
-import TeamIllustrationSrc from "../../public/images/team-illustration-2.svg";
 import { ReactComponent as SvgDotPattern } from "../../public/images/dot-pattern.svg"
 import { ReactComponent as CheckboxIcon } from "feather-icons/dist/icons/check-circle.svg";
 
 const Container = tw.div`relative`;
-const TwoColumn = tw.div`flex flex-col md:flex-row justify-between max-w-screen-xl mx-auto py-20 md:py-24 items-center`;
+const TwoColumn = tw.div`flex flex-col md:flex-row justify-between max-w-screen-xl mx-auto py-0 mt-10 lg:mt-0 lg:py-24 items-center`;
 const Column = tw.div`w-full max-w-md mx-auto md:max-w-none md:mx-0`;
 const ImageColumn = tw(Column)`md:w-6/12 flex-shrink-0 relative`;
 const TextColumn = styled(Column)((props) => [
@@ -23,6 +22,12 @@ const Image = styled.img((props) => [
   props.imageBorder && tw`border`,
   props.imageShadow && tw`shadow`,
 ]);
+
+const ResponsiveContainer = styled(Container)`
+  @media(max-width: 768px) {
+    padding: 0;
+  }
+`;
 
 const DecoratorBlob = styled(SvgDotPattern)((props) => [
   tw`w-20 h-20 absolute right-0 bottom-0 transform translate-x-1/2 translate-y-1/2 fill-current text-primary-500 -z-10`,
@@ -71,7 +76,7 @@ const TwoColFeatureSection = ({
   // The textOnLeft boolean prop can be used to display either the text on left or right side of the image.
 
   return (
-    <Container>
+    <ResponsiveContainer>
       <TwoColumn>
         <ImageColumn>
           <Image css={imageCss} src={imageSrc} imageBorder={imageBorder} imageShadow={imageShadow} imageRounded={imageRounded}/>
@@ -117,7 +122,7 @@ const TwoColFeatureSection = ({
           </TextContent>
         </TextColumn>
       </TwoColumn>
-    </Container>
+    </ResponsiveContainer>
   );
 };
 

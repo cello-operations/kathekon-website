@@ -4,7 +4,7 @@ import Cookie from 'universal-cookie';
 const cookies = new Cookie();
 
 const API_BASE_URL =
-	process.env.VERCEL_GITHUB_COMMIT_REF === 'dev'
+	process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_REF !== 'master'
 		? process.env.NEXT_PUBLIC_DEV_API_BASE_URL
 		:  process.env.NEXT_PUBLIC_API_BASE_URL
 

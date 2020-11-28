@@ -3,30 +3,34 @@ import { truncateText } from '../helpers/truncateText';
 export const fundingCategories = [
   {
     imageSrc:
-      "https://res.cloudinary.com/tolulope-od/image/upload/v1601139160/jaredd-craig-HH4WBGNyltc-unsplash_vgzblr.jpg",
+      "https://res.cloudinary.com/tolulope-od/image/upload/q_auto/v1601139160/jaredd-craig-HH4WBGNyltc-unsplash_vgzblr.jpg",
     // author: "Adam Wathan",
     // category: "Education",
     title: "Education",
-    description: "Education is a necessity in our society and part of our work at Kathēkon is to identify inefficiencies in this area and help rebuild in order to achieve a well-standardized model by providing funds to schools that have the potential but are limited in resources.",
+    description: "Part of our work at Kathēkon is to improve the quality of education available to children from low-income families. We will fund free schools focused on bridging this quality gap as we continue to identify other transformative interventions.",
     url: "/grants",
+    hasList: false,
   },
   {
     imageSrc:
-      "https://res.cloudinary.com/tolulope-od/image/upload/v1601138950/logan-weaver-uwyqYYWUQJw-unsplash_upqyxf.jpg",
+      "https://res.cloudinary.com/tolulope-od/image/upload/q_auto/v1601138950/logan-weaver-uwyqYYWUQJw-unsplash_upqyxf.jpg",
     // author: "Owais Khan",
     // category: "Civil Society",
     title: "Civil Society",
-    description: `We are poised to close the gap with regards to funding, whereby driving a change through contributing to the funding opportunities for civil society organization currently carrying on work at the grassroots level in specific thematic areas ${'          '}`,
+    description: `We recognize the important work of civil society groups in a country like Nigeria. Often, because of the government stifling the civic space, or due to limited funding opportunities, civil society groups work in the most challenging environments. If you work on free speech and environmental issues, we urge you to apply for funding`,
     url: "/grants",
+    hasList: false,
+    list: ['Free Speech', 'Environment', 'Internet governance'],
   },
   {
     imageSrc:
-      "https://res.cloudinary.com/tolulope-od/image/upload/v1598367140/trevor-cole-CWcAsKuhwy0-unsplash_vdmd17.jpg",
+      "https://res.cloudinary.com/tolulope-od/image/upload/q_auto/v1598367140/trevor-cole-CWcAsKuhwy0-unsplash_vdmd17.jpg",
     // author: "Steve Schoger",
     // category: "July 10",
     title: "Social Welfare",
-    description: "We invest in credible organizations dedicated to catering for the underserved communities with basic needs and amenities lacking in the environment they decide to work in. Some communities still lack clean water, good roads, daily meals for families. ",
+    description: "Drinkable water, daily meals, and reliable housing are crucial to human dignity. Kathēkon will work with credible community leaders and organizations dedicated to serving underserved communities.",
     url: "/grants",
+    hasList: false,
   },
 ];
 

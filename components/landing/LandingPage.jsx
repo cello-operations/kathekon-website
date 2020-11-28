@@ -19,19 +19,17 @@ const Landing = (props) => {
       <AnimationRevealPage>
         <BackgroundWithCenteredContent
           requestedPathName={props.requestedPathName}
-          backgroundImage={"https://res.cloudinary.com/tolulope-od/image/upload/v1601250870/aaron-burden-NXt5PrOb_7U-unsplash_uix1mv.jpg"}
+          backgroundImage={"https://res.cloudinary.com/tolulope-od/image/upload/q_auto/v1601250870/aaron-burden-NXt5PrOb_7U-unsplash_uix1mv.jpg"}
         />
         <TwoColFeatureSection
           subheading={(
-            <Subheading>
-              Who are we?
-            </Subheading>
+            <Subheading />
           )}
           heading={<Title>We are <span tw="text-primary-500">Kathēkon.</span></Title>}
-          description={"Dedicated to Rebuilding Societies through strategic investments in the social impact space"}
+          description={"Dedicated to rebuilding society through strategic investments in the social impact space."}
           buttonRounded={false}
           primaryButtonText="About Us"
-          imageSrc="https://res.cloudinary.com/tolulope-od/image/upload/v1601139589/santi-vedri-O5EMzfdxedg-unsplash_forq9q.jpg"
+          imageSrc="https://res.cloudinary.com/tolulope-od/image/upload/q_auto/v1601139589/santi-vedri-O5EMzfdxedg-unsplash_forq9q.jpg"
           textOnLeft={false}
           imageCredits={(
             <span style={{ color: '#333', fontSize: '10px', fontWeight: 100 }}>
@@ -53,14 +51,14 @@ const Landing = (props) => {
           },
           1: {
             heading: "Our Mission",
-            description: "To focus on investing in the social impact space with the aim of productivity through tested rigorous processes in various programs, and simultaneously improving on them.",
+            description: "To invest in the social impact space using rigorous evidence-driven processes that are improved or discarded as new information becomes available.",
           },
         }}
         testimonials={[
           {
             id: 0,
             imageSrc:
-              "https://res.cloudinary.com/tolulope-od/image/upload/v1599943083/nathan-dumlao-VJHb4QPBgV4-unsplash_zuahht.jpg",
+              "https://res.cloudinary.com/tolulope-od/image/upload/q_auto/v1599943083/nathan-dumlao-VJHb4QPBgV4-unsplash_zuahht.jpg",
             profileImageSrc:
               "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3.25&w=512&h=512&q=80",
             quote:
@@ -74,7 +72,7 @@ const Landing = (props) => {
           {
             id: 1,
             imageSrc:
-              "https://res.cloudinary.com/tolulope-od/image/upload/v1599957294/bernard-hermant-z9AOxTYQBy4-unsplash_awrrpy.jpg",
+              "https://res.cloudinary.com/tolulope-od/image/upload/q_auto/v1599957294/bernard-hermant-z9AOxTYQBy4-unsplash_awrrpy.jpg",
             profileImageSrc:
               "https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=512&h=512&q=80",
               quote:
