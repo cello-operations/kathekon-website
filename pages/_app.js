@@ -4,7 +4,7 @@ import tw from "twin.macro";
 import styled from 'styled-components';
 import { ToastContainer } from 'react-toastify';
 import Footer from '../components/fragments/Footer.jsx'
-import Header from "../components/header/LightHeader.jsx";
+import Header, { DesktopNavLinks, LogoLink, NavLink, NavToggle } from "../components/header/LightHeader.jsx";
 import { Container } from "../components/misc/Layouts.jsx"
 import { AuthStateProvider } from '../context/AuthContext';
 import useAuth from '../hooks/useAuth';
@@ -17,6 +17,16 @@ const AppHeader = styled(Header)`
   ${tw`pt-2 max-w-none w-9/12`}
 `;
 
+const StyledHeader = styled(Header)`
+  ${tw`pt-8 max-w-none w-9/12`}
+  ${DesktopNavLinks} ${NavLink}, ${LogoLink} {
+    ${tw`text-gray-100 hover:border-gray-300 hover:text-gray-300`}
+  }
+  ${NavToggle}.closed {
+    ${tw`text-gray-100 hover:text-primary-500`}
+  }
+`;
+
 const App = (props) => {
   const { Component, pageProps } = props;
   useAuth();
@@ -24,6 +34,7 @@ const App = (props) => {
   const [faivconURL, setFaviconURL] = React.useState('favicon.png');
   const [displayHeader, setDisplayHeader] = React.useState(true);
   React.useEffect(() => {
+    console.log(pageProps);
     setDisplayHeader(pagesWithoutHeader.includes(props.requestedPathName))
     if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
       // dark mode

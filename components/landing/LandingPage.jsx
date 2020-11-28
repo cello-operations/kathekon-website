@@ -1,7 +1,7 @@
 import * as React from 'react';
 import tw from 'twin.macro';
+import dynamic from 'next/dynamic';
 import AnimationRevealPage from '../../helpers/AnimationRevealPage.jsx';
-import BackgroundWithCenteredContent from '../fragments/BackgroundWithCenteredContent.jsx';
 import TwoColFeatureSection from '../fragments/TwoColFeatureSection.jsx';
 import CoreValues from '../fragments/TwoColWithImageSlider.jsx';
 import GrantsSection from '../fragments/GrantsSection.jsx';
@@ -12,6 +12,8 @@ import { fundingCategories } from '../../utils/grantsInformation';
 
 const Subheading = tw.span`uppercase tracking-wider text-sm`;
 const Title = tw.div`text-secondary-700`;
+
+const BackgroundWithCenteredContent = dynamic(() => import('../fragments/BackgroundWithCenteredContent.jsx'), { ssr: false });
 
 const Landing = (props) => {
   return (
