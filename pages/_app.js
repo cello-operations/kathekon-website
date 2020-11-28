@@ -22,7 +22,9 @@ const App = (props) => {
   useAuth();
 
   const [faivconURL, setFaviconURL] = React.useState('favicon.png');
+  const [displayHeader, setDisplayHeader] = React.useState(true);
   React.useEffect(() => {
+    setDisplayHeader(pagesWithoutHeader.includes(props.requestedPathName))
     if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
       // dark mode
       setFaviconURL('favicon.png');
@@ -88,7 +90,8 @@ const App = (props) => {
         {/* <GlobalStyle /> */}
         <div
           style={{
-            display: pagesWithoutHeader.includes(props.requestedPathName) ? 'none': 'block'
+            display: 'none',
+            ...(!displayHeader ? { display: 'block' } : { }),
           }}
         >
           <Container>
