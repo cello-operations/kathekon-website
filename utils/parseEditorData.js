@@ -8,7 +8,7 @@ const parseDataFromJSON = (json) => {
         }>`;
         break;
       case 'paragraph':
-        html += `<p>${block.data.text}</p><br />`;
+        html += `<p style="font-size: 15.5px;">${block.data.text}</p><br />`;
         break;
       case 'image':
         html += `<br /><img  alt="${

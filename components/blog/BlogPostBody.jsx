@@ -5,6 +5,7 @@ import dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime';
 import ReactHtmlParser from 'react-html-parser';
 import { ReactComponent as FaceBookIcon } from "feather-icons/dist/icons/facebook.svg";
+import { ReactComponent as EyeIcon } from "feather-icons/dist/icons/eye.svg";
 import { Container, ContentWithPaddingXl } from "../misc/Layouts.jsx";
 import {
   Row, Description, Title, Heading, Image, AuthorImage,
@@ -15,14 +16,10 @@ import {
 
 dayjs.extend(relativeTime);
 
-const PaddedContent = styled.div`
-  max-width: 1280px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 3rem;
-  padding-right: 3rem;
-  padding-top: 5rem;
-  padding-bottom: 5rem
+const ResponsiveContentWithPaddingXl = styled(ContentWithPaddingXl)`
+  @media(max-width: 640px) {
+    padding: .65rem !important;
+  }
 `;
 
 const PBody = styled.div`
@@ -83,7 +80,7 @@ const BlogPostBody = ({ postObject, post, recentPosts }) => {
     <Container style={{ fontFamily: 'Poppins' }}>
       <div id="fb-root" />
       <script async defer={true} crossOrigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v8.0" nonce="drEjQ4iO"></script>
-      <ContentWithPaddingXl>
+      <ResponsiveContentWithPaddingXl>
         <Row>
           <PopularPostsContainer>
             <Heading>{postObject.title}</Heading>
@@ -93,16 +90,21 @@ const BlogPostBody = ({ postObject, post, recentPosts }) => {
                 <AuthorImage src={postObject.author.avatar} alt={`${postObject.author.firstName} ${postObject.author.lastName} profile image`} />
                 <AuthorNameAndProfession>
                 <AuthorName>{postObject.author.firstName} {postObject.author.lastName}</AuthorName>
-                <AuthorProfile>
-                  {dayjs(postObject.createdOn).fromNow()}   ·   {postObject.readTime < 1 ? 'A few minutes read' : `${postObject.readTime}-minute read`}
+                <AuthorProfile style={{ fontSize: '13px', display: 'flex', flexDirection: 'row', justifyContent: 'space-between', marginRight: '.5rem', flexFlow: 'wrap' }}>
+                  <div>
+                    {dayjs(postObject.createdOn).fromNow()}   ·   {postObject.readTime < 1 ? 'A few minutes read' : `${postObject.readTime}-minute read`} |
+                  </div>
+                  <div style={{ fontSize: '13px', display: 'flex', flexDirection: 'row', justifyContent: 'space-between', marginLeft: '.5rem' }}>
+                    <EyeIcon style={{ marginTop: '2.75px' }} width={13} height={13} /> <p style={{ marginLeft: '.5rem' }}>{postObject?.readCount}</p>
+                  </div>
                 </AuthorProfile>
               </AuthorNameAndProfession>
             </AuthorInfo>
             <PostsContainer>
             <Post>
               <div style={{
-                maxWidth: '100%', textAlign: 'justify', textJustify: 'inter-word',
-                lineHeight: '2rem', wordSpacing: '2px',
+                maxWidth: '100%',
+                lineHeight: '1.85rem', wordSpacing: '1px',
               }}>
                 <PBody>
                   {ReactHtmlParser(post)}
@@ -178,7 +180,7 @@ const BlogPostBody = ({ postObject, post, recentPosts }) => {
                 </PlanHeader>
                 {recentPosts.map((post, index) => (
                   <Link key={post._id} href={`/blog/post/${post.slug}`}>
-                    <Post className="group" style={{ width: '100%' }}>
+                    <Post className="group" style={{ width: '100%', paddingRight: 0 }}>
                       <PostTextContainer>
                         <Title>{post.title}</Title>
                         <AuthorName>{post.author.firstName} {post.author.lastName}</AuthorName>
@@ -191,7 +193,7 @@ const BlogPostBody = ({ postObject, post, recentPosts }) => {
             </PostsContainer>
           </RecentPostsContainer>
         </Row>
-      </ContentWithPaddingXl>
+      </ResponsiveContentWithPaddingXl>
     </Container>
   );
 };
