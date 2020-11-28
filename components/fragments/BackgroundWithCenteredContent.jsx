@@ -85,23 +85,13 @@ const BackgroundAsImageWithCenteredContent = ({
   background-image: url(${backgroundImage});
 `;
 
-  const [displayHeader, setDisplayHeader] = React.useState(true);
-
-  React.useEffect(() => {
-    setDisplayHeader(requestedPathName === 'Home')
-  }, []);
-
   return (
     <Container>
       <OpacityOverlay />
       <HeroContainer>
-        {
-          displayHeader && (
-            <div>
-              <StyledHeader logoUrl={"https://res.cloudinary.com/tolulope-od/image/upload/v1605094682/Kathekon-redesign-13_xjg32j.png"} transparent={true} />
-            </div>
-          )
-        }
+        <div>
+          <StyledHeader logoUrl={"https://res.cloudinary.com/tolulope-od/image/upload/v1605094682/Kathekon-redesign-13_xjg32j.png"} transparent={true} />
+        </div>
         <Content>
           <Heading>
             Transforming society through evidence-driven investments in education, social welfare, and civil society
