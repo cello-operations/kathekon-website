@@ -88,7 +88,7 @@ const App = (props) => {
         {/* <GlobalStyle /> */}
         <div
           style={{
-            display: pagesWithoutHeader.includes(props.requestedPathName) ? 'none': ''
+            display: pagesWithoutHeader.includes(props.requestedPathName) ? 'none': 'block'
           }}
         >
           <Container>
