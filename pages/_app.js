@@ -1,21 +1,13 @@
 import * as React from 'react';
 import Head from 'next/head';
-import tw from "twin.macro";
-import styled from 'styled-components';
 import { ToastContainer } from 'react-toastify';
 import Footer from '../components/fragments/Footer.jsx'
-import Header from "../components/header/LightHeader.jsx";
-import { Container } from "../components/misc/Layouts.jsx"
 import { AuthStateProvider } from '../context/AuthContext';
 import useAuth from '../hooks/useAuth';
 import 'react-toastify/dist/ReactToastify.css';
 
 import '../styles/tailwind.css';
 
-const AppHeader = styled(Header)`
-  font-family: Raleway, sans-serif;
-  ${tw`pt-2 max-w-none w-9/12`}
-`;
 
 const App = (props) => {
   const { Component, pageProps } = props;
@@ -32,8 +24,6 @@ const App = (props) => {
     }
 
   }, []);
-
-  const pagesWithoutHeader = ['Home', '/sign-up', '/login'];
 
   return (
     <>
@@ -85,16 +75,6 @@ const App = (props) => {
 
         <title>Kathēkon - Transforming society through evidence-driven investments</title>
       </Head>
-        {/* <GlobalStyle /> */}
-        <div
-          style={{
-            display: pagesWithoutHeader.includes(props.requestedPathName) ? 'none': ''
-          }}
-        >
-          <Container>
-            <AppHeader transparent={false} logoUrl={'https://res.cloudinary.com/tolulope-od/image/upload/v1605094663/Kathekon-redesign-13-13_e9qpnx.png'} />
-          </Container>
-        </div>
         <Component {...pageProps} {...props} />
         <Footer />
         <ToastContainer style={{ fontFamily: 'GT Sectra Regular' }} />

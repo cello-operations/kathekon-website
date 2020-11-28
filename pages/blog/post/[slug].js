@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { useRouter } from 'next/router';
 import BlogPost from '../../../components/blog/BlogPost.jsx';
+import WithHeader from '../../../components/header/WithHeader';
 import APIHelper from '../../../helpers/APIHelpers';
 import PostLoading from '../../../components/blog/PostLoading.jsx';
 
@@ -8,11 +9,17 @@ const Post = (props) => {
   const router = useRouter()
 
   if (router.isFallback) {
-    return <PostLoading />
+    return (
+      <WithHeader>
+        <PostLoading />
+      </WithHeader>
+    )
   }
 
   return (
-    <BlogPost {...props} />
+    <WithHeader>
+      <BlogPost {...props} />
+    </WithHeader>
   )
 };
 

@@ -89,9 +89,7 @@ const BackgroundAsImageWithCenteredContent = ({
     <Container>
       <OpacityOverlay />
       <HeroContainer>
-        <div style={{
-          display: requestedPathName === 'Home' ? '': 'none',
-        }}>
+        <div>
           <StyledHeader logoUrl={"https://res.cloudinary.com/tolulope-od/image/upload/v1605094682/Kathekon-redesign-13_xjg32j.png"} transparent={true} />
         </div>
         <Content>
