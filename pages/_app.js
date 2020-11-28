@@ -98,16 +98,6 @@ const App = (props) => {
 
         <title>Kathēkon - Transforming society through evidence-driven investments</title>
       </Head>
-      {
-        !displayHeader && (
-          <div>
-            <Container>
-              <AppHeader transparent={false}
-                         logoUrl={'https://res.cloudinary.com/tolulope-od/image/upload/v1605094663/Kathekon-redesign-13-13_e9qpnx.png'}/>
-            </Container>
-          </div>
-        )
-      }
         <Component {...pageProps} {...props} />
         <Footer />
         <ToastContainer style={{ fontFamily: 'GT Sectra Regular' }} />
