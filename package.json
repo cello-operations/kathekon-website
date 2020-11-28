@@ -46,7 +46,6 @@
     "lodash.throttle": "^4.1.1",
     "next": "9.5.4",
     "next-connect": "^0.9.1",
-    "next-pwa": "^3.1.5",
     "node-html-parser": "^2.0.0",
     "react": "^16.13.1",
     "react-anchor-link-smooth-scroll": "^1.0.12",

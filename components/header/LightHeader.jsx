@@ -15,13 +15,13 @@ import AuthContext from "../../context/AuthContext";
 
 const Header = tw.header`
   flex justify-between items-center
-  max-w-screen-xl mx-auto
+  max-w-screen-xl mx-auto w-3/4
 `;
 
 const ResponsiveHeader = styled(Header)`
   @media(max-width: 1024px) {
-    width: 97.5%;
-    padding: .3rem;
+    width: 97.5% !important;
+    padding: .75rem .3rem !important;
   }
 `;
 
