@@ -104,14 +104,15 @@ const BlogPosts = (props) => {
     <>
       <Head>
         <title>Kathēkon Blog</title>
-        <meta name="description" content="Read more about the work Kathekon is doing and how much of an impact we are leaving in the society" />
+        <meta name="description" content={`Read more about the work Kathekon is doing and how much of an impact we are leaving in the society. Our Latest article ${blogPosts[0].title}`} />
         <meta name="keywords" content="kathekon kathēkon blog articles posts stories scholarships transforming nigeria education civil society social welfare investment africa" />
         <meta name="og:title" property="og:title" content="Kathekon Blog"/>
         <meta name="twitter:card" content="photo" />
         <meta name="twitter:title" content="Kathēkon Blog" />
-        <meta property="og:image" content="https://res.cloudinary.com/tolulope-od/image/upload/v1605094663/Kathekon-redesign-13-13_e9qpnx.png" />
-        <meta name="twitter:description" content="Read more about the work Kathekon is doing and how much of an impact we are leaving in the society." />
-        <meta name="twitter:image:src" content="https://res.cloudinary.com/tolulope-od/image/upload/v1605094663/Kathekon-redesign-13-13_e9qpnx.png" />
+        <meta property="og:image" content="https://res.cloudinary.com/tolulope-od/image/upload/f_auto,q_auto/v1605094663/Kathekon-redesign-13-13_e9qpnx.png" />
+        <meta property="og:description" content={`Read more about the work Kathekon is doing and how much of an impact we are leaving in the society. Our Latest article ${blogPosts[0].title}`} />
+        <meta name="twitter:description" content={`Read more about the work Kathekon is doing and how much of an impact we are leaving in the society. Our Latest article ${blogPosts[0].title}`} />
+        <meta name="twitter:image:src" content="https://res.cloudinary.com/tolulope-od/image/upload/f_auto,q_auto/v1605094663/Kathekon-redesign-13-13_e9qpnx.png" />
       </Head>
       <AnimationRevealPage>
         <Container>
