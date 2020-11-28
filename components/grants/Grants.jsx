@@ -37,11 +37,14 @@ const Grants = (props) => {
     <>
       <Head>
         <title>Kathēkon - Grants</title>
-        <meta name="description" content="Kathekon Grants: Kathēkon gives different type of grants and scholarships to Nigerian school students in accordance to fulfillinf certain criteria" />
+        <meta name="description" content="We implore individuals and organizations whose values are consistent with ours, whose goals for the future are reflected in ours, and whose vision for change is as radical, urgent, and pragmatic as ours, to apply for grants." />
         <meta name="keywords" content="kathēkon grants scholarship school children Nigeria education civil society transformation change" />
         <meta name="og:title" property="og:title" content="Kathēkon - Grants" />
+        <meta property="og:image" content="https://res.cloudinary.com/tolulope-od/image/upload/v1605094663/Kathekon-redesign-13-13_e9qpnx.png" />
         <meta name="twitter:title" content="Kathēkon - Grants" />
-        <meta name="twitter:description" content="Kathekon Grants: Kathēkon gives different type of grants and scholarships to Nigerian school students in accordance to fulfillinf certain criteria" />
+        <meta name="twitter:card" content="photo" />
+        <meta name="twitter:description" content="We implore individuals and organizations whose values are consistent with ours, whose goals for the future are reflected in ours, and whose vision for change is as radical, urgent, and pragmatic as ours, to apply for grants." />
+        <meta name="twitter:image:src" content="https://res.cloudinary.com/tolulope-od/image/upload/v1605094663/Kathekon-redesign-13-13_e9qpnx.png" />
       </Head>
       <Container>
         <GrantsBanner />

@@ -3,7 +3,7 @@ import { truncateText } from '../helpers/truncateText';
 export const fundingCategories = [
   {
     imageSrc:
-      "https://res.cloudinary.com/tolulope-od/image/upload/v1601139160/jaredd-craig-HH4WBGNyltc-unsplash_vgzblr.jpg",
+      "https://res.cloudinary.com/tolulope-od/image/upload/q_auto/v1601139160/jaredd-craig-HH4WBGNyltc-unsplash_vgzblr.jpg",
     // author: "Adam Wathan",
     // category: "Education",
     title: "Education",
@@ -13,7 +13,7 @@ export const fundingCategories = [
   },
   {
     imageSrc:
-      "https://res.cloudinary.com/tolulope-od/image/upload/v1601138950/logan-weaver-uwyqYYWUQJw-unsplash_upqyxf.jpg",
+      "https://res.cloudinary.com/tolulope-od/image/upload/q_auto/v1601138950/logan-weaver-uwyqYYWUQJw-unsplash_upqyxf.jpg",
     // author: "Owais Khan",
     // category: "Civil Society",
     title: "Civil Society",
@@ -24,7 +24,7 @@ export const fundingCategories = [
   },
   {
     imageSrc:
-      "https://res.cloudinary.com/tolulope-od/image/upload/v1598367140/trevor-cole-CWcAsKuhwy0-unsplash_vdmd17.jpg",
+      "https://res.cloudinary.com/tolulope-od/image/upload/q_auto/v1598367140/trevor-cole-CWcAsKuhwy0-unsplash_vdmd17.jpg",
     // author: "Steve Schoger",
     // category: "July 10",
     title: "Social Welfare",

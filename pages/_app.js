@@ -69,9 +69,24 @@ const App = (props) => {
         <meta property="og:locale" content="en_US" />
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="Kathekon" />
-        <meta name="twitter:site" content="@Kathekon2" />
-        <meta name="twitter:creator" content="@Kathekon2" />
-        <link rel="apple-touch-icon" href="/Kathekon-fav-blue-15.png" />
+        <meta name="twitter:site" content="@Kathekon_" />
+        <meta name="twitter:creator" content="@Kathekon_" />
+
+        <meta name="theme-color" content="#32a3dc"/>
+        <meta name="mobile-web-app-capable" content="yes"/>
+
+
+        <meta name="apple-mobile-web-app-title" content="Kathekon"/>
+        <meta name="apple-mobile-web-app-capable" content="yes"/>
+        <meta name="apple-mobile-web-app-status-bar-style" content="default"/>
+
+
+        <meta name="application-name" content="Kathekon"/>
+        <meta name="msapplication-tooltip" content="Kathekon is a non-governmental organization that seeks to transform society"/>
+        <meta name="msapplication-starturl" content="/"/>
+
+
+        <meta name="msapplication-tap-highlight" content="no"/>
         <link
           rel="stylesheet"
           type="text/css"
@@ -83,7 +98,22 @@ const App = (props) => {
           type="text/css"
           href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
         />
-        
+        <link href="/favicon-32x32-dunplab-manifest-24128.png" rel="icon" type="image/png" sizes="16x16" />
+        <link href="/favicon-32x32-dunplab-manifest-24128.png" rel="icon" type="image/png" sizes="32x32"/>
+        <link href="/favicon-32x32-dunplab-manifest-24128.png" rel="icon" type="image/png" sizes="48x48"/>
+        <link href="/apple-icon-180x180-dunplab-manifest-24128.png" rel="apple-touch-icon" />
+        <link href="/apple-icon-76x76-dunplab-manifest-24128.png" rel="apple-touch-icon" sizes="76x76"/>
+        <link href="/apple-icon-120x120-dunplab-manifest-24128.png" rel="apple-touch-icon" sizes="120x120"/>
+        <link href="/apple-icon-152x152-dunplab-manifest-24128.png" rel="apple-touch-icon" sizes="152x152"/>
+        <link href="/logo512.png" rel="apple-touch-startup-image" />
+
+
+        <link href="/logo512.png" rel="mask-icon" sizes="any" />
+        <link href="/logo512.png" rel={"icon"} sizes="512X512" />
+
+        <link href="/android-icon-192x192-dunplab-manifest-24128.png" rel="icon" sizes="192x192"/>
+        <link href="/apple-icon-120x120-dunplab-manifest-24128.png" rel="icon" sizes="128x128"/>
+        <link href="/manifest.json" rel="manifest" />
         <title>Kathēkon - Transforming society through evidence-driven investments</title>
       </Head>
         {/* <GlobalStyle /> */}

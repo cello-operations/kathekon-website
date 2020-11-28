@@ -1,12 +1,19 @@
 import React from "react";
 import tw from "twin.macro";
-
+import styled from "styled-components";
 /* framer-motion and useInView here are used to animate the sections in when we reach them in the viewport
  */
 import { motion } from "framer-motion";
 import useInView from '../hooks/useInView';
 
 const StyledDiv = tw.div`min-h-screen text-secondary-500 p-8 overflow-hidden`;
+const MotionSection = motion.section;
+const ResponsiveStyledDiv = styled(StyledDiv)`
+  @media(max-width: 414px) {
+    padding: .5rem;
+  }
+`;
+
 function AnimationReveal({ disabled, children }) {
   if (disabled) {
     return <>{children}</>;
@@ -34,17 +41,17 @@ function AnimatedSlideInComponent({ direction = "left", offset = 30, children })
   else x.initial = "150%";
 
   return (
-    <motion.section
+    <MotionSection
     >
       {children}
-    </motion.section>
+    </MotionSection>
   );
 }
 
 const AnimationRevealPage = (props) => (
-  <StyledDiv className="App" style={{ fontFamily: 'Raleway' }}>
+  <ResponsiveStyledDiv className="App" style={{ fontFamily: 'Raleway' }}>
     <AnimationReveal {...props} />
-  </StyledDiv>
+  </ResponsiveStyledDiv>
 );
 
 export default AnimationRevealPage;
