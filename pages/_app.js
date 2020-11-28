@@ -52,13 +52,10 @@ const App = (props) => {
         <meta name="description" content="Kathekon seeks to transform society through investments in education, social welfare, and civil society" />
         <meta name="author" content="Kathekon by Tolulope Odueke" />
         <meta name="keywords" content="scholarships nigeria kathekon education, civil society, social welfare, investment, africa" />
-        <meta name="og:title" property="og:title" content="Kathekon - Transforming society through evidence-driven investments in education, social welfare, and civil society"/>
         <meta name="apple-touch-fullscreen" content="yes" />
         <meta name="robots" content="index, follow" />
         <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
         <meta property="og:locale" content="en_US" />
-        <meta property="og:type" content="website" />
-        <meta property="og:site_name" content="Kathekon" />
         <meta name="twitter:site" content="@Kathekon_" />
         <meta name="twitter:creator" content="@Kathekon_" />
         <link
