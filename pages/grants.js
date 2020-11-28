@@ -1,9 +1,12 @@
 import * as React from 'react';
 import Grants from '../components/grants/Grants.jsx';
+import WithHeader from '../components/header/WithHeader';
 import APIHelper from '../helpers/APIHelpers';
 
 const GrantsPage = (props) => (
-  <Grants {...props} />
+  <WithHeader>
+    <Grants {...props} />
+  </WithHeader>
 );
 
 export const getStaticProps = async () => {
