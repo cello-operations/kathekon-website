@@ -22,6 +22,7 @@ const Landing = (props) => {
         <meta name="og:title" property="og:title" content="Kathekon - Transforming society through evidence-driven investments in education, social welfare, and civil society"/>
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="Kathekon" />
+        <meta property="og:image" content={'https://res.cloudinary.com/tolulope-od/image/upload/v1597492350/Kathekon-redesign-13-13_bsnael.png'} />
       </Head>
       <div>
         <AnimationRevealPage>

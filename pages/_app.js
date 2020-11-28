@@ -37,7 +37,6 @@ const App = (props) => {
         <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,800&display=swap" rel="stylesheet" />
         <meta name="author" content="Tolulope Odueke" />
         <meta name="title" content="Kathekon - Transforming society through evidence-driven investments in education, social welfare, and civil society" />
-        <meta property="og:image" content={`/${faivconURL}`} />
         <meta name="apple-touch-fullscreen" content="yes" />
         <meta name="twitter:card" content="photo" />
         <meta name="twitter:title" content="Kathēkon: Transforming society through investments in education, social welfare, and civil society" />
