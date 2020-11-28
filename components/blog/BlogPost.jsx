@@ -30,11 +30,14 @@ const BlogPost = (props) => {
         <meta name="description" content={postObject.description} />
         <meta name="author" content={`${postObject?.author?.firstName ?? ''} ${postObject?.author?.lastName ?? ''}`} />
         <meta name="keywords" content={`kathekon ${postObject.description}`} />
-        <meta property="og:url"           content={`${hostURL}/blog/post/${postObject.slug}`} />
-        <meta property="og:type"          content="website" />
+        <meta property="og:type" content="profile" />
         <meta property="og:title"         content={`${postObject.title} - Kathekon Blog`} />
-        <meta property="og:description"   content={postObject.description} />
+        <meta property="og:url"           content={`${hostURL}/blog/post/${postObject.slug}`} />
         <meta property="og:image"         content={postObject.coverImage} />
+        <meta property="og:description"   content={postObject.description} />
+        <meta property="profile:first_name" content={postObject?.author?.firstName ?? ''} />
+        <meta property="profile:last_name" content={postObject?.author?.lastName ?? ''} />
+        <meta property='og:site_name' content='Kathekon' />
         <meta name="twitter:card" content="photo" />
         <meta name="twitter:image:src" content={postObject.coverImage} />
         <meta name="twitter:title" content={`${postObject.title} - Kathēkon Blog`} />
