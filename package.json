@@ -44,7 +44,7 @@
     "http-status-codes": "^2.1.4",
     "jwt-decode": "^3.0.0",
     "lodash.throttle": "^4.1.1",
-    "next": "9.5.4",
+    "next": "^10.0.3",
     "next-connect": "^0.9.1",
     "node-html-parser": "^2.0.0",
     "react": "^16.13.1",
