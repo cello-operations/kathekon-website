@@ -472,10 +472,12 @@ const CardsWithTabSwitch = ({
               )}
             </DetailWrapper>
             <DetailWrapper>
-              <h5>Application Requirement(s):</h5>
+            <h5>Application Requirement(s):</h5>
+              In addition to meeting the minimum requirements, you will need to download and fill the document below and submit it with your application.
+              <br />
+              <br />
               {
-                grantDetails?.grantType === 'grant'
-                  && !isEmpty(grantDetails?.requirements)
+                !isEmpty(grantDetails?.requirements)
                   ? grantDetails.requirements?.map((requirement) => (
                     <FeatureList key={requirement}>
                       <Feature>
