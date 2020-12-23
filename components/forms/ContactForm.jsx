@@ -37,7 +37,7 @@ const ContactForm = ({
   heading = <>Feel free to <span tw="text-primary-500">get in touch</span><wbr/> with us.</>,
   description = "We would love to hear from you.",
   submitButtonText = "Send",
-  formAction = "#",
+  formAction = "mailto:kathekon.support@kathekon.in",
   formMethod = "get",
   textOnLeft = true,
 }) => {
