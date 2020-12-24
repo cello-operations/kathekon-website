@@ -473,9 +473,6 @@ const CardsWithTabSwitch = ({
             </DetailWrapper>
             <DetailWrapper>
             <h5>Application Requirement(s):</h5>
-              In addition to meeting the minimum requirements, you will need to download and fill the document below and submit it with your application.
-              <br />
-              <br />
               {
                 !isEmpty(grantDetails?.requirements)
                   ? grantDetails.requirements?.map((requirement) => (
@@ -491,7 +488,11 @@ const CardsWithTabSwitch = ({
                     </React.Fragment>
                   )
               }
-              
+              <br />
+              <br />
+              In addition to meeting the minimum requirements, you will need to download and fill the document below and submit it with your application.
+              <br />
+              <br />
               <div style={{ marginTop: '1rem' }}>
                 <a href={grantDetails.upload} download={`${grantDetails.grantName} - Requirements`}>
                   <CreateButton type="submit">
