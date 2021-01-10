@@ -197,252 +197,252 @@ const CardsWithTabSwitch = ({
   return (
     <Container style={{ fontFamily: 'Raleway' }}>
       <ContentWithPaddingXl>
-        <HeaderRow style={{ fontFamily: 'Raleway' }}>
-          <Header>{heading}</Header>
-          <TabsControl>
-            {Object.keys(tabs).map((tabName, index) => (
-              <TabControl key={index} active={activeTab === tabName} onClick={() => setActiveTab(tabName)}>
-                {tabName}
-              </TabControl>
-            ))}
-          </TabsControl>
-        </HeaderRow>
-        <div style={{ marginTop: '2rem' }}>
-        {
-          state.isAuthenticated && state.user.userType === "ADMIN" || state.user.userType === "SUPER_ADMIN"
-            ? (
-              <ButtonContainer>
-                <OpenModalButton handleButtonClick={() => handleOpenModal(true)}>Create New Grant</OpenModalButton>
-              </ButtonContainer>
-            ) : (
-              <div />
-            )
-        }
-        
-        </div>
-          <Modal isOpen={modalOpen} handleClose={() => handleOpenModal(false)}>
-            <ModalHeading>
-              <h4>Create Grant</h4>
-              <p>Fill all required fields to create a new grant</p>
-            </ModalHeading>
-            <ModalContentWrapper>
-            <Formik
-                initialValues={{
-                  grantName: "",
-                  description: "",
-                  status: "",
-                  expiryDate: "",
-                  applicationStartDate: "",
-                  grantType: "",
-                  upload: null,
-                  thematicAreas: [""],
-                  requirements: [""],
-                }}
-                onSubmit={async (values, err) => {
-                  try {
-                    // convert file to base64
-                    const b64File = await fileToBase64(values.upload);
-                    
-                    const response = await APIHelper.post('/grants', {
-                      ...values,
-                      status: values.status.toUpperCase(),
-                      grantType: values.grantType.toLowerCase(),
-                      upload: b64File
-                    });
+        {/*<HeaderRow style={{ fontFamily: 'Raleway' }}>*/}
+        {/*  <Header>{heading}</Header>*/}
+        {/*  <TabsControl>*/}
+        {/*    {Object.keys(tabs).map((tabName, index) => (*/}
+        {/*      <TabControl key={index} active={activeTab === tabName} onClick={() => setActiveTab(tabName)}>*/}
+        {/*        {tabName}*/}
+        {/*      </TabControl>*/}
+        {/*    ))}*/}
+        {/*  </TabsControl>*/}
+        {/*</HeaderRow>*/}
+        {/*<div style={{ marginTop: '2rem' }}>*/}
+        {/*{*/}
+        {/*  state.isAuthenticated && state.user.userType === "ADMIN" || state.user.userType === "SUPER_ADMIN"*/}
+        {/*    ? (*/}
+        {/*      <ButtonContainer>*/}
+        {/*        <OpenModalButton handleButtonClick={() => handleOpenModal(true)}>Create New Grant</OpenModalButton>*/}
+        {/*      </ButtonContainer>*/}
+        {/*    ) : (*/}
+        {/*      <div />*/}
+        {/*    )*/}
+        {/*}*/}
 
-                    toast.success(response.data.message);
-                    setModalOpen(false);
-                  } catch (error) {
-                    if (error.response && error.response.data.message === 'Validation error') {
-                      return err.setErrors(error.response.data.error)
-                    } else if (error.response && error.response.data.message !== 'Validation error') {
-                      return toast.error(error.response.data.message);
-                    } else {
-                      return toast.error('Something went wrong! Please try again');
-                    }
-                  }  
-                }}
-                validationSchema={Yup.object().shape({
-                  grantName: Yup.string().required("Grant name is required"),
-                  description: Yup.string().required("Grant description is required"),
-                  status: Yup.string().required("Please select a status"),
-                  expiryDate: Yup.date().required("Please input an expiry date"),
-                  applicationStartDate: Yup.date().required("Please input a start date for application"),
-                  grantType: Yup.string().required("Please select a grant type"),
-                  upload: Yup.mixed().required("Please add a supporting document format"),
-                })}
-              >
-                {(props) => {
-                  const { values, touched, errors, isSubmitting, handleChange, handleBlur, handleSubmit, setFieldValue } = props;
+        {/*</div>*/}
+        {/*  <Modal isOpen={modalOpen} handleClose={() => handleOpenModal(false)}>*/}
+        {/*    <ModalHeading>*/}
+        {/*      <h4>Create Grant</h4>*/}
+        {/*      <p>Fill all required fields to create a new grant</p>*/}
+        {/*    </ModalHeading>*/}
+        {/*    <ModalContentWrapper>*/}
+        {/*    <Formik*/}
+        {/*        initialValues={{*/}
+        {/*          grantName: "",*/}
+        {/*          description: "",*/}
+        {/*          status: "",*/}
+        {/*          expiryDate: "",*/}
+        {/*          applicationStartDate: "",*/}
+        {/*          grantType: "",*/}
+        {/*          upload: null,*/}
+        {/*          thematicAreas: [""],*/}
+        {/*          requirements: [""],*/}
+        {/*        }}*/}
+        {/*        onSubmit={async (values, err) => {*/}
+        {/*          try {*/}
+        {/*            // convert file to base64*/}
+        {/*            const b64File = await fileToBase64(values.upload);*/}
 
-                  return (
-                    <Form onSubmit={handleSubmit}>
-                      <div>
-                        <FormInput
-                          type="text"
-                          id="grantName"
-                          name={"grantName"}
-                          placeholder="Grant Name"
-                          handleChange={handleChange}
-                          handleBlur={handleBlur}
-                          errors={errors}
-                          touched={touched}
-                          values={values}
-                          label={"Grant Name"}
-                        />
-                        <TextArea
-                          type="text"
-                          id="description"
-                          name={"description"}
-                          placeholder="Description"
-                          handleChange={handleChange}
-                          handleBlur={handleBlur}
-                          errors={errors}
-                          touched={touched}
-                          values={values}
-                          label={"Description"}
-                        />
-                        <Select
-                          id="status"
-                          name={"status"}
-                          placeholder="Status"
-                          handleChange={handleChange}
-                          handleBlur={handleBlur}
-                          errors={errors}
-                          touched={touched}
-                          values={values}
-                          label={"Status"}
-                        >
-                          {
-                            ['--Please select a value', 'Active', 'Closed', 'Evaluating', 'Expired', 'Archived'].map((value, index) => (
-                              <Option key={value} value={index === 0 ? '' : value}>
-                                {value}
-                              </Option>
-                            ))
-                          }
-                        </Select>
-                        <Upload
-                          name={"upload"}
-                          placeholder="upload"
-                          handleChange={(event) => {
-                            setFieldValue("upload", event.currentTarget.files[0]);
-                          }}
-                          handleBlur={handleBlur}
-                          errors={errors}
-                          touched={touched}
-                          values={values}
-                          label={"Requirements"}
-                        />
-                      </div>
-                      <div>
-                      <FormInput
-                          type="date"
-                          id="applicationStartDate"
-                          name={"applicationStartDate"}
-                          placeholder="Application Start Date"
-                          handleChange={handleChange}
-                          handleBlur={handleBlur}
-                          errors={errors}
-                          touched={touched}
-                          values={values}
-                          label={"Application Start"}
-                        />
-                        <FormInput
-                          type="date"
-                          id="expiryDate"
-                          name={"expiryDate"}
-                          placeholder="Expiry Date"
-                          handleChange={handleChange}
-                          handleBlur={handleBlur}
-                          errors={errors}
-                          touched={touched}
-                          values={values}
-                          label={"Expiry"}
-                        />
-                        <br />
-                        <br />
-                        <Select
-                          type="text"
-                          id="grantType"
-                          name={"grantType"}
-                          placeholder="Grant Type"
-                          handleChange={handleChange}
-                          handleBlur={handleBlur}
-                          errors={errors}
-                          touched={touched}
-                          values={values}
-                          label={"Grant Type"}
-                        >
-                         {
-                            ['--Please select a value', 'Grant', 'Scholarship'].map((value, index) => (
-                              <Option key={value} value={index === 0 ? '' : value}>
-                                {value}
-                              </Option>
-                            ))
-                         }
-                        </Select>
-                        <SubmitButton disabled={isSubmitting} type="submit">
-                        {
-                          isSubmitting ? (
-                            <React.Fragment>
-                              <AlternatingLoader className="icon" />
-                              <span className="text">Loading</span>
-                            </React.Fragment>
-                          ) : (
-                            <React.Fragment>
-                              <span className="text">Create</span>
-                            </React.Fragment>
-                          )
-                        }
-                      </SubmitButton>
-                      </div>
-                    </Form>
-                  )}}
-                </Formik>
-            </ModalContentWrapper>
-          </Modal>
-        {tabsKeys.map((tabKey, index) => (
-          <TabContent
-            key={index}
-            variants={{
-              current: {
-                opacity: 1,
-                scale:1,
-                display: "flex",
-              },
-              hidden: {
-                opacity: 0,
-                scale:0.8,
-                display: "none",
-              }
-            }}
-            transition={{ duration: 0.4 }}
-            initial={activeTab === tabKey ? "current" : "hidden"}
-            animate={activeTab === tabKey ? "current" : "hidden"}
-          >
-            <Posts key={index}>
-              {activeTab !== "Applications" && tabs[tabKey].map((post, index) => (
-                <PostContainer key={index} featured={true}>
-                  <Post className="group" as="a" onClick={() => handleOpenGrantDetails(post)}>
-                    <Image imageSrc={post.image} />
-                    <Info>
-                      <Category>{post.grantType}</Category>
-                      <CreationDate>{dayjs(post.createdOn).format('DD MMMM YYYY')}</CreationDate>
-                      <Title>{post.grantName}</Title>
-                      {post.description && <Description>{truncateText(post.description, 400)}</Description>}
-                    </Info>
-                  </Post>
-                </PostContainer>
-              ))}
-            
-            </Posts>
-            <Posts style={{ width: '100%' }}>
-             {
-               activeTab === "Applications" && (<GrantApplications applications={userGrantApplications} grantsCount={grantApplicationsCount} />)
-             }
-            </Posts>
-          </TabContent>
-        ))}
+        {/*            const response = await APIHelper.post('/grants', {*/}
+        {/*              ...values,*/}
+        {/*              status: values.status.toUpperCase(),*/}
+        {/*              grantType: values.grantType.toLowerCase(),*/}
+        {/*              upload: b64File*/}
+        {/*            });*/}
+
+        {/*            toast.success(response.data.message);*/}
+        {/*            setModalOpen(false);*/}
+        {/*          } catch (error) {*/}
+        {/*            if (error.response && error.response.data.message === 'Validation error') {*/}
+        {/*              return err.setErrors(error.response.data.error)*/}
+        {/*            } else if (error.response && error.response.data.message !== 'Validation error') {*/}
+        {/*              return toast.error(error.response.data.message);*/}
+        {/*            } else {*/}
+        {/*              return toast.error('Something went wrong! Please try again');*/}
+        {/*            }*/}
+        {/*          }*/}
+        {/*        }}*/}
+        {/*        validationSchema={Yup.object().shape({*/}
+        {/*          grantName: Yup.string().required("Grant name is required"),*/}
+        {/*          description: Yup.string().required("Grant description is required"),*/}
+        {/*          status: Yup.string().required("Please select a status"),*/}
+        {/*          expiryDate: Yup.date().required("Please input an expiry date"),*/}
+        {/*          applicationStartDate: Yup.date().required("Please input a start date for application"),*/}
+        {/*          grantType: Yup.string().required("Please select a grant type"),*/}
+        {/*          upload: Yup.mixed().required("Please add a supporting document format"),*/}
+        {/*        })}*/}
+        {/*      >*/}
+        {/*        {(props) => {*/}
+        {/*          const { values, touched, errors, isSubmitting, handleChange, handleBlur, handleSubmit, setFieldValue } = props;*/}
+
+        {/*          return (*/}
+        {/*            <Form onSubmit={handleSubmit}>*/}
+        {/*              <div>*/}
+        {/*                <FormInput*/}
+        {/*                  type="text"*/}
+        {/*                  id="grantName"*/}
+        {/*                  name={"grantName"}*/}
+        {/*                  placeholder="Grant Name"*/}
+        {/*                  handleChange={handleChange}*/}
+        {/*                  handleBlur={handleBlur}*/}
+        {/*                  errors={errors}*/}
+        {/*                  touched={touched}*/}
+        {/*                  values={values}*/}
+        {/*                  label={"Grant Name"}*/}
+        {/*                />*/}
+        {/*                <TextArea*/}
+        {/*                  type="text"*/}
+        {/*                  id="description"*/}
+        {/*                  name={"description"}*/}
+        {/*                  placeholder="Description"*/}
+        {/*                  handleChange={handleChange}*/}
+        {/*                  handleBlur={handleBlur}*/}
+        {/*                  errors={errors}*/}
+        {/*                  touched={touched}*/}
+        {/*                  values={values}*/}
+        {/*                  label={"Description"}*/}
+        {/*                />*/}
+        {/*                <Select*/}
+        {/*                  id="status"*/}
+        {/*                  name={"status"}*/}
+        {/*                  placeholder="Status"*/}
+        {/*                  handleChange={handleChange}*/}
+        {/*                  handleBlur={handleBlur}*/}
+        {/*                  errors={errors}*/}
+        {/*                  touched={touched}*/}
+        {/*                  values={values}*/}
+        {/*                  label={"Status"}*/}
+        {/*                >*/}
+        {/*                  {*/}
+        {/*                    ['--Please select a value', 'Active', 'Closed', 'Evaluating', 'Expired', 'Archived'].map((value, index) => (*/}
+        {/*                      <Option key={value} value={index === 0 ? '' : value}>*/}
+        {/*                        {value}*/}
+        {/*                      </Option>*/}
+        {/*                    ))*/}
+        {/*                  }*/}
+        {/*                </Select>*/}
+        {/*                <Upload*/}
+        {/*                  name={"upload"}*/}
+        {/*                  placeholder="upload"*/}
+        {/*                  handleChange={(event) => {*/}
+        {/*                    setFieldValue("upload", event.currentTarget.files[0]);*/}
+        {/*                  }}*/}
+        {/*                  handleBlur={handleBlur}*/}
+        {/*                  errors={errors}*/}
+        {/*                  touched={touched}*/}
+        {/*                  values={values}*/}
+        {/*                  label={"Requirements"}*/}
+        {/*                />*/}
+        {/*              </div>*/}
+        {/*              <div>*/}
+        {/*              <FormInput*/}
+        {/*                  type="date"*/}
+        {/*                  id="applicationStartDate"*/}
+        {/*                  name={"applicationStartDate"}*/}
+        {/*                  placeholder="Application Start Date"*/}
+        {/*                  handleChange={handleChange}*/}
+        {/*                  handleBlur={handleBlur}*/}
+        {/*                  errors={errors}*/}
+        {/*                  touched={touched}*/}
+        {/*                  values={values}*/}
+        {/*                  label={"Application Start"}*/}
+        {/*                />*/}
+        {/*                <FormInput*/}
+        {/*                  type="date"*/}
+        {/*                  id="expiryDate"*/}
+        {/*                  name={"expiryDate"}*/}
+        {/*                  placeholder="Expiry Date"*/}
+        {/*                  handleChange={handleChange}*/}
+        {/*                  handleBlur={handleBlur}*/}
+        {/*                  errors={errors}*/}
+        {/*                  touched={touched}*/}
+        {/*                  values={values}*/}
+        {/*                  label={"Expiry"}*/}
+        {/*                />*/}
+        {/*                <br />*/}
+        {/*                <br />*/}
+        {/*                <Select*/}
+        {/*                  type="text"*/}
+        {/*                  id="grantType"*/}
+        {/*                  name={"grantType"}*/}
+        {/*                  placeholder="Grant Type"*/}
+        {/*                  handleChange={handleChange}*/}
+        {/*                  handleBlur={handleBlur}*/}
+        {/*                  errors={errors}*/}
+        {/*                  touched={touched}*/}
+        {/*                  values={values}*/}
+        {/*                  label={"Grant Type"}*/}
+        {/*                >*/}
+        {/*                 {*/}
+        {/*                    ['--Please select a value', 'Grant', 'Scholarship'].map((value, index) => (*/}
+        {/*                      <Option key={value} value={index === 0 ? '' : value}>*/}
+        {/*                        {value}*/}
+        {/*                      </Option>*/}
+        {/*                    ))*/}
+        {/*                 }*/}
+        {/*                </Select>*/}
+        {/*                <SubmitButton disabled={isSubmitting} type="submit">*/}
+        {/*                {*/}
+        {/*                  isSubmitting ? (*/}
+        {/*                    <React.Fragment>*/}
+        {/*                      <AlternatingLoader className="icon" />*/}
+        {/*                      <span className="text">Loading</span>*/}
+        {/*                    </React.Fragment>*/}
+        {/*                  ) : (*/}
+        {/*                    <React.Fragment>*/}
+        {/*                      <span className="text">Create</span>*/}
+        {/*                    </React.Fragment>*/}
+        {/*                  )*/}
+        {/*                }*/}
+        {/*              </SubmitButton>*/}
+        {/*              </div>*/}
+        {/*            </Form>*/}
+        {/*          )}}*/}
+        {/*        </Formik>*/}
+        {/*    </ModalContentWrapper>*/}
+        {/*  </Modal>*/}
+        {/*{tabsKeys.map((tabKey, index) => (*/}
+        {/*  <TabContent*/}
+        {/*    key={index}*/}
+        {/*    variants={{*/}
+        {/*      current: {*/}
+        {/*        opacity: 1,*/}
+        {/*        scale:1,*/}
+        {/*        display: "flex",*/}
+        {/*      },*/}
+        {/*      hidden: {*/}
+        {/*        opacity: 0,*/}
+        {/*        scale:0.8,*/}
+        {/*        display: "none",*/}
+        {/*      }*/}
+        {/*    }}*/}
+        {/*    transition={{ duration: 0.4 }}*/}
+        {/*    initial={activeTab === tabKey ? "current" : "hidden"}*/}
+        {/*    animate={activeTab === tabKey ? "current" : "hidden"}*/}
+        {/*  >*/}
+        {/*    <Posts key={index}>*/}
+        {/*      {activeTab !== "Applications" && tabs[tabKey].map((post, index) => (*/}
+        {/*        <PostContainer key={index} featured={true}>*/}
+        {/*          <Post className="group" as="a" onClick={() => handleOpenGrantDetails(post)}>*/}
+        {/*            <Image imageSrc={post.image} />*/}
+        {/*            <Info>*/}
+        {/*              <Category>{post.grantType}</Category>*/}
+        {/*              <CreationDate>{dayjs(post.createdOn).format('DD MMMM YYYY')}</CreationDate>*/}
+        {/*              <Title>{post.grantName}</Title>*/}
+        {/*              {post.description && <Description>{truncateText(post.description, 400)}</Description>}*/}
+        {/*            </Info>*/}
+        {/*          </Post>*/}
+        {/*        </PostContainer>*/}
+        {/*      ))}*/}
+        {/*    */}
+        {/*    </Posts>*/}
+        {/*    <Posts style={{ width: '100%' }}>*/}
+        {/*     {*/}
+        {/*       activeTab === "Applications" && (<GrantApplications applications={userGrantApplications} grantsCount={grantApplicationsCount} />)*/}
+        {/*     }*/}
+        {/*    </Posts>*/}
+        {/*  </TabContent>*/}
+        {/*))}*/}
          <Modal isOpen={grantDetailsModalOpen} handleClose={() => {
            setGrantDetailsModalOpen(false);
            setGrantDetails({});
@@ -522,7 +522,7 @@ const CardsWithTabSwitch = ({
                   try {
                     // convert file to base64
                     const b64File = await fileToBase64(values.upload);
-                    
+
                     const response = await APIHelper.post(`/grants/application/${grantDetails._id}`, {
                       applicationDocument: b64File,
                     });
@@ -537,7 +537,7 @@ const CardsWithTabSwitch = ({
                     } else {
                       return toast.error('Something went wrong! Please try again');
                     }
-                  }  
+                  }
                 }}
                 validationSchema={Yup.object().shape({
                   upload: Yup.mixed().required("Please add the required document"),
@@ -550,7 +550,7 @@ const CardsWithTabSwitch = ({
                     <Form onSubmit={handleSubmit} style={{ display: 'block' }}>
                       <div>
                         <Upload
-                          allow=".pdf" 
+                          allow=".pdf"
                           name={"upload"}
                           placeholder="Application Document"
                           handleChange={(event) => {

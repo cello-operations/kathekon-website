@@ -4,13 +4,13 @@ import { css } from "styled-components/macro"; //eslint-disable-line
 import { ReactComponent as SvgDecoratorBlob1 } from "../../public/images/svg-decorator-blob-9.svg";
 import { Container } from "../misc/Layouts.jsx";
 
-const PrimaryBackgroundContainer = tw.div`py-20 lg:py-24 px-2 lg:px-2 mb-172 lg:mb-156 md:mb-164 bg-primary-500 rounded-lg relative z-10`
+const PrimaryBackgroundContainer = tw.div`py-20 lg:py-24 px-2 lg:px-2 mb-172 lg:mb-156 md:mb-164 rounded-lg relative z-10`
 const Row = tw.div`px-8 max-w-screen-lg mx-auto relative text-center`;
 
 const ColumnContainer = tw.div`lg:w-1/2 max-w-lg`
 const TextContainer = tw(ColumnContainer)``;
-const Text = tw.h5`text-gray-100 text-2xl sm:text-3xl font-bold`;
-const SubText = tw.p`text-gray-300 mt-3 p-3`;
+const Text = tw.h5`text-primary-500 text-2xl sm:text-3xl font-bold`;
+const SubText = tw.p`text-primary-100 mt-3 p-3`;
 
 const LinksContainer = tw(ColumnContainer)`flex justify-center lg:justify-end mt-6 lg:mt-0 flex-col sm:flex-row`;
 
