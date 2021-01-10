@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { useRouter } from 'next/router';
-import SingleGrant, { SingleGrantPlaceHolder } from '../../components/grants/SingleGrant.jsx';
+import SingleGrant from '../../components/grants/SingleGrant.jsx';
 import WithHeader from '../../components/header/WithHeader';
 import APIHelper from '../../helpers/APIHelpers';
+import GrantsLoader from '../../components/loaders/GrantsLoader.jsx';
 
 const Scholarship = (props) => {
   const router = useRouter();
@@ -10,7 +11,7 @@ const Scholarship = (props) => {
   if (router.isFallback) {
     return (
       <WithHeader>
-        <SingleGrantPlaceHolder />
+        <GrantsLoader />
       </WithHeader>
     )
   }
