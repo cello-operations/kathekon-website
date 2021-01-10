@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useRouter } from 'next/router';
-import SingleGrant from '../../components/grants/SingleGrant.jsx';
+import SingleGrant, { SingleGrantPlaceHolder } from '../../components/grants/SingleGrant.jsx';
 import WithHeader from '../../components/header/WithHeader';
 import APIHelper from '../../helpers/APIHelpers';
 
@@ -10,7 +10,7 @@ const Grant = (props) => {
   if (router.isFallback) {
     return (
       <WithHeader>
-        Loading.....
+        <SingleGrantPlaceHolder />
       </WithHeader>
     )
   }

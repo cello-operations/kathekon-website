@@ -69,7 +69,7 @@ const Scholarships = (props) => {
               <div className="py-2 text-center">
 
                 <div className="text-center max-w-4xl lg:mx-auto mt-6 px-3 lg:px-0">
-                  <Text>Students can apply for grants</Text>
+                  <Text>Students can apply for scholarships</Text>
                   <SubText>We implore students whose values are consistent with ours, whose goals for the future are reflected in ours, and whose vision for change is as radical, urgent, and pragmatic as ours, to apply for grants.</SubText>
                 </div>
 

@@ -1,6 +1,7 @@
 import * as React from "react";
 import Head from 'next/head';
 import styled from "styled-components";
+import Link from 'next/link';
 import tw from 'twin.macro';
 import dayjs from "dayjs";
 import { Formik } from 'formik';
@@ -8,8 +9,6 @@ import { toast } from 'react-toastify';
 import * as Yup from 'yup'
 import { ReactComponent as DownloadIcon } from "feather-icons/dist/icons/download.svg";
 import { css } from "styled-components/macro"; //eslint-disable-line
-import GrantsBanner from '../fragments/GrantsBanner.jsx';
-import GrantsTabs from '../cards/CardsWIthTabSwitch.jsx';
 import { isEmpty } from '../../helpers/truncateText';
 import { PrimaryButton } from '../misc/Buttons';
 import fileToBase64 from '../../utils/fileConverter';
@@ -81,7 +80,6 @@ const SingleGrant = (props) => {
   const [grantDetailsModalOpen, setGrantDetailsModalOpen] = React.useState(false);
   const { state } = React.useContext(AuthContext);
   let formSubmitting = false;
-  console.log(props);
   return (
     <React.Fragment>
       <Head>
@@ -121,11 +119,15 @@ const SingleGrant = (props) => {
               </div>
               <div className="mt-5 flex lg:mt-0 lg:ml-4">
                 {
-                  !state.isAuthenticated && state.user.userType === "REQUESTER" ? (
+                  !state.isAuthenticated && (
                     <span className="sm:ml-3">
-                      <p>Login to apply</p>
+                      <Link href="/login">
+                        <a>
+                          <p className="text-base underline font-semibold">Login to apply</p>
+                        </a>
+                      </Link>
                     </span>
-                  ) : null
+                  )
                 }
                 {
                   state.isAuthenticated && state.user.userType === "REQUESTER" ? (
@@ -320,5 +322,69 @@ const SingleGrant = (props) => {
     </React.Fragment>
   )
 };
+
+const StyleWrapper = styled.div`
+.loader-dots div {
+      animation-timing-function: cubic-bezier(0, 1, 1, 0);
+    }
+      .loader-dots div:nth-child(1) {
+      left: 8px;
+      animation: loader-dots1 0.6s infinite;
+    }
+      .loader-dots div:nth-child(2) {
+      left: 8px;
+      animation: loader-dots2 0.6s infinite;
+    }
+      .loader-dots div:nth-child(3) {
+      left: 32px;
+      animation: loader-dots2 0.6s infinite;
+    }
+      .loader-dots div:nth-child(4) {
+      left: 56px;
+      animation: loader-dots3 0.6s infinite;
+    }
+      @keyframes loader-dots1 {
+      0% {
+        transform: scale(0);
+      }
+      100% {
+      transform: scale(1);
+    }
+    }
+      @keyframes loader-dots3 {
+      0% {
+        transform: scale(1);
+      }
+      100% {
+      transform: scale(0);
+    }
+    }
+      @keyframes loader-dots2 {
+      0% {
+        transform: translate(0, 0);
+      }
+      100% {
+      transform: translate(24px, 0);
+    }
+    }
+`
+
+export const SingleGrantPlaceHolder = () => (
+  <StyleWrapper>
+    <div className="fixed top-0 left-0 z-50 w-screen h-screen flex items-center justify-center" style="background: rgba(0, 0, 0, 0.3);">
+      <div className="bg-white border py-2 px-5 rounded-lg flex items-center flex-col">
+        <div className="loader-dots block relative w-20 h-5 mt-2">
+          <div className="absolute top-0 mt-1 w-3 h-3 rounded-full bg-green-500" />
+          <div className="absolute top-0 mt-1 w-3 h-3 rounded-full bg-green-500" />
+          <div className="absolute top-0 mt-1 w-3 h-3 rounded-full bg-green-500" />
+          <div className="absolute top-0 mt-1 w-3 h-3 rounded-full bg-green-500" />
+        </div>
+        <div className="text-gray-500 text-xs font-light mt-2 text-center">
+          Please wait...
+        </div>
+      </div>
+    </div>
+  </StyleWrapper>
+)
 
 export default SingleGrant;
