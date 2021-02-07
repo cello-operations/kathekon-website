@@ -23,10 +23,12 @@ const TextContent = tw.div`lg:py-8 text-center md:text-left`;
 const Subheading = tw(SubheadingBase)`text-center md:text-left`;
 const Heading = tw(SectionHeading)`mt-4 font-black text-left text-3xl sm:text-4xl lg:text-5xl text-center md:text-left leading-tight`;
 const Description = tw.p`mt-4 text-center md:text-left text-sm md:text-base lg:text-lg font-medium leading-relaxed text-secondary-100`
+const PhoneNumber = tw.p`mt-4 text-center md:text-left text-sm md:text-base lg:text-lg font-medium leading-relaxed text-secondary-100`;
+const EmailAddress = tw.p`mt-4 text-center md:text-left text-sm md:text-base lg:text-lg font-medium leading-relaxed text-secondary-100`;
 
 const Form = tw.form`mt-8 md:mt-10 text-sm flex flex-col max-w-sm mx-auto md:mx-0`
 const Input = tw.input`mt-6 first:mt-0 border-b-2 py-3 focus:outline-none font-medium transition duration-300 hocus:border-primary-500`
-const Textarea = styled(Input).attrs({as: "textarea"})`
+const Textarea = styled(Input).attrs({ as: "textarea" })`
   ${tw`h-24`}
 `
 
@@ -34,8 +36,10 @@ const SubmitButton = tw(PrimaryButtonBase)`inline-block mt-8`
 
 const ContactForm = ({
   subheading = "Contact Us",
-  heading = <>Feel free to <span tw="text-primary-500">get in touch</span><wbr/> with us.</>,
+  heading = <>Feel free to <span tw="text-primary-500">get in touch</span><wbr /> with us.</>,
   description = "We would love to hear from you.",
+  phoneNumber = "08126857740",
+  emailAddress = "kathekon.support@kathekon.in",
   submitButtonText = "Send",
   formAction = "mailto:kathekon.support@kathekon.in",
   formMethod = "get",
@@ -54,6 +58,8 @@ const ContactForm = ({
             {subheading && <Subheading>{subheading}</Subheading>}
             <Heading>{heading}</Heading>
             {description && <Description>{description}</Description>}
+            {phoneNumber && <PhoneNumber><strong>Phone Number:</strong> {phoneNumber}</PhoneNumber>}
+            {emailAddress && <EmailAddress><strong>Email Address:</strong> {emailAddress}</EmailAddress>}
             <Form action={formAction} method={formMethod}>
               <Input type="email" name="email" placeholder="Your Email Address" />
               <Input type="text" name="name" placeholder="Full Name" />
