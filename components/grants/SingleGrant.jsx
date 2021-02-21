@@ -105,7 +105,7 @@ const SingleGrant = (props) => {
           <ResponsiveStyledDiv>
             <div className="w-full flex justify-between">
               <div className="flex-1 min-w-0">
-                <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate">
+                <h2 className="text-2xl font-bold leading-7 text-blue-600 sm:text-3xl sm:truncate">
                   {props?.grant.grantName}
                 </h2>
                 <div className="mt-1 flex flex-col sm:flex-row sm:flex-wrap sm:mt-0 sm:space-x-6">
@@ -145,13 +145,13 @@ const SingleGrant = (props) => {
               <div className="flex flex-wrap">
                 <div className="w-full md:w-1/2 order-1 md:order-2">
                   <div className="max-w-md leading-loose tracking-tight">
-                    <h1 className="font-bold my-12">Description</h1>
+                    <h1 className="font-bold my-12 text-blue-500">Description</h1>
                     <p className="mb-8">{props?.grant?.description}</p>
                   </div>
                 </div>
                 <div className={`w-full md:w-1/2 order-2 md:order-${props?.grant?.grantTpe === 'grant' ? 4 : 2} md:float-right`}>
                   <div className="max-w-lg leading-loose tracking-tight">
-                    <p className="font-bold my-4 md:my-12">Documents</p>
+                    <p className="font-bold my-4 md:my-12 text-blue-500">Documents</p>
                     In addition to meeting the minimum requirements, you will need to download and fill the document below and submit it with your application.
                     <br />
                     <div style={{ marginTop: '1rem' }}>
@@ -168,7 +168,7 @@ const SingleGrant = (props) => {
                   {
                     props?.grant?.grantType === 'grant' ? (
                       <div className="max-w-md leading-loose tracking-tight mr-4">
-                        <p className="font-bold my-4 md:my-10">Thematic Areas</p>
+                        <p className="font-bold my-4 md:my-10 text-blue-500">Thematic Areas</p>
                         {props?.grant?.thematicAreas && props?.grant?.thematicAreas?.length > 0
                           ? (
                             <ul className="flex flex-wrap justify-between flex-col">
@@ -187,7 +187,7 @@ const SingleGrant = (props) => {
                 </div>
                 <div className={`w-full md:w-1/2 order-2 md:order-${props?.grant?.grantTpe === 'grant' ? 4 : 2} md:float-right`}>
                   <div className="max-w-lg leading-loose tracking-tight">
-                    <p className="font-bold my-4 md:my-12">Requirements</p>
+                    <p className="font-bold my-4 md:my-12 text-blue-500">Requirements</p>
                     <ul className="flex flex-wrap justify-between flex-row md:flex-col">
                       {
                         !isEmpty(props?.grant?.requirements)

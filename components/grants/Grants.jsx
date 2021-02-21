@@ -7,6 +7,8 @@ import { css } from "styled-components/macro"; //eslint-disable-line
 import GrantsBanner from '../fragments/GrantsBanner.jsx';
 import GrantsTabs from '../cards/CardsWIthTabSwitch.jsx';
 import { truncateText } from '../../helpers/truncateText';
+import { ReactComponent as ArrowRight } from 'feather-icons/dist/icons/arrow-right.svg';
+import AuthContext  from '../../context/AuthContext';
 
 const MotionSection = styled.section`
   background: white;
@@ -32,6 +34,16 @@ const ResponsiveStyledDiv = styled(StyledDiv)`
   }
 `;
 
+const SubmitButton = styled.button`
+  ${tw`mt-5 tracking-wide font-semibold bg-primary-500 text-gray-100 w-auto py-4 rounded-lg hover:bg-primary-900 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none`}
+  .icon {
+    ${tw`w-6 h-6 -ml-2`}
+  }
+  .text {
+    ${tw`ml-3`}
+  }
+`;
+
 const Text = tw.h5`text-primary-500 text-3xl lg:text-4xl font-bold px-3 pt-0`;
 const SubText = tw.p`text-primary-100 mt-3 py-3`;
 
@@ -41,7 +53,7 @@ export const Image = styled.div`
 `;
 
 const Grants = (props) => {
-  console.log(props);
+  const { state } = React.useContext(AuthContext);
   return (
     <>
       <Head>
@@ -77,7 +89,24 @@ const Grants = (props) => {
                     pragmatic as ours, to apply for grants.</SubText>
                 </div>
 
-                <div className="h-1 opacity-0.5 bg-gray-500 w-40 block mx-auto rounded-sm mt-3"/>
+                <div className="h-1 opacity-0.5 bg-gray-500 w-40 block mx-auto rounded-sm mt-3 mb-4"/>
+                {
+                    state.isAuthenticated && (
+                      <center>
+                      <Link href="/applications">
+                      <SubmitButton>
+                        <React.Fragment>
+                          <span className="text mr-6">{
+                            state.user?.userType !== 'ADMIN' ? 'My ' : ''
+                          } Applications</span>
+                          <ArrowRight className="icon" />
+                          <span className="ml-5"/>
+                          </React.Fragment>
+                      </SubmitButton>
+                      </Link>
+                      </center>
+                    )
+                  }
                 <div className="w-full flex flex-row flex-wrap justify-center items-center align-center mt-8 mx-auto">
                   {
                     props?.grants?.Grants < 1 ? (

@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 import dayjs from 'dayjs';
+import { useRouter } from 'next/router';
 import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
 import APIHelper from '../../helpers/APIHelpers';
 import { ReactComponent as DownloadIcon } from "feather-icons/dist/icons/download.svg";
 import AuthContext from '../../context/AuthContext';
+import useAuth from '../../hooks/useAuth'
 
 const DropDown = (props) => (
   <div className="flex justify-center" role="group">
@@ -29,7 +31,7 @@ const DropDown = (props) => (
 )
 
 const Wrapper = styled.div`
-  ${tw`antialiased font-sans bg-gray-200`}
+  ${tw`antialiased font-sans bg-white xl:px-32`}
 `;
 
 const Content = styled.div`
@@ -41,7 +43,7 @@ const PaddedContent = styled.div`
 `;
 
 const Heading = styled.h2`
-  ${tw`text-2xl font-semibold leading-tight`}
+  ${tw`text-3xl font-bold leading-5`}
 `;
 
 const FilterSection = styled.div`
@@ -94,7 +96,33 @@ const RelativeContainer = styled.div`
 
 
 const GrantApplications = (props) => {
+  const user = useAuth(true);
   const { state } = React.useContext(AuthContext);
+  const [userGrantApplications, setUserGrantApplications] = React.useState([]);
+  const [grantApplicationsCount, setGrantApplicationsCount] = React.useState({
+    total: 0,
+    current: 0,
+  });
+  const getGrantApplications = async () => {
+    try {
+      const request = await APIHelper.get('/grants/applications');
+      const applications = request.data.data.grantApplications.length
+        <= 0
+        ? []
+        : request.data.data.grantApplications.reduce((accumulator, grantApplication) => {
+          accumulator.push(grantApplication.grantId);
+          return accumulator;
+        }, []);
+      setUserGrantApplications(request.data.data.grantApplications);
+      setGrantApplicationsCount({
+        total: request.data.meta.totalCount,
+        current: request.data.meta.currentCount,
+      })
+      state.isAuthenticated ? tabs.Applications = applications : delete tabs.Applications;
+    } catch (error) {
+      return error
+    }
+  }
   const handleApproval = async (status, application) => {
     const toastId = toast("Loading... Please wait", {
       autoClose: false,
@@ -124,14 +152,22 @@ const GrantApplications = (props) => {
     }
   }
 
+  React.useEffect(() => {
+    getGrantApplications();
+  }, []);
+
   return (
-    <Wrapper className="antialiased font-sans bg-gray-200" style={{ width: '100%', overflow: 'auto' }}>
-        <Content className="container mx-auto px-4 sm:px-8" style={{ maxWidth: '1280px' }}>
+    <Wrapper className="antialiased font-sans px-2 bg-white" style={{ width: '100%', overflow: 'auto' }}>
+      {
+        !user.isAuthenticated ? (
+          <dig className="h-screen bg-white" />
+        ) : (
+        <Content className="container h-screen mx-auto px-4 sm:px-8" style={{ maxWidth: '1280px' }}>
             <PaddedContent>
                 <div>
-                  <Heading>Grant Applications</Heading>
+                  <Heading className="text-xl text-blue-500">Grant Applications</Heading>
                 </div>
-                <FilterSection>
+                {/* <FilterSection>
                     <FilterSectionBody className="flex flex-row mb-1 sm:mb-0">
                         <FilterSectionContent className="relative">
                             <select
@@ -176,8 +212,8 @@ const GrantApplications = (props) => {
                         <input id="search-input" placeholder="Search"
                             className="appearance-none rounded-r rounded-l sm:rounded-l-none border border-gray-400 border-b block pl-8 pr-6 py-2 w-full bg-white text-sm placeholder-gray-400 text-gray-700 focus:bg-white focus:placeholder-gray-600 focus:text-gray-700 focus:outline-none" />
                     </div>
-                </FilterSection>
-                <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
+                </FilterSection> */}
+                <div className="-mx-4 sm:-mx-8 px-4 my-8 sm:px-8 py-4 overflow-x-auto">
                     <div className="inline-block min-w-full shadow rounded-lg overflow-hidden">
                         <table className="min-w-full leading-normal">
                             <thead>
@@ -206,8 +242,8 @@ const GrantApplications = (props) => {
                             </thead>
                             <tbody>
                               {
-                                props.applications && props.applications.length > 0
-                                  ? props.applications.map((application) => (
+                                userGrantApplications && userGrantApplications.length > 0
+                                  ? userGrantApplications.map((application) => (
                                     
                                       <tr key={application._id}>
                                         <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
@@ -254,16 +290,16 @@ const GrantApplications = (props) => {
                                           </span>
                                         </td>
                                     </tr>
-                                )) : <tr><td><em>No applications to view at this time</em></td></tr>
+                                )) : <tr><td></td></tr>
                               }
                             </tbody>
                         </table>
                         {
-                          props.grantsCount.total > 0 ? (
+                          grantApplicationsCount.total > 0 ? (
                           <div
                             className="px-5 py-5 bg-white border-t flex flex-col xs:flex-row items-center xs:justify-between          ">
                             <span className="text-xs xs:text-sm text-gray-900">
-                                Showing 1 to {props.grantsCount.current} of {props.grantsCount.total} Entries
+                                Showing 1 to {grantApplicationsCount.current} of {grantApplicationsCount.total} Entries
                             </span>
                             <div className="inline-flex mt-2 xs:mt-0">
                                 <button
@@ -281,9 +317,17 @@ const GrantApplications = (props) => {
                          )
                         }
                     </div>
+                    {
+                      userGrantApplications && userGrantApplications.length <= 0
+                      && <div className="flex flex-col my-6 items-center justify-center">
+                        <h3 className="font-lg font-bold">No Applications to view at this time</h3>
+                      </div>
+                    }
                 </div>
             </PaddedContent>
         </Content>
+        )
+        }
     </Wrapper>
   )
 };

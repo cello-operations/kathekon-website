@@ -6,7 +6,7 @@ import Router from "next/router";
 import Cookies from 'universal-cookie';
 import AuthContext from '../context/AuthContext';
 
-const useAuth = () => {
+const useAuth = (redirect) => {
   const currentTime = Date.now() / 1000;
   const cookie = new Cookies();
   const userToken = cookie.get('kathekonToken');
@@ -20,7 +20,7 @@ const useAuth = () => {
     if (generalHelpers.isEmpty(userDetails)) {
       dispatch({ type: "logout" })
       // redirect to login
-      // redirect && Router.replace('/login');
+      redirect && Router.replace('/login');
     }
 
     if (!generalHelpers.isEmpty(userDetails)) {
@@ -30,7 +30,7 @@ const useAuth = () => {
       if (userDetails && userDetails.exp < currentTime || !userDetails) {
         dispatch({ type: "logout" });
         // redirect to login
-        // redirect && Router.replace('/login');
+        redirect && Router.replace('/login');
       }
     }
   }, [user.exp]);
