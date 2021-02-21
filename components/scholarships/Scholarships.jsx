@@ -3,11 +3,9 @@ import Head from 'next/head';
 import Link from 'next/link';
 import styled from "styled-components";
 import tw from 'twin.macro';
-import { css } from "styled-components/macro"; //eslint-disable-line
-import GrantsBanner from '../fragments/GrantsBanner.jsx';
-import GrantsTabs from '../cards/CardsWIthTabSwitch.jsx';
-import { truncateText } from '../../helpers/truncateText';
 import { ReactComponent as ArrowRight } from 'feather-icons/dist/icons/arrow-right.svg';
+import { css } from "styled-components/macro"; //eslint-disable-line
+import { truncateText } from '../../helpers/truncateText';
 import AuthContext  from '../../context/AuthContext';
 
 const MotionSection = styled.section`
@@ -52,27 +50,27 @@ export const Image = styled.div`
   ${tw`h-64 w-full bg-cover bg-center rounded-md`}
 `;
 
-const Grants = (props) => {
-  const { state } = React.useContext(AuthContext);
+const Scholarships = (props) => {
+  const { state } = React.useContext(AuthContext)
   return (
     <>
       <Head>
-        <title>Kathēkon - Grants</title>
+        <title>Kathēkon - Scholarships</title>
         <meta name="description"
-              content="We implore individuals and organizations whose values are consistent with ours, whose goals for the future are reflected in ours, and whose vision for change is as radical, urgent, and pragmatic as ours, to apply for grants."/>
+              content="We implore students whose values are consistent with ours, whose goals for the future are reflected in ours, and whose vision for change is as radical, urgent, and pragmatic as ours, to apply for grants."/>
         <meta name="keywords"
               content="kathēkon grants scholarship school children Nigeria education civil society transformation change"/>
         <meta name="og:title" property="og:title" content="Kathēkon - Grants"/>
         <meta property="og:image"
-              content="https://res.cloudinary.com/tolulope-od/image/upload/v1605094663/Kathekon-redesign-13-13_e9qpnx.png"/>
+              content="https://images.unsplash.com/photo-1541000020894-321f175f5a69?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2700&q=80"/>
         <meta property="og:description"
-              content="We implore individuals and organizations whose values are consistent with ours, whose goals for the future are reflected in ours, and whose vision for change is as radical, urgent, and pragmatic as ours, to apply for grants."/>
+              content="We implore students whose values are consistent with ours, whose goals for the future are reflected in ours, and whose vision for change is as radical, urgent, and pragmatic as ours, to apply for grants."/>
         <meta name="twitter:title" content="Kathēkon - Grants"/>
         <meta name="twitter:card" content="photo"/>
         <meta name="twitter:description"
-              content="We implore individuals and organizations whose values are consistent with ours, whose goals for the future are reflected in ours, and whose vision for change is as radical, urgent, and pragmatic as ours, to apply for grants."/>
+              content="We implore students whose values are consistent with ours, whose goals for the future are reflected in ours, and whose vision for change is as radical, urgent, and pragmatic as ours, to apply for grants."/>
         <meta name="twitter:image:src"
-              content="https://res.cloudinary.com/tolulope-od/image/upload/v1605094663/Kathekon-redesign-13-13_e9qpnx.png"/>
+              content="https://images.unsplash.com/photo-1541000020894-321f175f5a69?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2700&q=80"/>
       </Head>
       <Container>
         {/*<GrantsBanner />*/}
@@ -83,10 +81,8 @@ const Grants = (props) => {
               <div className="py-2 text-center">
 
                 <div className="text-center max-w-4xl lg:mx-auto mt-6 px-3 lg:px-0">
-                  <Text>Credible organizations can apply for grants</Text>
-                  <SubText>We implore individuals and organizations whose values are consistent with ours, whose goals
-                    for the future are reflected in ours, and whose vision for change is as radical, urgent, and
-                    pragmatic as ours, to apply for grants.</SubText>
+                  <Text>Students can apply for scholarships</Text>
+                  <SubText>We implore students whose values are consistent with ours, whose goals for the future are reflected in ours, and whose vision for change is as radical, urgent, and pragmatic as ours, to apply for grants.</SubText>
                 </div>
 
                 <div className="h-1 opacity-0.5 bg-gray-500 w-40 block mx-auto rounded-sm mt-3 mb-4"/>
@@ -109,13 +105,13 @@ const Grants = (props) => {
                   }
                 <div className="w-full flex flex-row flex-wrap justify-center items-center align-center mt-8 mx-auto">
                   {
-                    props?.grants?.Grants < 1 ? (
-                      <h4>There are no available grants at the moment</h4>
-                    ) : props.grants?.Grants.map((grant) => (
+                    props?.grants?.Scholarships < 1 ? (
+                      <h4>There are no available scholarships at the moment</h4>
+                    ) : props.grants?.Scholarships.map((grant) => (
                       <div key={grant._id} className="w-auto max-w-sm">
                         <div className="bg-white shadow-lg rounded-lg px-4 py-6 mx-4 my-4">
                           <Image
-                            imageSrc={'https://images.unsplash.com/photo-1579621970795-87facc2f976d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2700&q=80'}/>
+                            imageSrc={'https://images.unsplash.com/photo-1541000020894-321f175f5a69?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2700&q=80'}/>
                           <br/>
                           <div className="flex w-full justify-start py-1">
                             <span
@@ -162,4 +158,4 @@ const Grants = (props) => {
   );
 };
 
-export default Grants;
+export default Scholarships;
