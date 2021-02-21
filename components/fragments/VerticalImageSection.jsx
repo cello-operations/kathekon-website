@@ -90,7 +90,7 @@ const VerticalImageSection = () => {
   ];
 
   return (
-    <Container>
+    <Container className="py-10">
       <SingleColumn>
         <HeadingInfoContainer>
           <HeadingTitle>Our Work</HeadingTitle>
@@ -101,10 +101,7 @@ const VerticalImageSection = () => {
 
         <Content>
           {cards.map((card, i) => (
-            <MotionDiv key={i} whileHover={{
-              scale: 1.2,
-              transition: { duration: 1 },
-            }}>
+            <MotionDiv key={i}>
               <Card key={i} reversed={i % 2 === 1}>
                 <Image imageSrc={card.imageSrc} />
                 <Details>

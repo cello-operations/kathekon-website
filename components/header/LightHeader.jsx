@@ -141,13 +141,14 @@ const LightHeader = ({
   const { state, dispatch } = React.useContext(AuthContext);
   const buttonRounded = false;
   const buttonRoundedCss = buttonRounded && tw`rounded-full`;
-  
+
   const defaultLinks = [
     <NavLinks key={1}>
       <NavLink href="/about">About</NavLink>
       <NavLink href="/our-work">Our Work</NavLink>
       <NavLink href="/blog">Blog</NavLink>
       <NavLink href="/grants">Grants</NavLink>
+      <NavLink href="/scholarships">Scholarships</NavLink>
     </NavLinks>,
     <NavLinks key={2}>
       <NavLink href="/login" tw="lg:ml-12!">
@@ -188,6 +189,7 @@ const PageNavLinks = [
     <NavItemLink passHref href="/our-work" name="Our Work" />
     <NavItemLink passHref href="/blog" name="Blog" />
     <NavItemLink passHref href="/grants" name="Grants" />
+    <NavItemLink passHref href="/scholarships" name="Scholarships" />
   </NavLinks>,
   <NavLinks key={2}>
     {
@@ -208,7 +210,7 @@ const PageNavLinks = [
         </>
       ) : (
         <>
-          <NavItemLinkSolo passHref name="Login" href="/login"/>   
+          <NavItemLinkSolo passHref name="Login" href="/login"/>
           <PrimaryLinkItem passHref name={"Sign Up"} href="/sign-up" />
         </>
       )

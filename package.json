@@ -38,7 +38,7 @@
     "express": "^4.17.1",
     "feather-icons": "^4.26.0",
     "formidable": "^1.2.2",
-    "formik": "^2.2.1",
+    "formik": "^2.2.6",
     "framer-motion": "^2.4.2",
     "helmet": "^4.1.1",
     "http-status-codes": "^2.1.4",
@@ -70,7 +70,7 @@
     "yup": "^0.29.3"
   },
   "scripts": {
-    "dev": "NODE_OPTIONS=\"-r esm\" next",
+    "dev": "next",
     "build": "next build",
     "start": "next start",
     "sitemap": "babel-node ./sitemap-builder.js"
